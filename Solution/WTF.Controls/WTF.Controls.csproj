@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8B425C8-778B-43C8-8338-5E2714A447DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Controls</RootNamespace>
+    <AssemblyName>WTF.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastDFS.Client">
+      <HintPath>..\..\Framework\Assembly\FastDFS.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WTF.DataConfig">
+      <HintPath>..\..\Framework\Assembly\WTF.DataConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Framework">
+      <HintPath>..\..\Framework\Assembly\WTF.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Logging">
+      <HintPath>..\..\Framework\Assembly\WTF.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Power">
+      <HintPath>..\..\Framework\Assembly\WTF.Power.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Resource">
+      <HintPath>..\..\Framework\Assembly\WTF.Resource.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoundField.cs" />
+    <Compile Include="ButtonField.cs" />
+    <Compile Include="CheckBoxField.cs" />
+    <Compile Include="CommandField.cs" />
+    <Compile Include="ControlVerHelper.cs" />
+    <Compile Include="FileVerInfo.cs" />
+    <Compile Include="FileVers.cs" />
+    <Compile Include="GridViewCommandEventArgsHelper.cs" />
+    <Compile Include="HttpPostedFileHelper.cs" />
+    <Compile Include="HyperLinkField.cs" />
+    <Compile Include="MenuImageButton.cs" />
+    <Compile Include="MenuItemCheckEventArgs.cs" />
+    <Compile Include="MenuLinkButton.cs" />
+    <Compile Include="MyButton.cs" />
+    <Compile Include="MyCheckBoxList.cs" />
+    <Compile Include="MyCommandEventArgs.cs" />
+    <Compile Include="MyDropDownList.cs" />
+    <Compile Include="MyEnumCheckBoxList.cs" />
+    <Compile Include="MyEnumDropDownList.cs" />
+    <Compile Include="MyEnumRadioButtonList.cs" />
+    <Compile Include="MyFileFlashUpload.cs" />
+    <Compile Include="MyFileResourceUpload.cs" />
+    <Compile Include="MyFileRestrictUpload.cs" />
+    <Compile Include="MyFileUpload.cs" />
+    <Compile Include="MyGridView.cs" />
+    <Compile Include="MyHyperLink.cs" />
+    <Compile Include="MyImagePreview.cs" />
+    <Compile Include="MyLinkButton.cs" />
+    <Compile Include="MyPager.cs" />
+    <Compile Include="MyRadioButtonList.cs" />
+    <Compile Include="MyRegexTypeEditor.cs" />
+    <Compile Include="MyTabBar.cs" />
+    <Compile Include="MyTextBox.cs" />
+    <Compile Include="MyToolbar.cs" />
+    <Compile Include="MyToolbarDesigner.cs" />
+    <Compile Include="MyTreeNode.cs" />
+    <Compile Include="MyTreeNodeBindingCollection.cs" />
+    <Compile Include="MyTreeNodeCollection.cs" />
+    <Compile Include="MyTreeView.cs" />
+    <Compile Include="MyUeditor.cs" />
+    <Compile Include="MyUlTreeView.cs" />
+    <Compile Include="MyUrlPager.cs" />
+    <Compile Include="MyXheditor.cs" />
+    <Compile Include="NumberField.cs" />
+    <Compile Include="Operate.cs" />
+    <Compile Include="OperateField.cs" />
+    <Compile Include="OperateType.cs" />
+    <Compile Include="PagerChangeEventHandler.cs" />
+    <Compile Include="PagerChangeType.cs" />
+    <Compile Include="PagerEventArgs.cs" />
+    <Compile Include="PagerTemplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryCheckBoxList.cs" />
+    <Compile Include="QueryDropDownList.cs" />
+    <Compile Include="QueryHiddenField.cs" />
+    <Compile Include="QueryRadioButtonList.cs" />
+    <Compile Include="QueryTextBox.cs" />
+    <Compile Include="RegexTypeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchModelHelper.cs" />
+    <Compile Include="SelectField.cs" />
+    <Compile Include="SelectRadioField.cs" />
+    <Compile Include="ShowType.cs" />
+    <Compile Include="StatPercentField.cs" />
+    <Compile Include="TemplateField.cs" />
+    <Compile Include="ToolbarLinkButton.cs" />
+    <Compile Include="ToolButton.cs" />
+    <Compile Include="ToolButtons.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Seven.Controls.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

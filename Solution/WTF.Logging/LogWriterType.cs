@@ -1,0 +1,13 @@
+﻿namespace WTF.Logging
+{
+    using System;
+
+    public enum LogWriterType
+    {
+        DataLogWriter = 1,
+        EventLogWriter = 3,
+        TextLogWriter = 2,
+        XmlLogWriter = 4
+    }
+}
+

@@ -1,0 +1,35 @@
+﻿<%@ WebHandler Language="C#" Class="AreaHandler" %>
+
+using System;
+using System.Web;
+using WTF.Framework;
+using Seven.Areas.Business;
+using Seven.Areas.DataEntity;
+using System.Linq;
+
+public class AreaHandler : SupportHandlerBase
+{
+
+    public override bool IsPowerCheck
+    {
+        get
+        {
+            return false;
+        }
+    }
+    public override InvokeResult Process(HttpContext context)
+    {
+        InvokeResult objJsonInokeResult = new InvokeResult();
+
+        BizArea objAreaRule = new BizArea();
+        int AreaID = GetInt("AreaID", 1);
+        if (AreaID == 0)
+        {
+            AreaID = 1;
+        }
+        bool IsALLAreaData = GetString("IsALLAreaData").ToLower() == "true";
+        objJsonInokeResult.Data = objAreaRule.GetListByParentID(AreaID).Select(s => new { s.AreaID, s.AreaName });
+        return objJsonInokeResult;
+    }
+
+}

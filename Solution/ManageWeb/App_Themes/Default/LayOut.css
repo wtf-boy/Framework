@@ -1,0 +1,27 @@
+﻿body
+{
+    font-size: 12px;
+}
+
+html
+{
+    margin: 0px;
+    padding: 0px;
+}
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.layBody
+{
+    scrollbar-base-color: #BFDBFF;
+    scrollbar-3dlight-color: #596991;
+    scrollbar-highlight-color: #596991;
+    scrollbar-arrow-color: #424B63;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: auto;
+    background-color: #DFE8F6;
+}

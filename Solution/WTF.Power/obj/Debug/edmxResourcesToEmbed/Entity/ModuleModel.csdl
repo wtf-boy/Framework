@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WTF.Power.Entity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ModuleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sys_module" EntityType="WTF.Power.Entity.sys_module" />
+    <EntitySet Name="sys_modulecheckdata" EntityType="WTF.Power.Entity.sys_modulecheckdata" />
+    <EntitySet Name="sys_modulecote" EntityType="WTF.Power.Entity.sys_modulecote" />
+    <EntitySet Name="sys_moduledata" EntityType="WTF.Power.Entity.sys_moduledata" />
+    <EntitySet Name="sys_modulehelp" EntityType="WTF.Power.Entity.sys_modulehelp" />
+    <EntitySet Name="sys_moduletype" EntityType="WTF.Power.Entity.sys_moduletype" />
+    <AssociationSet Name="FK_module_moduletype" Association="WTF.Power.Entity.FK_module_moduletype">
+      <End Role="sys_moduletype" EntitySet="sys_moduletype" />
+      <End Role="sys_module" EntitySet="sys_module" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sys_module">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleCode" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleFunID" Type="Int32" Nullable="false" />
+    <Property Name="IsDispose" Type="Boolean" Nullable="false" />
+    <Property Name="LogCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceType" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="OperateTypeID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleShow" Type="Boolean" Nullable="false" />
+    <Property Name="IsEdit" Type="Boolean" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="CommandName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CommandArgument" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ClickScriptFun" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ToolTip" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ParentModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleLevel" Type="Int32" Nullable="false" />
+    <Property Name="ModuleIDPath" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <Property Name="SortIndex" Type="Int32" Nullable="false" />
+    <Property Name="ValGroupName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="MenuField" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="MenuCal" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="MenuValue" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="IsMvc" Type="Boolean" Nullable="false" />
+    <Property Name="IsController" Type="Boolean" Nullable="false" />
+    <Property Name="IsCheckPowerData" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleCoteID" Type="Int32" Nullable="false" />
+    <Property Name="TargetUrl" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="ShareModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteKeyID" Type="Int32" Nullable="false" />
+    <Property Name="IsPower" Type="Boolean" Nullable="false" />
+    <Property Name="IsSupperPower" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="sys_moduletype" Relationship="WTF.Power.Entity.FK_module_moduletype" FromRole="sys_module" ToRole="sys_moduletype" />
+  </EntityType>
+  <EntityType Name="sys_modulecheckdata">
+    <Key>
+      <PropertyRef Name="ModuleCheckDataID" />
+    </Key>
+    <Property Name="ModuleCheckDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sys_modulecote">
+    <Key>
+      <PropertyRef Name="ModuleCoteID" />
+    </Key>
+    <Property Name="ModuleCoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CoteTitle" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CoteTableName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="IDName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ParentIDName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="IDPathName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ConnectionStringName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="RootIDValue" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="IDDataType" Type="Int32" Nullable="false" />
+    <Property Name="IsParentUrl" Type="Boolean" Nullable="false" />
+    <Property Name="SortExpression" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Condtion" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sys_moduledata">
+    <Key>
+      <PropertyRef Name="ModuleDataID" />
+    </Key>
+    <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ConnectionKey" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="DataName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DataSelect" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="PowerType" Type="Int32" Nullable="false" />
+    <Property Name="FieldType" Type="Int32" Nullable="false" />
+    <Property Name="FieldSourceType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_modulehelp">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="HelpTitle" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="FileResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="FileTextResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="HelpContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sys_moduletype">
+    <Key>
+      <PropertyRef Name="ModuleTypeID" />
+    </Key>
+    <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LogCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="IsDispose" Type="Boolean" Nullable="false" />
+    <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="sys_module" Relationship="WTF.Power.Entity.FK_module_moduletype" FromRole="sys_moduletype" ToRole="sys_module" />
+  </EntityType>
+  <Association Name="FK_module_moduletype">
+    <End Role="sys_moduletype" Type="WTF.Power.Entity.sys_moduletype" Multiplicity="1" />
+    <End Role="sys_module" Type="WTF.Power.Entity.sys_module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_moduletype">
+        <PropertyRef Name="ModuleTypeID" />
+      </Principal>
+      <Dependent Role="sys_module">
+        <PropertyRef Name="ModuleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

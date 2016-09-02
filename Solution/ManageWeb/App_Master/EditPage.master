@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="EditPage.master.cs" Inherits="App_Master_EditPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <script type="text/javascript" src="../../Lib/JsBase/jquery.js"></script>
+    <script type="text/javascript" src="../../Lib/JsBase/jquery.json.js"></script>
+    <script type="text/javascript" src="../../App_Control/My97DatePicker/WdatePicker.js?Ver=20140521"></script>
+    <script type="text/javascript" src="../../Lib/JqExtend/ImagePreview.js"></script>
+    <script type="text/javascript" src="../../Lib/JqExtend/ui.Validation.js?ver=20150520"></script>
+
+    <script type="text/javascript">
+
+        function showopen(url, iWidth, iHeight) {
+            var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+            var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+            window.open(url, "", "height=" + iHeight + ", width=" + iWidth + ", top=" + iTop + ", left=" + iLeft + ",toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="cphHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="layBody" scroll="yes">
+    <form id="form1" runat="server">
+        <div style="position: fixed; width: 100%">
+            <asp:ContentPlaceHolder ID="cphTopToolbar" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div style="padding-top: 27px;">
+            <asp:ContentPlaceHolder ID="cphContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="cphScriptcbar" runat="server">
+        </asp:ContentPlaceHolder>
+        <script type="text/javascript">
+
+            jQuery(".tblContent").each(function () {
+                jQuery(this).find("colgroup col").each(function (i) {
+                    var col = this;
+                    var colstyle = $(col).attr("style");
+                    $(col).parents(".tblContent").children("tbody").children("tr").not(".trCaption,trnocol").each(function () {
+
+
+                        var td$ = jQuery(jQuery(this).children("td").get(i));
+                        if (!td$.hasClass("nocol")) {
+                            td$.addClass($(col).attr("class"));
+
+                            if (colstyle != undefined) {
+
+                                var tdstyle = td$.attr("style");
+                                if (tdstyle != undefined) {
+                                    td$.attr("style", colstyle + tdstyle);
+                                }
+                                else {
+                                    td$.attr("style", colstyle);
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+
+            function TagSelect(selectTag, tag) {
+
+                $.each($(tag).val().split(','), function (i, n) {
+                    $(selectTag + " input[value='" + n + "']").prop("checked", true);
+                });
+                $(selectTag + " input").change(function () {
+                    var tagValue = "";
+                    if ($(this).prop("checked")) {
+
+                        tagValue = $(tag).val();
+                        if (tagValue == "") {
+                            $(tag).val($(this).val());
+                        }
+                        else {
+                            tagValue = "," + tagValue + ",";
+                            if (tagValue.indexOf("," + $(this).val() + ",") < 0) {
+                                var tagValue = tagValue + $(this).val();
+                                var tabProcessValue = "";
+                                $.each(tagValue.split(','), function (i, n) {
+                                    if (n != "") {
+                                        tabProcessValue += n + ",";
+                                    }
+                                });
+                                tabProcessValue = tabProcessValue.substr(0, tabProcessValue.length - 1);
+                                $(tag).val(tabProcessValue);
+                            }
+                        }
+                    } else {
+                        tagValue = $(tag).val();
+                        if (tagValue != "") {
+                            var tabProcessValue = "";
+                            var selectvalue = $(this).val();
+                            $.each(tagValue.split(','), function (i, n) {
+                                if (n != selectvalue && n != "") {
+                                    tabProcessValue += n + ",";
+                                }
+                            });
+                            tabProcessValue = tabProcessValue.substr(0, tabProcessValue.length - 1);
+                            $(tag).val(tabProcessValue);
+                        }
+
+                    }
+                })
+            };
+
+        </script>
+    </form>
+</body>
+</html>

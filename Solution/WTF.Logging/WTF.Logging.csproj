@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED91CE16-FBE6-4F53-B1F3-D9594D408FE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Logging</RootNamespace>
+    <AssemblyName>WTF.Logging</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Framework\MySql\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Framework\MySql\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WTF.Framework">
+      <HintPath>..\..\Framework\Assembly\WTF.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgumentInputNullException.cs" />
+    <Compile Include="DataLogWriter.cs" />
+    <Compile Include="Entity\LogEntities.cs" />
+    <Compile Include="Entity\loger_application.cs" />
+    <Compile Include="Entity\loger_category.cs" />
+    <Compile Include="Entity\loger_loging.cs" />
+    <Compile Include="Entity\loger_moduletype.cs" />
+    <Compile Include="Entity\loger_operationhistory.cs" />
+    <Compile Include="Entity\loger_operationloging.cs" />
+    <Compile Include="EventLogWriter.cs" />
+    <Compile Include="FileLog.cs" />
+    <Compile Include="FileTextLog.cs" />
+    <Compile Include="FileXmlLog.cs" />
+    <Compile Include="Http301Exception.cs" />
+    <Compile Include="Http302Exception.cs" />
+    <Compile Include="Http404Exception.cs" />
+    <Compile Include="Http500Exception.cs" />
+    <Compile Include="ILogWriter.cs" />
+    <Compile Include="InfoHintException.cs" />
+    <Compile Include="LogCategory.cs" />
+    <Compile Include="LogDataInfo.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LogHelper!1.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="LogInfo.cs" />
+    <Compile Include="LogMessage.cs" />
+    <Compile Include="LogModuleType.cs" />
+    <Compile Include="LogRule.cs" />
+    <Compile Include="LogWriterFactory.cs" />
+    <Compile Include="LogWriterType.cs" />
+    <Compile Include="OperationLoger.cs" />
+    <Compile Include="OperationLogInfo.cs" />
+    <Compile Include="OperationLogWriterFactory.cs" />
+    <Compile Include="OperationType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysAssert.cs" />
+    <Compile Include="TextLogWriter.cs" />
+    <Compile Include="XmlLogWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

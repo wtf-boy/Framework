@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="UserModelStoreContainer">
+    <EntitySet Name="sys_authorizegroup" EntityType="UserModel.Store.sys_authorizegroup" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_authorizegrouppower" EntityType="UserModel.Store.sys_authorizegrouppower" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_role" EntityType="UserModel.Store.sys_role" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_rolecote" EntityType="UserModel.Store.sys_rolecote" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_rolecotepower" EntityType="UserModel.Store.sys_rolecotepower" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_roledata" EntityType="UserModel.Store.sys_roledata" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_rolepower" EntityType="UserModel.Store.sys_rolepower" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_roleuser" EntityType="UserModel.Store.sys_roleuser" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_user" EntityType="UserModel.Store.sys_user" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_usertype" EntityType="UserModel.Store.sys_usertype" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_modulerole" EntityType="UserModel.Store.sys_modulerole" store:Type="Views" store:Schema="opendata" store:Name="sys_modulerole">
+      <DefiningQuery>SELECT
+      `sys_modulerole`.`ModuleTypeName`, 
+      `sys_modulerole`.`ModuleTypeCode`, 
+      `sys_modulerole`.`RoleID`, 
+      `sys_modulerole`.`RoleGroupID`, 
+      `sys_modulerole`.`ModuleTypeID`, 
+      `sys_modulerole`.`RoleName`, 
+      `sys_modulerole`.`RoleCode`, 
+      `sys_modulerole`.`UserID`, 
+      `sys_modulerole`.`IsLockOut`, 
+      `sys_modulerole`.`Remark`, 
+      `sys_modulerole`.`AuthorizeGroupID`, 
+      `sys_modulerole`.`UserType`, 
+      `sys_modulerole`.`IsSystem`, 
+      `sys_modulerole`.`AccountTypeID`
+      FROM `sys_modulerole` AS `sys_modulerole`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sys_rolecoteinfo" EntityType="UserModel.Store.sys_rolecoteinfo" store:Type="Views" store:Schema="opendata" store:Name="sys_rolecoteinfo">
+      <DefiningQuery>SELECT
+      `sys_rolecoteinfo`.`RoleCotePowerID`, 
+      `sys_rolecoteinfo`.`ModuleID`, 
+      `sys_rolecoteinfo`.`RoleID`, 
+      `sys_rolecoteinfo`.`CoteID`, 
+      `sys_rolecoteinfo`.`CoteModuleID`
+      FROM `sys_rolecoteinfo` AS `sys_rolecoteinfo`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sys_roledata_info" EntityType="UserModel.Store.sys_roledata_info" store:Type="Views" store:Schema="opendata" store:Name="sys_roledata_info">
+      <DefiningQuery>SELECT
+      `sys_roledata_info`.`RoleID`, 
+      `sys_roledata_info`.`RoleDataID`, 
+      `sys_roledata_info`.`DataSelect`, 
+      `sys_roledata_info`.`ModuleDataID`, 
+      `sys_roledata_info`.`FieldName`, 
+      `sys_roledata_info`.`FieldType`, 
+      `sys_roledata_info`.`ModuleID`
+      FROM `sys_roledata_info` AS `sys_roledata_info`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Role_Ref_RoleUser" Association="UserModel.Store.FK_Role_Ref_RoleUser">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_roleuser" EntitySet="sys_roleuser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleCote_Ref_Role" Association="UserModel.Store.FK_RoleCote_Ref_Role">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_rolecote" EntitySet="sys_rolecote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleCotePower_Ref_RoleCote" Association="UserModel.Store.FK_RoleCotePower_Ref_RoleCote">
+      <End Role="sys_rolecote" EntitySet="sys_rolecote" />
+      <End Role="sys_rolecotepower" EntitySet="sys_rolecotepower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleData_Ref_Role" Association="UserModel.Store.FK_RoleData_Ref_Role">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_roledata" EntitySet="sys_roledata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SYS_ROLE_ROLE_REF__SYS_ROLE" Association="UserModel.Store.FK_SYS_ROLE_ROLE_REF__SYS_ROLE">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_rolepower" EntitySet="sys_rolepower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_User_Sys_UserType" Association="UserModel.Store.FK_Sys_User_Sys_UserType">
+      <End Role="sys_usertype" EntitySet="sys_usertype" />
+      <End Role="sys_user" EntitySet="sys_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Ref_RoleUser" Association="UserModel.Store.FK_User_Ref_RoleUser">
+      <End Role="sys_user" EntitySet="sys_user" />
+      <End Role="sys_roleuser" EntitySet="sys_roleuser" />
+    </AssociationSet>
+    <AssociationSet Name="sys_authorizegrouppower_ibfk_1" Association="UserModel.Store.sys_authorizegrouppower_ibfk_1">
+      <End Role="sys_authorizegroup" EntitySet="sys_authorizegroup" />
+      <End Role="sys_authorizegrouppower" EntitySet="sys_authorizegrouppower" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sys_authorizegroup">
+    <Key>
+      <PropertyRef Name="AuthorizeGroupID" />
+    </Key>
+    <Property Name="AuthorizeGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="AuthorizeGroupName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IsSupertGroup" Type="bit" Nullable="false" />
+    <Property Name="IsAllowPowerSelf" Type="bit" Nullable="false" />
+    <Property Name="IsRevertPower" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sys_authorizegrouppower">
+    <Key>
+      <PropertyRef Name="AuthorizeGroupPowerID" />
+    </Key>
+    <Property Name="AuthorizeGroupPowerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="AuthorizeGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IsShare" Type="bit" Nullable="false" />
+    <Property Name="IsCoteSupper" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="AccountTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="RoleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IsLockOut" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IsUserRole" Type="bit" Nullable="false" />
+    <Property Name="AuthorizeGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RefUserID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_rolecote">
+    <Key>
+      <PropertyRef Name="RoleCoteID" />
+    </Key>
+    <Property Name="RoleCoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="sys_rolecotepower">
+    <Key>
+      <PropertyRef Name="RoleCotePowerID" />
+    </Key>
+    <Property Name="RoleCotePowerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleCoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="sys_roledata">
+    <Key>
+      <PropertyRef Name="RoleDataID" />
+    </Key>
+    <Property Name="RoleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="DataSelect" Type="varchar" Nullable="false" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="sys_rolepower">
+    <Key>
+      <PropertyRef Name="RolePowerID" />
+    </Key>
+    <Property Name="RolePowerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IsShare" Type="bit" Nullable="false" />
+    <Property Name="IsCoteSupper" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_roleuser">
+    <Key>
+      <PropertyRef Name="RoleUserID" />
+    </Key>
+    <Property Name="RoleUserID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="sys_user">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="UserTypeCID" Type="int" Nullable="false" />
+    <Property Name="IsSuper" Type="bit" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="AccountTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="32" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LoginIP" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PasswordQuestion" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PasswordAnswer" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsActivation" Type="bit" Nullable="false" />
+    <Property Name="IsLockOut" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastPasswordChangeDate" Type="datetime" Nullable="false" />
+    <Property Name="LastLockOutDate" Type="datetime" Nullable="false" />
+    <Property Name="FaildPasswordAttemptCount" Type="int" Nullable="false" />
+    <Property Name="FaildPasswordAttemptStart" Type="datetime" Nullable="false" />
+    <Property Name="FaildAnswerAttemptStart" Type="date" />
+    <Property Name="FaildAnswerAttemptCount" Type="int" Nullable="false" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="ActivationDate" Type="datetime" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="JobNo" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sys_usertype">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="UserTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.sys_modulerole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="sys_modulerole">
+    <Key>
+      <PropertyRef Name="ModuleTypeName" />
+      <PropertyRef Name="ModuleTypeCode" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="RoleGroupID" />
+      <PropertyRef Name="ModuleTypeID" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="RoleCode" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IsLockOut" />
+      <PropertyRef Name="Remark" />
+      <PropertyRef Name="AuthorizeGroupID" />
+      <PropertyRef Name="UserType" />
+      <PropertyRef Name="IsSystem" />
+      <PropertyRef Name="AccountTypeID" />
+    </Key>
+    <Property Name="ModuleTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ModuleTypeCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="RoleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IsLockOut" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="AuthorizeGroupID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="AccountTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.sys_rolecoteinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="sys_rolecoteinfo">
+    <Key>
+      <PropertyRef Name="RoleCotePowerID" />
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="CoteID" />
+      <PropertyRef Name="CoteModuleID" />
+    </Key>
+    <Property Name="RoleCotePowerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="CoteModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.sys_roledata_info”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="sys_roledata_info">
+    <Key>
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="RoleDataID" />
+      <PropertyRef Name="DataSelect" />
+      <PropertyRef Name="ModuleDataID" />
+      <PropertyRef Name="FieldName" />
+      <PropertyRef Name="FieldType" />
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="RoleID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="RoleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="DataSelect" Type="varchar" Nullable="false" MaxLength="3000" />
+    <Property Name="ModuleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FieldName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FieldType" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <Association Name="FK_Role_Ref_RoleUser">
+    <End Role="sys_role" Type="UserModel.Store.sys_role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_roleuser" Type="UserModel.Store.sys_roleuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_roleuser">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleCote_Ref_Role">
+    <End Role="sys_role" Type="UserModel.Store.sys_role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_rolecote" Type="UserModel.Store.sys_rolecote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_rolecote">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleCotePower_Ref_RoleCote">
+    <End Role="sys_rolecote" Type="UserModel.Store.sys_rolecote" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_rolecotepower" Type="UserModel.Store.sys_rolecotepower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_rolecote">
+        <PropertyRef Name="RoleCoteID" />
+      </Principal>
+      <Dependent Role="sys_rolecotepower">
+        <PropertyRef Name="RoleCoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleData_Ref_Role">
+    <End Role="sys_role" Type="UserModel.Store.sys_role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_roledata" Type="UserModel.Store.sys_roledata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_roledata">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SYS_ROLE_ROLE_REF__SYS_ROLE">
+    <End Role="sys_role" Type="UserModel.Store.sys_role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_rolepower" Type="UserModel.Store.sys_rolepower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_rolepower">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_User_Sys_UserType">
+    <End Role="sys_usertype" Type="UserModel.Store.sys_usertype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_user" Type="UserModel.Store.sys_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_usertype">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="sys_user">
+        <PropertyRef Name="UserTypeCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Ref_RoleUser">
+    <End Role="sys_user" Type="UserModel.Store.sys_user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_roleuser" Type="UserModel.Store.sys_roleuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_user">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="sys_roleuser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sys_authorizegrouppower_ibfk_1">
+    <End Role="sys_authorizegroup" Type="UserModel.Store.sys_authorizegroup" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_authorizegrouppower" Type="UserModel.Store.sys_authorizegrouppower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_authorizegroup">
+        <PropertyRef Name="AuthorizeGroupID" />
+      </Principal>
+      <Dependent Role="sys_authorizegrouppower">
+        <PropertyRef Name="AuthorizeGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Sys_CheckPowerCotePageByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+    <Parameter Name="p_CoteModuleID" Type="varchar" Mode="In" />
+    <Parameter Name="p_CoteID" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sys_CheckPowerFrameByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sys_CheckPowerPageByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sys_GetPowerDataModule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+    <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+    <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+  </Function>
+</Schema>

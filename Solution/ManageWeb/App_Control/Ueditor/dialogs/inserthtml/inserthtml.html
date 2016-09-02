@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../internal.js"></script>
+    <title></title>
+
+
+</head>
+<body>
+
+    <textarea id="txtHtml" rows="15" cols="75"></textarea>
+
+    <script type="text/javascript">
+
+
+
+
+        dialog.onok = function () {
+            var htmlvalue = $G('txtHtml').value;
+            if (htmlvalue.length > 0) {
+                editor.execCommand('inserthtml',"<p>"+ htmlvalue+"</p>");
+                dialog.close();
+            }
+        };
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gao7manageModel.Store" Alias="Self" Provider="Devart.Data.MySql" ProviderManifestToken="MySQL, 5.6.22" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="gao7manageModelStoreContainer">
+    <EntitySet Name="sys_resource" EntityType="gao7manageModel.Store.sys_resource" store:Type="Tables" Schema="gao7manage" />
+  </EntityContainer>
+  <EntityType Name="sys_resource">
+    <Key>
+      <PropertyRef Name="ResourceID" />
+    </Key>
+    <Property Name="ResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourceName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ResourceTypeID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="VerCount" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

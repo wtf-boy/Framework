@@ -1,0 +1,296 @@
+﻿
+
+.windowframe {
+    border: solid 1px #8DB2E3;
+    border-top-width: 0px;
+}
+/*-------------------------
+	主导航栏
+-------------------------*/
+.header_container {
+    background: url(header/header_bg.gif) repeat-x left top;
+}
+
+.heaer_system_info {
+    height: 60px;
+    line-height: 65px;
+    font-family: 方正姚体;
+    font-size: 18pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #4382DF;
+    text-indent: 60px;
+    background: url(header/logo.jpg) no-repeat 1px 8px;
+}
+#header_cote_content {
+  height: 30px;
+    width: 100%;
+    overflow: hidden;
+    background: url(header/bg.gif) repeat-x left bottom;
+}
+#header_menu_content {
+    height: 27px;
+    padding-top: 3px;
+    width: 100%;
+    overflow: hidden;
+    background: url(header/bg.gif) repeat-x left 0px;
+}
+
+    #header_menu_content ul, #header_menu_content li {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #header_menu_content li, #header_menu_content a {
+        text-align: center;
+        line-height: 26px;
+        float: left;
+    }
+
+    #header_menu_content a {
+        text-align: center;
+        width: 90px;
+        font-size: 12px;
+    }
+
+    #header_menu_content li {
+    }
+
+.header_menu_num {
+}
+
+.header_menu_act {
+    background: url(header/item-menu-act-bg.gif) no-repeat center bottom;
+}
+
+.header_menu_num a:Link, .header_menu_num a:Visited {
+    color: #15428b;
+}
+
+.header_menu_num a:Hover {
+    background: url(header/item-menu-hover_bg.gif) no-repeat center bottom;
+}
+
+.header_menu_num a:Active {
+    color: #15428b;
+}
+
+.header_menu_act a:Link, .header-menu-act a:Visited {
+    color: #15428b;
+}
+
+.header_menu_act a:Hover, .header_menu_act a:Active {
+    color: #15428b;
+}
+
+
+
+
+/*-------------------------
+	框架样式
+-------------------------*/
+
+.tbl_Desktop {
+    margin: 0px;
+    padding: 0px;
+}
+
+    .tbl_Desktop td {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .tbl_Desktop tr {
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+/*-------------------------
+	左边侧菜单
+-------------------------*/
+
+#frmFunction {
+    margin: 0px;
+    padding: 0px;
+    width: 150px;
+    text-align: left;
+}
+
+/*-------------------------
+	拉框样式
+-------------------------*/
+
+#switch_container {
+    background-color: #D0E0EF;
+    border: solid 1px #8DB2E3;
+    border-top-width: 0px;
+    width: 7px;
+    overflow: hidden;
+}
+
+    #switch_container img {
+        border-width: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+/*-------------------------
+	页面导栏
+-------------------------*/
+
+#desktop_Work_container {
+    padding: 5px;
+    padding-bottom: 0px;
+    background-color: White;
+}
+
+.desktop_window_frame {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+}
+
+#desktop_task_container {
+    height: 30px;
+    border-bottom: solid 1px #9CB0C8;
+    position: relative;
+    background-color: #DCEDFF;
+}
+
+.desktop_task_wrap {
+    position: absolute;
+    height: 25px;
+    top: 4px;
+    width: 100%;
+}
+
+.desktop_task_content {
+    float: left;
+}
+
+#desktop_task_list {
+    margin: 0px;
+    padding: 0px;
+    height: 25px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+    #desktop_task_list li {
+        margin: 0px;
+        padding: 0px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        font-size: 12px;
+        float: left;
+        border-radius: 5px 5px 0px 0px;
+        margin-right: 5px;
+    }
+
+    #desktop_task_list .task_current {
+        border: solid 1px #9BAFC7;
+        border-bottom-color: white;
+        background: url(image/task_active.png) repeat-x left top;
+    }
+
+    #desktop_task_list .task {
+        border: solid 1px #9BAFC7;
+        background: url(image/tabs_enabled.png) repeat-x left top;
+    }
+
+    #desktop_task_list span {
+        background-repeat: no-repeat;
+        background-position: 5px center;
+        line-height: 25px;
+        padding-left: 25px;
+        padding-right: 5px;
+        display: block;
+    }
+
+.desktop_task_menu {
+    padding-right: 3px;
+    float: right;
+    line-height: 25px;
+}
+
+    .desktop_task_menu span {
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px;
+        text-align: center;
+        cursor: pointer;
+        border: solid 1px #DCEDFF;
+    }
+
+        .desktop_task_menu span:hover {
+            background-color: #FFE7A2;
+            border: solid 1px #FFBD69;
+            text-align: center;
+            cursor: pointer;
+        }
+
+/*-------------------------
+	左侧导栏
+-------------------------*/
+
+#boxMainNavbar {
+    margin: 0px;
+    padding: 0px;
+}
+
+    #boxMainNavbar li {
+        margin-top: 5px;
+        background-repeat: no-repeat;
+        background-position: 20px center;
+        line-height: 20px;
+        padding-left: 40px;
+    }
+
+        #boxMainNavbar li a:Link, #boxMainNavbar li a:Visited {
+            color: #15428B;
+        }
+
+        #boxMainNavbar li a:Hover, #boxMainNavbar li a:Active {
+            color: #15428B;
+        }
+
+.boxCotePower {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    display:block;
+}
+
+    .boxCotePower dt, .boxCotePower dd {
+        margin: 0px;
+        padding: 0px;
+        display: block;
+    }
+
+    .boxCotePower dt {
+        cursor: pointer;
+        margin-top: 1px;
+        background-color: #DAE7F8;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        border: solid 1px #99BCE6;
+         background-origin:padding-box;
+    }
+
+    .boxCotePower dd {
+        display: none;
+        overflow-y:auto;
+         overflow-x:auto;
+     
+    scrollbar-base-color: #BFDBFF;
+    scrollbar-3dlight-color: #596991;
+    scrollbar-highlight-color: #596991;
+    scrollbar-arrow-color: #424B63;
+    }

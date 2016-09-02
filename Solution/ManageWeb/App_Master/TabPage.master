@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TabPage.master.cs" Inherits="App_Master_TabPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="../../Lib/JsBase/jquery.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body scroll="yes">
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="cphTabbar" runat="server">
+            </asp:ContentPlaceHolder>
+            <div id="tab_container">
+            </div>
+            <asp:ContentPlaceHolder ID="cphScriptcbar" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

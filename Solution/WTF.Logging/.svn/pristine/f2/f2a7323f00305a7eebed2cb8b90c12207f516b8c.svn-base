@@ -1,0 +1,397 @@
+﻿namespace Seven.Logging
+{
+    using Seven.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.InteropServices;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading;
+    using System.Web;
+
+    public static class LogHelper
+    {
+        private static LogWriterFactory _LogWriterFactory = new LogWriterFactory();
+        public const string UrlAttackKey = @"exec |<script|script:|alert\(|execute |insert |select |delete |union |update |alter |create |drop |chr |char |limit |asc |mid |'%|%'|substring |truncate |declare |xp_cmdshell |xp_ |sp_ |restore |backup |net +user |net +localgroup +administrators| exec| execute| insert| select| delete| union| update| alter| create| drop|chr\(|char\(| asc| mid| substring| truncate| declare| xp_cmdshell| xp_| sp_| restore| backup| net +user| net +localgroup +administrators";
+        public const string UrlAttackSqlKeyLeft = @"exec |<script|script:|alert\(|execute |insert |select |delete |union |update |alter |create |drop |chr |char |limit |asc |mid |'%|%'|substring |truncate |declare |xp_cmdshell |xp_ |sp_ |restore |backup |net +user |net +localgroup +administrators";
+        public const string UrlAttackSqlKeyRight = @" exec| execute| insert| select| delete| union| update| alter| create| drop|chr\(|char\(| asc| mid| substring| truncate| declare| xp_cmdshell| xp_| sp_| restore| backup| net +user| net +localgroup +administrators";
+
+        public static void DisposeException(Exception objException, Func<Exception, bool> Disposeing = null)
+        {
+            Exception innerException = objException;
+            while (innerException.InnerException != null)
+            {
+                innerException = innerException.InnerException;
+            }
+            Type type = innerException.GetType();
+            if ((Disposeing == null) || !Disposeing(objException))
+            {
+                HttpResponse response = SysVariable.CurrentContext.Response;
+                LogSection logSection = LogSectionHelper.GetLogSection();
+                if (type == typeof(ThreadAbortException))
+                {
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (innerException is Http404Exception)
+                {
+                    Http404Exception exception2 = (Http404Exception) innerException;
+                    response.ContentType = "text/html";
+                    response.StatusCode = 0x194;
+                    if (logSection.Error.ErrorIsRedirect && logSection.Error.ErrorNoFoundUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.WriteFile(logSection.Error.ErrorNoFoundUrl);
+                    }
+                    else
+                    {
+                        response.Write(exception2.Message);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if ((innerException is HttpException) && (((HttpException) innerException).GetHttpCode() == 0x194))
+                {
+                    HttpException exception3 = (HttpException) innerException;
+                    response.StatusCode = 0x194;
+                    response.ContentType = "text/html";
+                    if (logSection.Error.ErrorIsRedirect && logSection.Error.ErrorNoFoundUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.WriteFile(logSection.Error.ErrorNoFoundUrl);
+                    }
+                    else
+                    {
+                        response.Write(exception3.Message);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if ((innerException is HttpException) && (((HttpException) innerException).GetHttpCode() == 400))
+                {
+                    if (logSection.Error.ErrorIsRedirect && LogSectionHelper.GetLogSection().Error.ErrorUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.StatusCode = 0x12e;
+                        response.AddHeader("Location", LogSectionHelper.GetLogSection().Error.ErrorUrl);
+                    }
+                    else
+                    {
+                        response.StatusCode = 500;
+                        response.Write(logSection.Error.ErrorHint);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (innerException is Http301Exception)
+                {
+                    Http301Exception exception4 = innerException as Http301Exception;
+                    response.StatusCode = 0x12d;
+                    response.Status = "301 Moved Permanently";
+                    response.AddHeader("Location", exception4.RedirectUrl);
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (innerException is Http302Exception)
+                {
+                    Http302Exception exception5 = innerException as Http302Exception;
+                    response.StatusCode = 0x12e;
+                    response.AddHeader("Location", exception5.RedirectUrl);
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (innerException is Http500Exception)
+                {
+                    Http500Exception exception6 = innerException as Http500Exception;
+                    response.ContentType = "text/html";
+                    if (logSection.Error.ErrorIsRedirect && LogSectionHelper.GetLogSection().Error.ErrorUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.StatusCode = 0x12e;
+                        response.AddHeader("Location", LogSectionHelper.GetLogSection().Error.ErrorUrl);
+                    }
+                    else
+                    {
+                        response.StatusCode = 500;
+                        response.Write(logSection.Error.ErrorHint);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (innerException is HttpRequestValidationException)
+                {
+                    response.ContentType = "text/html";
+                    Write("Application", LogCategory.AttackInfo, "Application_Error", objException, "");
+                    if (logSection.Error.ErrorIsRedirect && LogSectionHelper.GetLogSection().Error.ErrorUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.StatusCode = 0x12e;
+                        response.AddHeader("Location", LogSectionHelper.GetLogSection().Error.ErrorUrl);
+                    }
+                    else
+                    {
+                        response.StatusCode = 500;
+                        response.Write(logSection.Error.ErrorHint);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+                else if (logSection.IsDispose)
+                {
+                    Write("Application", "Application_Error", objException, "");
+                    if (logSection.Error.ErrorIsRedirect && LogSectionHelper.GetLogSection().Error.ErrorUrl.IsNoNullOrWhiteSpace())
+                    {
+                        response.StatusCode = 0x12e;
+                        response.AddHeader("Location", LogSectionHelper.GetLogSection().Error.ErrorUrl);
+                    }
+                    else
+                    {
+                        response.StatusCode = 500;
+                        response.Write(logSection.Error.ErrorHint);
+                    }
+                    SysVariable.CurrentContext.Server.ClearError();
+                }
+            }
+        }
+
+        public static void DisposeException(string logModuleType, Exception exception)
+        {
+            DisposeException(logModuleType, "", exception);
+        }
+
+        public static void DisposeException(string logModuleType, string logTitle, Exception exception)
+        {
+            if (exception.GetType() != typeof(ThreadAbortException))
+            {
+                if (exception is InfoHintException)
+                {
+                    exception.Message.MessageDialog();
+                }
+                else
+                {
+                    if (exception is ArgumentInputNullException)
+                    {
+                        Write(logModuleType, logTitle, (ArgumentInputNullException) exception, "");
+                    }
+                    else
+                    {
+                        Write(logModuleType, logTitle, exception, "");
+                    }
+                    if (exception is ArgumentInputNullException)
+                    {
+                        exception.Message.MessageDialog();
+                    }
+                    else
+                    {
+                        "程序出现异常请与管理员联系！！！".MessageDialog();
+                    }
+                }
+            }
+        }
+
+        public static void DisposeGlobalException(Exception exception, Func<Exception, bool> Disposeing = null)
+        {
+            DisposeException(exception, Disposeing);
+        }
+
+        public static bool ProcessAttackBeginRequest()
+        {
+            return ProcessAttackBeginRequest(null);
+        }
+
+        public static bool ProcessAttackBeginRequest(params string[] excludeUrlPattern)
+        {
+            try
+            {
+                if ((SysVariable.CurrentContext != null) && (SysVariable.CurrentContext.Request != null))
+                {
+                    HttpResponse response;
+                    LogSection logSection;
+                    if (SysVariable.CurrentContext.Request.Url.AbsolutePath.Contains(":"))
+                    {
+                        response = SysVariable.CurrentContext.Response;
+                        response.ContentType = "text/html";
+                        response.StatusCode = 0x194;
+                        logSection = LogSectionHelper.GetLogSection();
+                        if (logSection.Error.ErrorIsRedirect && logSection.Error.ErrorNoFoundUrl.IsNoNullOrWhiteSpace())
+                        {
+                            response.WriteFile(logSection.Error.ErrorNoFoundUrl);
+                        }
+                        else
+                        {
+                            response.Write("对不起找不到此页面");
+                        }
+                        Write("Application", LogCategory.AttackInfo, "路经包含英文:地址不正确", SysVariable.CurrentContext.Request.Url.AbsolutePath, "");
+                        HttpContext.Current.ApplicationInstance.CompleteRequest();
+                        return true;
+                    }
+                    string input = SysVariable.CurrentContext.Request.Url.PathAndQuery.DecodeUrl();
+                    bool flag = false;
+                    if ((excludeUrlPattern != null) && (excludeUrlPattern.Length > 0))
+                    {
+                        foreach (string str2 in excludeUrlPattern)
+                        {
+                            if (input.IsMatch(str2, RegexOptions.IgnoreCase))
+                            {
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!flag && input.IsMatch(@"exec |<script|script:|alert\(|execute |insert |select |delete |union |update |alter |create |drop |chr |char |limit |asc |mid |'%|%'|substring |truncate |declare |xp_cmdshell |xp_ |sp_ |restore |backup |net +user |net +localgroup +administrators| exec| execute| insert| select| delete| union| update| alter| create| drop|chr\(|char\(| asc| mid| substring| truncate| declare| xp_cmdshell| xp_| sp_| restore| backup| net +user| net +localgroup +administrators", RegexOptions.IgnoreCase))
+                    {
+                        response = SysVariable.CurrentContext.Response;
+                        response.ContentType = "text/html";
+                        response.StatusCode = 0x194;
+                        logSection = LogSectionHelper.GetLogSection();
+                        if (logSection.Error.ErrorIsRedirect && logSection.Error.ErrorNoFoundUrl.IsNoNullOrWhiteSpace())
+                        {
+                            response.WriteFile(logSection.Error.ErrorNoFoundUrl);
+                        }
+                        else
+                        {
+                            response.Write("对不起找不到此页面");
+                        }
+                        Write("Application", LogCategory.AttackInfo, "AttackBeginRequest攻击处理", input, "");
+                        HttpContext.Current.ApplicationInstance.CompleteRequest();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Write("Application", "处理AttackBeginRequest异常", exception, "");
+            }
+            return false;
+        }
+
+        public static void ProcessNoUserAgentBeginRequest()
+        {
+            try
+            {
+                if (((SysVariable.CurrentContext != null) && (SysVariable.CurrentContext.Request != null)) && (SysVariable.CurrentContext.Request.UserAgent == null))
+                {
+                    HttpResponse response = SysVariable.CurrentContext.Response;
+                    LogSection logSection = LogSectionHelper.GetLogSection();
+                    response.ContentType = "text/plain";
+                    response.Write(logSection.Error.ErrorHint);
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                    Write("Application", LogCategory.AttackInfo, "NoUserAgentBeginRequest抓取处理", "NoUserAgentBeginRequest抓取处理", "");
+                }
+            }
+            catch (Exception exception)
+            {
+                Write("Application", "Application_Error", exception, "");
+            }
+        }
+
+        public static void WaitWriteComplete()
+        {
+            if (_LogWriterFactory.QueuePool != null)
+            {
+                while (_LogWriterFactory.QueuePool.MessageQueueCount > 0)
+                {
+                    Thread.Sleep(1);
+                }
+            }
+        }
+
+        public static void Write(string logModuleType, ArgumentInputNullException message, string messageID = "")
+        {
+            Write(logModuleType, message.Message.CutText(30), message, messageID);
+        }
+
+        public static void Write(string logModuleType, Exception message, string messageID = "")
+        {
+            Write(logModuleType, message.Message.CutText(30), message, messageID);
+        }
+
+        public static void Write(string logModuleType, string logTitle, ArgumentInputNullException message, string messageID = "")
+        {
+            List<string> logModuleTypeList = new List<string> {
+                logModuleType.ToString()
+            };
+            if (!(!message.LogModuleType.IsNoNullOrWhiteSpace() || logModuleTypeList.Contains(message.LogModuleType)))
+            {
+                logModuleTypeList.Add(message.LogModuleType);
+            }
+            Write(logModuleTypeList, LogCategory.ArgumentInputError, message.Message, message, "", messageID);
+        }
+
+        public static void Write(string logModuleType, string logTitle, Exception message, string messageID = "")
+        {
+            List<string> logModuleTypeList = new List<string> {
+                logModuleType.ToString()
+            };
+            if (message is ArgumentInputNullException)
+            {
+                string str = ((ArgumentInputNullException) message).LogModuleType;
+                logTitle = ((ArgumentInputNullException) message).Message;
+                if (!(!str.IsNoNullOrWhiteSpace() || logModuleTypeList.Contains(str)))
+                {
+                    logModuleTypeList.Add(str);
+                }
+            }
+            Write(logModuleTypeList, LogCategory.ExceptionError, logTitle, message, "", messageID);
+        }
+
+        public static void Write(string logModuleType, LogCategory logCategory, string logTitle, object message, string messageID = "")
+        {
+            Write(logModuleType, logCategory.ToString(), logTitle, message, messageID);
+        }
+
+        public static void Write(string logModuleType, string logCategory, string logTitle, object message, string messageID = "")
+        {
+            List<string> logModuleTypeList = new List<string>();
+            if (string.IsNullOrWhiteSpace(logModuleType))
+            {
+                logModuleType = "Application";
+            }
+            logModuleTypeList.Add(logModuleType.ToString());
+            Write(logModuleTypeList, logCategory, logTitle, message, "", messageID);
+        }
+
+        public static void Write(List<string> logModuleTypeList, string logCategory, string logTitle, object message, object resultMessage, string messageID = "")
+        {
+            if (!(string.IsNullOrEmpty(messageID) || (messageID.Length <= 0x24)))
+            {
+                throw new ArgumentException("请传入小于36位字符的日志标识");
+            }
+            LogInfo objLogInfo = new LogInfo {
+                LogModuleTypeList = logModuleTypeList,
+                LogCategory = logCategory,
+                Title = logTitle,
+                MessageID = messageID,
+                Message = message,
+                ResultMessage = resultMessage
+            };
+            try
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append("模块代码：").Append(objLogInfo.LogModuleTypeList.ConvertListToString<string>().ToString()).Append("\r\n");
+                builder.Append("模块分类：").Append(objLogInfo.LogCategory.ToString()).Append("\r\n");
+                builder.Append("异常日期：").Append(objLogInfo.CreateDate.ToString()).Append("\r\n");
+                builder.Append("远程主机：").Append(objLogInfo.UserHostAddress.ToString()).Append("\r\n");
+                builder.Append("日志内容：").Append(objLogInfo.Message).Append("\r\n");
+                builder.Append("日志结果：").Append(objLogInfo.ResultMessage).Append("\r\n");
+                builder.Append("\r\n-----------------------------------------\r\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(builder.ToString());
+                Console.ResetColor();
+            }
+            catch
+            {
+            }
+            _LogWriterFactory.EnqueueLog(objLogInfo);
+        }
+
+        public static void Write(List<string> logModuleTypeList, LogCategory logCategory, string logTitle, object message, object resultMessage, string messageID = "")
+        {
+            Write(logModuleTypeList, logCategory.ToString(), logTitle, message, resultMessage, messageID);
+        }
+
+        public static void Write(string logModuleType, LogCategory logCategory, string logTitle, object message, object resultMessage, string messageID = "")
+        {
+            Write(logModuleType, logCategory.ToString(), logTitle, message, resultMessage, messageID);
+        }
+
+        public static void Write(string logModuleType, string logCategory, string logTitle, object message, object resultMessage, string messageID = "")
+        {
+            List<string> logModuleTypeList = new List<string>();
+            if (string.IsNullOrWhiteSpace(logModuleType))
+            {
+                logModuleType = "Application";
+            }
+            logModuleTypeList.Add(logModuleType.ToString());
+            Write(logModuleTypeList, logCategory, logTitle, message, resultMessage, messageID);
+        }
+    }
+}
+

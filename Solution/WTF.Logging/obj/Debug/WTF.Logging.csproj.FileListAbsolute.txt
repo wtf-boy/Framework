@@ -1,0 +1,15 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\WTF.Logging.dll.config
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\WTF.Logging.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\EntityFramework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\EntityFramework.SqlServer.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\MySql.Data.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\MySql.Data.Entity.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\EntityFramework.xml
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\EntityFramework.SqlServer.xml
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.csprojResolveAssemblyReference.cache

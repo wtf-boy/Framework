@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FieldConfig>
+
+
+  <Field Name="TextBox" KeyName="TextBox" FieldTitle="输入框"  WriteType="TextBox"    ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" ></Field>
+
+  <Field Name="DropDownData" KeyName="DropDownData" FieldTitle="下拉数据库"  WriteType="DropDown"  ConnectionKey="SevenConnectionString" TableName="sys_usertype" TextField="UserTypeName" ValueField="UserTypeID" Condition="" Sort=""   ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" ></Field>
+  <Field Name="DropDown" KeyName="DropDown" FieldTitle="下拉"  WriteType="DropDown"   ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" >
+    文字1:1,文字2:2
+  </Field>
+
+  <Field Name="CheckBoxList" KeyName="CheckBoxList" FieldTitle="多选"  RepeatColumns="1" WriteType="CheckBoxList"      ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" >
+    文字1:1,文字2:2
+  </Field>
+  <Field   WriteType="Caption"  >
+   隔栏
+  </Field>
+
+
+  <Field Name="RadioList" KeyName="RadioList" FieldTitle="单选"  WriteType="RadioList"      ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" >
+    文字1:1,文字2:2
+  </Field>
+  <Field Name="CheckBox" KeyName="CheckBox" FieldTitle="是否启用"  WriteType="CheckBox"      ValidationExpression=""   CheckValueEmpty="true" ErrorMessage="请输入程序名称"  HintMessage="TextBox" >
+
+  </Field>
+ 
+</FieldConfig>

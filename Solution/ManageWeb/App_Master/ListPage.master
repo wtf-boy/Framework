@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ListPage.master.cs" Inherits="App_Master_ListPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <script type="text/javascript" src="../../Lib/JsBase/jquery.js"></script>
+    <script type="text/javascript" src="../../Lib/JqExtend/ui.Validation.js"></script>
+    <script type="text/javascript" src="../../App_Control/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../Lib/JqExtend/jquery.cookie.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function Remove() {
+            if (window.confirm("确认删除吗?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function showopen(url, iWidth, iHeight) {
+            var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+            var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+            window.open(url, "", "height=" + iHeight + ", width=" + iWidth + ", top=" + iTop + ", left=" + iLeft + ",toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
+        }
+
+        function showStatsViewer(statsId, objectId) {
+            showopen('/Manage/Statistics/StatsViewer.aspx?statsid=' + statsId + '&objid=' + objectId, 900, 500);
+            return false;
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="cphHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="layBody" scroll="yes">
+    <form id="form1" runat="server">
+        <div id="TopToolbar">
+
+            <asp:ContentPlaceHolder ID="cphTopToolbar" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="boxSearch">
+            <asp:ContentPlaceHolder ID="cphSearchBar" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="cphContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="cphScriptcbar" runat="server">
+        </asp:ContentPlaceHolder>
+        <script type="text/javascript">
+
+            if (jQuery.trim(jQuery("#boxSearch").html()) != '') {
+                jQuery("#boxSearch").show();
+
+            }
+            else {
+                jQuery("#boxSearch").hide();
+            }
+
+            function afreshWindow() {
+
+                if ($(".gridList .trpList").length > 0)
+                {
+                    if ($("form").height() < $(document).height()) {
+                        $(".gridList .trpList").height($(".gridList .trpList").height() + ($(document).height() - $("form").height()));
+                    }
+                }
+                return true;
+            }
+            afreshWindow();
+        </script>
+    </form>
+</body>
+</html>

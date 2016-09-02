@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCA83DE0-7A6F-4747-BB55-661D6E823792}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Work</RootNamespace>
+    <AssemblyName>WTF.Work</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WTF.Framework">
+      <HintPath>..\..\Framework\Assembly\WTF.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Logging">
+      <HintPath>..\..\Framework\Assembly\WTF.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\WorkEntities.cs" />
+    <Compile Include="Entity\Work_NotifyAddress.cs" />
+    <Compile Include="Entity\Work_Plan.cs" />
+    <Compile Include="Entity\Work_PlanNotify.cs" />
+    <Compile Include="Entity\Work_PlanNotifyInfo.cs" />
+    <Compile Include="Entity\Work_PlanRun.cs" />
+    <Compile Include="Entity\Work_PlanStep.cs" />
+    <Compile Include="Entity\Work_PlanStepInfo.cs" />
+    <Compile Include="Entity\Work_Process.cs" />
+    <Compile Include="Entity\Work_RunNextInfo.cs" />
+    <Compile Include="Entity\Work_RunProcessInfo.cs" />
+    <Compile Include="Entity\Work_WorkInfo.cs" />
+    <Compile Include="Entity\Work_WorkLog.cs" />
+    <Compile Include="Entity\Work_WorkLogInfo.cs" />
+    <Compile Include="Entity\Work_WorkProcessLog.cs" />
+    <Compile Include="Entity\Work_WorkProcessLogInfo.cs" />
+    <Compile Include="JobProcess.cs" />
+    <Compile Include="PlanHelper.cs" />
+    <Compile Include="PlanInfo.cs" />
+    <Compile Include="PlanStepInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkProcess.cs" />
+    <Compile Include="WorkRule.cs" />
+    <Compile Include="WxntProcess.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

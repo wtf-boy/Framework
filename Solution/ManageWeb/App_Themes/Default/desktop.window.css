@@ -1,0 +1,299 @@
+﻿.window
+{
+    display: block;
+    left: -999999px;
+    overflow: hidden;
+    position: absolute;
+    display: none;
+    top: -999999px;
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    border-radius: 5px 5px 0 0;
+}
+
+
+.window_current .window_titleBar
+{
+    height: 25px;
+    border-radius: 3px 3px 0 0;
+    color: Red;
+    cursor: default;
+    background: url("./image/sprite_repeat_x_png.png") repeat scroll 0 -31px transparent;
+}
+
+.window_titleBar
+{
+    height: 25px;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    background: url("./image/sprite_repeat_x_png.png") repeat scroll 0 -1px transparent;
+}
+.window_titleButtonBar
+{
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 4px;
+}
+
+.window_titleButtonBar a
+{
+    background: url("./image/sprite_main_png.png") no-repeat scroll -122px -22px transparent;
+    height: 19px;
+    cursor: hand;
+    display: block;
+    width: 21px;
+    text-align: center;
+    color: #333333;
+    line-height: 23px;
+    float: right;
+}
+.window_title
+{
+    letter-spacing: 1px;
+    line-height: 25px;
+    overflow: hidden;
+    color: #000000;
+    font-weight: bold;
+    height: 25px;
+    text-align: center;
+}
+.window_current .window_title
+{
+    color: #6D6D6D;
+}
+.window_body
+{
+    border-top: 1px solid #CCCCCC;
+    bottom: 0;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    height: 100%;
+    background: none repeat scroll 0 0 transparent;
+    background-color: white;
+}
+.windowframe
+{
+}
+
+
+a.window_close
+{
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    margin-left: 4px;
+    width: 16px;
+}
+a.window_max
+{
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    margin-left: 4px;
+    width: 21px;
+}
+a.window_fullscreen
+{
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    margin-left: 4px;
+    width: 16px;
+}
+
+a.window_close
+{
+    background-position: -64px -59px;
+}
+
+a.window_close:hover
+{
+    background-position: -64px -30px;
+}
+a.window_max
+{
+    background-position: -34px -59px;
+}
+a.window_max:hover
+{
+    background-position: -34px -30px;
+}
+a.window_fullscreen
+{
+    background-position: -34px -24px;
+}
+a.window_fullscreen:hover
+{
+    background-position: -34px -53px;
+}
+a.window_restore_full
+{
+    background-position: -152px -24px;
+}
+a.window_restore_full:hover
+{
+    background-position: -152px -53px;
+}
+a.window_restore
+{
+    background-position: -94px -59px;
+}
+a.window_restore:hover
+{
+    background-position: -94px -30px;
+}
+a.window_min
+{
+    background-position: -5px -58px;
+}
+a.window_min:hover
+{
+    background-position: -5px -30px;
+}
+a.window_refresh
+{
+    background-position: -5px -24px;
+}
+a.window_refresh:hover
+{
+    background-position: -5px -53px;
+}
+a.window_pinUp
+{
+    background-position: -182px -24px;
+}
+a.window_pinUp:hover
+{
+    background-position: -182px -53px;
+}
+a.window_pinDown
+{
+    background-position: -152px -24px;
+}
+a.window_pinDown:hover
+{
+    background-position: -152px -53px;
+}
+a.window_button
+{
+    background: url("./image/sprite_main_png.png") no-repeat scroll 0 -80px transparent;
+}
+a.window_button:hover
+{
+    background-position: 0 -86px;
+}
+a.window_ok
+{
+    background-position: 0 -86px;
+    margin-right: 5px;
+}
+a.window_ok:hover
+{
+    background-position: 0 -86px;
+}
+a.window_cancel
+{
+    background-position: 0 -86px;
+    margin-right: 5px;
+}
+a.window_cancel:hover
+{
+    background-position: 0 -86px;
+}
+a.window_previous
+{
+    background-position: 0 -86px;
+}
+a.window_previous:hover
+{
+    background-position: 0 -86px;
+}
+a.window_next
+{
+    background-position: 0 -86px;
+}
+a.window_next:hover
+{
+    background-position: 0 -86px;
+}
+
+
+
+.todoHintList
+{
+   
+    padding:5px;
+  
+}
+.todoHintList h1
+{
+    cursor: pointer;
+}
+.todoHintList h1 span
+{
+    color: Red;
+}
+
+.todoHintList h1 a
+{
+    color: #3E6AAA;
+}
+.todoHintList h1 a:Link, .todoHintList h1 a:Visited
+{
+    color: #3E6AAA;
+}
+.todoHintList h1 a:Hover, .todoHintList h1 a:Active
+{
+    color: #3E6AAA;
+}
+.todoHintList li a
+{
+    color:Black
+}
+.todoHintList li a:Link, .todoHintList li a:Visited
+{
+    color: Black;
+}
+.todoHintList li a:Hover, .todoHintList li a:Active
+{
+    color: Black;
+}
+.todoHintList h1
+{
+    height: 25px;
+    line-height: 25px;
+}
+
+.todoHintList h1 a
+{
+    float: left;
+}
+
+.todoHintList h1 span
+{
+    float: right;
+}
+.todoHintList ul
+{
+    padding: 5px;
+}
+.todoHintList li
+{
+    display: block;
+     cursor:pointer;
+    line-height: 20px;
+    height: 20px;
+}
+
+.todoHintList li a
+{
+    float: left;
+}
+
+.todoHintList li span
+{
+    float: right;
+}
+

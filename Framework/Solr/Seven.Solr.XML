@@ -1,0 +1,1586 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Seven.Solr</name>
+    </assembly>
+    <members>
+        <member name="T:Seven.Solr.GroupResultInfo`1">
+            <summary>
+            组结果信息
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Seven.Solr.GroupResultInfo`1.RecordCount">
+            <summary>
+            本组条数
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.GroupResultInfo`1.MatchesCount">
+            <summary>
+            查询条件条数
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.GroupResultInfo`1.GroupValue">
+            <summary>
+            分组值
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.GroupResultInfo`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:Seven.Solr.SolrConditionBuilder">
+            <summary>
+             Solr条件生成器
+            </summary>
+        </member>
+        <member name="T:Seven.Solr.PageSolrCache">
+            <summary>
+            分页缓存
+            </summary>
+        </member>
+        <member name="M:Seven.Solr.DeserializeHelper`1.ConvertValue(System.Object,System.Type)">
+            <summary>
+            转换值
+            </summary>
+            <param name="value"></param>
+            <param name="objType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.DeserializeHelper`1.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tableName"></param>
+            <param name="fields"></param>
+        </member>
+        <member name="M:Seven.Solr.DeserializeHelper`1.GetDataTableSchema">
+            <summary>
+            获取表格
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Seven.Solr.DeserializeHelper`1.PropertyList">
+            <summary>
+            属性列表
+            </summary>
+        </member>
+        <member name="T:Seven.Solr.ObjectDeserializeTable`1">
+            <summary>
+            Table实例化
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Seven.Solr.ObjectDeserializeT`1">
+            <summary>
+            Table实例化
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Seven.Solr.ObjectDeserializeT`1.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tableName"></param>
+            <param name="fields"></param>
+        </member>
+        <member name="M:Seven.Solr.ObjectDeserializeT`1.Deserialize(EasyNet.Solr.Commons.SolrDocumentList)">
+            <summary>
+            
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.GetDependencyKey``1(Seven.Solr.SolrQuery{``0},System.String)">
+            <summary>
+            获取缓存依懒健值[默认"SolrDependency_" + objSolrQuery.TableName.ToLower()]
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Key"></typeparam>
+            <param name="objBizBase"></param>
+            <param name="dependencyKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="limit">条数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.DeleteCacheKey``1(Seven.Solr.SolrQuery{``0},System.String)">
+            <summary>
+            删除缓存
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Key"></typeparam>
+            <param name="objSolrQuery"></param>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.DeleteDependencyKey``1(Seven.Solr.SolrQuery{``0},System.String)">
+            <summary>
+            删除默认依懒性
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Key"></typeparam>
+            <param name="objSolrQuery"></param>
+            <param name="dependencyKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="limit">条数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryDataSetLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageDataSetCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">查询字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">查询字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryListLimitCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrCacheBindHelper.QueryPageCache``1(Seven.Solr.SolrQuery{``0},System.String,System.Boolean,System.TimeSpan,System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="objSolrQuery">查询对象</param>
+            <param name="dependencyKey">依懒键</param>
+            <param name="isCache">是否缓存</param>
+            <param name="expiry">过期</param>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="T:Seven.Solr.SolrUpdate`1">
+            <summary>
+            更新
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:Seven.Solr.SolrUpdate._ServerUrl">
+            <summary>
+            搜索服务器地址
+            </summary>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.#ctor(System.String,System.String)">
+            <summary>
+            更新构造函数
+            </summary>
+            <param name="tableName"></param>
+            <param name="serverUrlOrServerKey"></param>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.GetUpdateOperations">
+            <summary>
+            获取更新操作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Update(EasyNet.Solr.UpdateOptions)">
+            <summary>
+            更新
+            </summary>
+            <param name="objUpdateOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.GetConvertValue(System.Type,System.Object)">
+            <summary>
+            转换值
+            </summary>
+            <param name="value"></param>
+            <param name="objType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.GetDefaultValue(System.Type)">
+            <summary>
+            转换值
+            </summary>
+            <param name="value"></param>
+            <param name="objType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Update(System.Data.DataTable)">
+            <summary>
+            更新
+            </summary>
+            <param name="objUpdateTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Update``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String)">
+             <summary>
+            更新内容
+             </summary>
+             <param name="idList">主键标识列</param>
+             <param name="primaryKey">主键字段名称</param>
+             <param name="connectionKeyOrConnectionString">连接数据库</param>
+             <param name="fields">更新的字段</param>
+             <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Delete(System.String)">
+            <summary>
+            删除记录
+            </summary>
+            <param name="idList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Delete(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+             删除记录
+            </summary>
+            <param name="idList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate.Optimize">
+            <summary>
+            索引优化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Seven.Solr.SolrUpdate.Log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.SolrUpdate.IsRecordSolrSql">
+            <summary>
+            是否记录Sql语句
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.SolrUpdate.SolrServerUrl">
+            <summary>
+            服务地址
+            </summary>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate`1.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tableName"></param>
+            <param name="serverUrlOrServerKey"></param>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate`1.Update(`0,System.String)">
+            <summary>
+            更新记录
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="correctfield"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrUpdate`1.Update(System.Collections.Generic.IEnumerable{`0},System.String)">
+            <summary>
+            更新记录
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="valueList">实体对象值</param>
+            <param name="correctfield">字段修正</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.#ctor(System.String,System.String)">
+            <summary>
+            查询构造函数
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="serverUrlOrServerKey">地址</param>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.#ctor(System.String,System.String,System.String)">
+            <summary>
+            查询构造函数
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="primaryKeyName">主键名</param>
+            <param name="serverUrlOrServerKey">地址</param>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetQueryOperations">
+            <summary>
+            获取查询
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetCount(System.String)">
+            <summary>
+            获取记录数
+            </summary>
+            <param name="condition">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields"></param>
+            <param name="condition"></param>
+            <param name="qf"></param>
+            <param name="highlightFields"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sortExpression"></param>
+            <param name="bf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupLimit(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="GroupField"></param>
+            <param name="fields"></param>
+            <param name="condition"></param>
+            <param name="qf"></param>
+            <param name="highlightFields"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sortExpression"></param>
+            <param name="groupLimit"></param>
+            <param name="bf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.Query(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryDataSet(System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="limit">条数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryDataSet(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryDataSetLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryDataSetLimit(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryDataSetLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupList(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="GroupField">分组字段</param>
+            <param name="fields">分组记录字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="limit">记录数[-1返回全部分组]</param>
+            <param name="sortExpression">排序</param>
+            <param name="groupLimit">分组返回的记录数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupList(System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="GroupField">分组字段</param>
+            <param name="fields">分组记录字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高亮</param>
+            <param name="limit">记录数[-1返回全部分组]</param>
+            <param name="sortExpression">排序</param>
+            <param name="groupLimit">分组返回的记录数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupListLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32@,System.Int32,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="GroupField">分组字段</param>
+            <param name="fields">分组记录字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数[-1返回全部分组]</param>
+            <param name="sortExpression">排序</param>
+            <param name="matchesCount">条件配置条数</param>
+            <param name="groupLimit">分组返回的记录数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupListLimit(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32@,System.Int32,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="GroupField">分组字段</param>
+            <param name="fields">分组记录字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高亮</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数[-1返回全部分组]</param>
+            <param name="sortExpression">排序</param>
+            <param name="matchesCount">条件配置条数</param>
+            <param name="groupLimit">分组返回的记录数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryGroupResultsParseT(System.String,EasyNet.Solr.Commons.NamedList,System.String,System.Int32@)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields"></param>
+            <param name="namedList"></param>
+            <param name="highlightFields"></param>
+            <param name="matchesCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInCondition``1(System.String,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            获取字段IN
+            </summary>
+            <typeparam name="I"></typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInCondition``1(System.String,System.String,System.Boolean)">
+            <summary>
+            获取字段IN
+            </summary>
+            <typeparam name="I">字段类型</typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDString">值,隔开</param>
+            <param name="IsSort">是否按值顺序排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionInt(System.String,System.String)">
+            <summary>
+            获取字段
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInCondition(System.String,System.String)">
+            <summary>
+            获取字段IN
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionAnd``1(System.String,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            获取字段AND
+            </summary>
+            <typeparam name="I"></typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionAnd``1(System.String,System.String)">
+            <summary>
+            获取字段AND
+            </summary>
+            <typeparam name="I"></typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionAnd(System.String,System.String)">
+            <summary>
+            获取字段AND
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionIntAnd(System.String,System.String)">
+            <summary>
+             获取字段AND
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.FiterKeyWord(System.String)">
+            <summary>
+            过滤查询
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionSort``1(System.String,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            获取字段IN[权重按值顺序]
+            </summary>
+            <typeparam name="I"></typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionSort``1(System.String,System.String)">
+            <summary>
+            获取字段IN[权重按值顺序]
+            </summary>
+            <typeparam name="I">字段类型</typeparam>
+            <param name="KeyFieldName"></param>
+            <param name="IDString">值,隔开</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionIntSort(System.String,System.String)">
+            <summary>
+            获取字段
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.GetFieldInConditionSort(System.String,System.String)">
+            <summary>
+            获取字段IN
+            </summary>
+            <param name="KeyFieldName"></param>
+            <param name="IDString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPageDataSet(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPageDataSet(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPageDataSet(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryList(System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields"></param>
+            <param name="condition"></param>
+            <param name="qf"></param>
+            <param name="limit"></param>
+            <param name="sortExpression"></param>
+            <param name="bf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryList(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPage(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="condition">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.Condiition(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            创建Solr查询语句
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.CreateCondiition(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            创建Solr查询语句
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryList(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryList(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="sortExpression">排序</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="highlightFields">高度字段</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="fields">查询字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="offset">偏移量</param>
+            <param name="limit">记录数</param>
+            <param name="sortExpression">排序</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryListLimit(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="M:Seven.Solr.SolrQuery`1.QueryPage(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.String,System.Int32,System.Int32,System.String,System.Int64@,System.String)">
+            <summary>
+            查询分页
+            </summary>
+            <param name="fields">字段</param>
+            <param name="predicate">条件</param>
+            <param name="qf">多字段及字段权重</param>
+            <param name="pageSize">页大小</param>
+            <param name="pageIndex">页索引</param>
+            <param name="sortExpression">排序</param>
+            <param name="recordCount">返回记录总数</param>
+            <param name="bf">权重</param>
+            <returns></returns>
+        </member>
+        <member name="P:Seven.Solr.SolrQuery`1.IsEdismax">
+            <summary>
+            是否开启Edismax
+            </summary>
+        </member>
+        <member name="P:Seven.Solr.SolrQuery`1.PrimaryKeyName">
+            <summary>
+            主键标识
+            </summary>
+        </member>
+        <member name="T:Seven.Solr.PageSolrCache`1">
+            <summary>
+            分页缓存
+            </summary>
+        </member>
+    </members>
+</doc>

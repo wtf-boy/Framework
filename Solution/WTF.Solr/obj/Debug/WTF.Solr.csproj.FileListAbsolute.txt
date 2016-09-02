@@ -1,0 +1,12 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Solr.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Solr.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\EasyNet.Solr.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\MySql.Data.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\MySql.Data.Entity.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Business.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Cache.Helper.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.DAL.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\obj\Debug\WTF.Solr.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Solr\obj\Debug\WTF.Solr.pdb

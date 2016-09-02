@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DialogEditPage.master.cs" Inherits="App_Master_DialogEditPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>无标题页</title>
+    <script type="text/javascript" src="../../Lib/JsBase/jquery.js"></script>
+    <script type="text/javascript" src="../../Lib/JqExtend/ui.Validation.js"></script>
+    <asp:ContentPlaceHolder ID="cphHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="layBody" scroll="yes">
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="cphTopToolbar" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="cphContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="cphScriptcbar" runat="server">
+        </asp:ContentPlaceHolder>
+        <script type="text/javascript">
+            jQuery(".tblContent").each(function () {
+                jQuery(this).find("colgroup col").each(function (i) {
+                    var col = this;
+                    var colstyle = $(col).attr("style");
+                    $(col).parents(".tblContent").children("tbody").children("tr").not(".trCaption,trnocol").each(function () {
+
+                        jQuery(jQuery(this).children("td").get(i)).addClass($(col).attr("class"));
+                        if (colstyle != undefined) {
+
+                            var tdstyle = jQuery(jQuery(this).children("td").get(i)).attr("style");
+                            if (tdstyle != undefined) {
+                                jQuery(jQuery(this).children("td").get(i)).attr("style", colstyle + tdstyle);
+                            }
+                            else {
+                                jQuery(jQuery(this).children("td").get(i)).attr("style", colstyle);
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

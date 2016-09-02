@@ -1,0 +1,129 @@
+﻿namespace Seven.Logging
+{
+    using Seven.Framework;
+    using System;
+    using System.IO;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+
+    public abstract class FileLog
+    {
+        private string _CurrentLogWriteMap = "";
+        protected FileInfo _FileInfo = null;
+        protected LogWriterType _LogWriterType = LogWriterType.XmlLogWriter;
+        protected StreamWriter _StreamWriter = null;
+        private object FileLock = new object();
+
+        public FileLog(string logWriteMap, string applicationCode, string category, LogWriterType logWriterType)
+        {
+            this._LogWriterType = logWriterType;
+            this.LogWriteMap = logWriteMap;
+            this.Category = category;
+            this.ApplicationCode = applicationCode;
+        }
+
+        public void CreateFile()
+        {
+            if (this._StreamWriter != null)
+            {
+                this._StreamWriter.Write(this.FileEnd);
+                this._StreamWriter.Flush();
+                this._StreamWriter.Close();
+                this._StreamWriter = null;
+            }
+            do
+            {
+                string str = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ((this._LogWriterType == LogWriterType.XmlLogWriter) ? ".xml" : ".txt");
+                string fileName = Path.Combine(this.LogDirectoryPath, str);
+                this._FileInfo = new FileInfo(fileName);
+                if (this._FileInfo.Exists)
+                {
+                    Thread.Sleep(0x5dc);
+                }
+            }
+            while (this._FileInfo.Exists);
+            this._CurrentLogWriteMap = this.LogWriteMap;
+            this._StreamWriter = this._FileInfo.AppendText();
+            this._StreamWriter.AutoFlush = true;
+            this._StreamWriter.Write(this.FileBegin);
+        }
+
+        ~FileLog()
+        {
+            if (this._StreamWriter != null)
+            {
+                StreamWriter writer = new FileInfo(this._FileInfo.FullName).AppendText();
+                writer.AutoFlush = true;
+                writer.Write(this.FileBegin);
+                writer.Flush();
+                writer.Close();
+                writer = null;
+            }
+        }
+
+        public virtual string FormantMessage(LogMessage objLogMessage)
+        {
+            return objLogMessage.ObjectToXmlString<LogMessage>().DecodeHtml();
+        }
+
+        public void WriterLog(LogMessage objLogMessage)
+        {
+            lock (this.FileLock)
+            {
+                if (this._StreamWriter == null)
+                {
+                    this.CreateFile();
+                }
+                else if (this._FileInfo.DirectoryName.IndexOf(DateTime.Now.ToString("yyyy-MM-dd")) == -1)
+                {
+                    this.CreateFile();
+                }
+                else if (this._StreamWriter.BaseStream.Length >= 0x9c4000L)
+                {
+                    this.CreateFile();
+                }
+                if (this._CurrentLogWriteMap != objLogMessage.LogWriteMap)
+                {
+                    this.CreateFile();
+                }
+                this._StreamWriter.Write(this.FormantMessage(objLogMessage));
+            }
+        }
+
+        public string ApplicationCode { get; set; }
+
+        public string Category { get; set; }
+
+        public virtual string FileBegin
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public virtual string FileEnd
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public string LogDirectoryPath
+        {
+            get
+            {
+                string path = Path.Combine(new string[] { this.LogWriteMap, this.ApplicationCode, this._LogWriterType.ToString(), this.Category, DateTime.Now.ToString("yyyy-MM-dd") });
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                return path;
+            }
+        }
+
+        public string LogWriteMap { get; set; }
+    }
+}
+

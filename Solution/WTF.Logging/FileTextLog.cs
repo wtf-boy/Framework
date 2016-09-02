@@ -1,0 +1,12 @@
+﻿namespace WTF.Logging
+{
+    using System;
+
+    public class FileTextLog : FileLog
+    {
+        public FileTextLog(string logWriteMap, string applicationCode, string category, LogWriterType logWriterType) : base(logWriteMap, applicationCode, category, logWriterType)
+        {
+        }
+    }
+}
+

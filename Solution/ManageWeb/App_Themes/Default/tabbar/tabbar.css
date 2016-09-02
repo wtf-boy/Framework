@@ -1,0 +1,45 @@
+﻿.mytabbar {
+    height: 30px;
+    border-bottom: solid 1px #9CB0C8;
+    position: relative;
+   
+}
+
+.mytabbar_tab_wrap {
+    position: absolute;
+    height: 25px;
+      padding-left:10px;
+    top: 4px;
+   
+}
+ 
+.mytabbar .mytabbar_tab_wrap a,.mytabbar .mytabbar_tab_wrap a:Link,.mytabbar .mytabbar_tab_wrap a:Visited ,.mytabbar .mytabbar_tab_wrap a:Hover, .mytabbar .mytabbar_tab_wrap a:Active{
+    margin: 0px;
+    padding: 0px;
+     padding-left:10px;
+     padding-right:10px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+    float: left;
+    margin-right:3px;
+    border: solid 1px #9BAFC7;
+    background: url(tabs_enabled.png) repeat-x left top;
+    color:#000000;
+    cursor:pointer;
+}
+.mytabbar .mytabbar_tab_wrap .tab_current,.mytabbar .mytabbar_tab_wrap .tab_current:Link,.mytabbar .mytabbar_tab_wrap .tab_current:Visited ,.mytabbar .mytabbar_tab_wrap .tab_current:Hover,.mytabbar .mytabbar_tab_wrap .tab_current:Active
+  {
+    border: solid 1px #9BAFC7;
+    border-bottom-color: white;
+     color:#4382E1;
+     font-weight:bold;
+    background: url(task_active.png) repeat-x left top;
+}
+.tab_container_frame {
+  width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+}

@@ -1,0 +1,102 @@
+﻿.ultreeview {
+    background-color: white;
+    padding: 0px;
+    zoom: 1;
+}
+
+    .ultreeview:after {
+        content: '\20';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .ultreeview ul {
+        margin: 0px;
+        padding: 0px;
+        display: block;
+    }
+
+    .ultreeview .folder {
+    }
+
+    .ultreeview ul li {
+        background: url("node.gif") no-repeat 0 center transparent;
+        cursor: pointer;
+        line-height: 18px;
+        clear: both;
+        list-style: none;
+        padding: 0 0 1px 0px;
+        margin: 0px;
+        white-space:nowrap;
+    }
+
+        .ultreeview ul li a {
+            color: #15428B;
+             display:inline-block;
+            font-size: 12px;
+        }
+
+            .ultreeview ul li a :Link, .ultreeview ul li a :Visited {
+                color: #15428B;
+            }
+
+            .ultreeview ul li a :Hover, .ultreeview ul li a :Active {
+                color: #15428B;
+            }
+
+        .ultreeview ul li .currenta {
+            color: red;
+        }
+
+            .ultreeview ul li .currenta:Link, .ultreeview ul li .currenta:Visited {
+                color: red;
+            }
+
+            .ultreeview ul li .currenta:Link, .ultreeview ul li .currenta:Visited {
+                color: red;
+            }
+
+    .ultreeview ul .lastnode {
+        background: url("lastnode.gif") no-repeat 0 0 transparent;
+    }
+
+    .ultreeview ul .folder {
+        background: url("fold.gif") no-repeat 0 0 transparent;
+    }
+
+    .ultreeview .node {
+        background-image: none;
+        margin: 0px;
+        padding: 0px;
+        font-size: 0px;
+    }
+
+        .ultreeview .node ul {
+            padding-left: 15px;
+            float: left;
+        }
+
+    .ultreeview .treeline {
+        background: url("treeline.gif") repeat-y left top;
+    }
+
+    .ultreeview ul .Expand {
+        background: url("open.gif") no-repeat 0 0 transparent;
+    }
+
+    .ultreeview ul .head {
+        background: url("head.gif") no-repeat 0 0 transparent;
+    }
+
+    .ultreeview li span {
+        margin: 0px;
+        padding: 5px;
+        padding-right: 8px;
+    }
+
+    .ultreeview li .treeAico {
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 20px;
+    }

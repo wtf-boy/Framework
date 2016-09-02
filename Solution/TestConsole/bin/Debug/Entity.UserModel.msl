@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserModelStoreContainer" CdmEntityContainer="UserEntities">
+    <EntitySetMapping Name="sys_role">
+      <EntityTypeMapping TypeName="UserModel.Sys_Role">
+        <MappingFragment StoreEntitySet="sys_role">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="RefUserID" ColumnName="RefUserID" />
+          <ScalarProperty Name="AuthorizeGroupID" ColumnName="AuthorizeGroupID" />
+          <ScalarProperty Name="IsUserRole" ColumnName="IsUserRole" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleGroupID" ColumnName="RoleGroupID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+          <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsLockOut" ColumnName="IsLockOut" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_rolecote">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleCote">
+        <MappingFragment StoreEntitySet="sys_rolecote">
+          <ScalarProperty Name="RoleCoteID" ColumnName="RoleCoteID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="CoteID" ColumnName="CoteID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_rolecotepower">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleCotePower">
+        <MappingFragment StoreEntitySet="sys_rolecotepower">
+          <ScalarProperty Name="RoleCotePowerID" ColumnName="RoleCotePowerID" />
+          <ScalarProperty Name="RoleCoteID" ColumnName="RoleCoteID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_roleuser">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleUser">
+        <MappingFragment StoreEntitySet="sys_roleuser">
+          <ScalarProperty Name="RoleUserID" ColumnName="RoleUserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_user">
+      <EntityTypeMapping TypeName="UserModel.Sys_User">
+        <MappingFragment StoreEntitySet="sys_user">
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeCID" ColumnName="UserTypeCID" />
+          <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LoginIP" ColumnName="LoginIP" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="IsActivation" ColumnName="IsActivation" />
+          <ScalarProperty Name="IsLockOut" ColumnName="IsLockOut" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LastPasswordChangeDate" ColumnName="LastPasswordChangeDate" />
+          <ScalarProperty Name="LastLockOutDate" ColumnName="LastLockOutDate" />
+          <ScalarProperty Name="FaildPasswordAttemptCount" ColumnName="FaildPasswordAttemptCount" />
+          <ScalarProperty Name="FaildPasswordAttemptStart" ColumnName="FaildPasswordAttemptStart" />
+          <ScalarProperty Name="FaildAnswerAttemptStart" ColumnName="FaildAnswerAttemptStart" />
+          <ScalarProperty Name="FaildAnswerAttemptCount" ColumnName="FaildAnswerAttemptCount" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_usertype">
+      <EntityTypeMapping TypeName="UserModel.Sys_UserType">
+        <MappingFragment StoreEntitySet="sys_usertype">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_modulerole">
+      <EntityTypeMapping TypeName="UserModel.Sys_ModuleRole">
+        <MappingFragment StoreEntitySet="sys_modulerole">
+          <ScalarProperty Name="AuthorizeGroupID" ColumnName="AuthorizeGroupID" />
+          <ScalarProperty Name="ModuleTypeName" ColumnName="ModuleTypeName" />
+          <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleGroupID" ColumnName="RoleGroupID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsLockOut" ColumnName="IsLockOut" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_rolecoteinfo">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleCoteInfo">
+        <MappingFragment StoreEntitySet="sys_rolecoteinfo">
+          <ScalarProperty Name="RoleCotePowerID" ColumnName="RoleCotePowerID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="CoteID" ColumnName="CoteID" />
+          <ScalarProperty Name="CoteModuleID" ColumnName="CoteModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_roledata_info">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleData_Info">
+        <MappingFragment StoreEntitySet="sys_roledata_info">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleDataID" ColumnName="RoleDataID" />
+          <ScalarProperty Name="DataSelect" ColumnName="DataSelect" />
+          <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_roledata">
+      <EntityTypeMapping TypeName="UserModel.Sys_RoleData">
+        <MappingFragment StoreEntitySet="sys_roledata">
+          <ScalarProperty Name="DataSelect" ColumnName="DataSelect" />
+          <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleDataID" ColumnName="RoleDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CheckPowerFrameByID" FunctionName="UserModel.Store.Sys_CheckPowerFrameByID" />
+    <FunctionImportMapping FunctionImportName="CheckPowerPageByID" FunctionName="UserModel.Store.Sys_CheckPowerPageByID" />
+    <FunctionImportMapping FunctionImportName="GetPowerDataModule" FunctionName="UserModel.Store.Sys_GetPowerDataModule" />
+    <EntitySetMapping Name="sys_authorizegroup">
+      <EntityTypeMapping TypeName="UserModel.sys_authorizegroup">
+        <MappingFragment StoreEntitySet="sys_authorizegroup">
+          <ScalarProperty Name="IsRevertPower" ColumnName="IsRevertPower" />
+          <ScalarProperty Name="IsAllowPowerSelf" ColumnName="IsAllowPowerSelf" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsSupertGroup" ColumnName="IsSupertGroup" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="AuthorizeGroupName" ColumnName="AuthorizeGroupName" />
+          <ScalarProperty Name="AuthorizeGroupID" ColumnName="AuthorizeGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_rolepower">
+      <EntityTypeMapping TypeName="UserModel.Sys_RolePower">
+        <MappingFragment StoreEntitySet="sys_rolepower">
+          <ScalarProperty Name="IsCoteSupper" ColumnName="IsCoteSupper" />
+          <ScalarProperty Name="IsShare" ColumnName="IsShare" />
+          <ScalarProperty Name="CoteModuleID" ColumnName="CoteModuleID" />
+          <ScalarProperty Name="CoteID" ColumnName="CoteID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RolePowerID" ColumnName="RolePowerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_authorizegrouppower">
+      <EntityTypeMapping TypeName="UserModel.sys_authorizegrouppower">
+        <MappingFragment StoreEntitySet="sys_authorizegrouppower">
+          <ScalarProperty Name="IsCoteSupper" ColumnName="IsCoteSupper" />
+          <ScalarProperty Name="IsShare" ColumnName="IsShare" />
+          <ScalarProperty Name="CoteModuleID" ColumnName="CoteModuleID" />
+          <ScalarProperty Name="CoteID" ColumnName="CoteID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="AuthorizeGroupID" ColumnName="AuthorizeGroupID" />
+          <ScalarProperty Name="AuthorizeGroupPowerID" ColumnName="AuthorizeGroupPowerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CheckPowerCotePageByID" FunctionName="UserModel.Store.Sys_CheckPowerCotePageByID" />
+  </EntityContainerMapping>
+</Mapping>

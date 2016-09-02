@@ -1,0 +1,12 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Pages.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Pages.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Controls.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Power.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Theme.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.Resource.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\FastDFS.Client.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.DataConfig.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\obj\Debug\WTF.Pages.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\obj\Debug\WTF.Pages.pdb

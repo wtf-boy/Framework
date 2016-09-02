@@ -1,0 +1,76 @@
+﻿namespace WTF.Logging
+{
+    using WTF.Framework;
+    using WTF.Logging.Entity;
+    using System;
+
+    public class OperationLogWriterFactory
+    {
+        private QueuePoolHelper<OperationLogInfo> _QueuePoolHelper = null;
+
+        public OperationLogWriterFactory()
+        {
+            this._QueuePoolHelper = new QueuePoolHelper<OperationLogInfo>(1, 2, 1);
+            this._QueuePoolHelper.SendMessage += new EventHandler<QueuePoolEventArgs<OperationLogInfo>>(this._QueuePoolHelper_SendMessage);
+        }
+
+        private void _QueuePoolHelper_SendMessage(object sender, QueuePoolEventArgs<OperationLogInfo> e)
+        {
+            OperationLogInfo message = e.Message;
+            try
+            {
+                LogSection logSection = LogSectionHelper.GetLogSection();
+                if (!string.IsNullOrWhiteSpace(logSection.Application))
+                {
+                    LogRule rule = new LogRule();
+                    loger_application cacheApplication = rule.GetCacheApplication(logSection.Application);
+                    if (cacheApplication != null)
+                    {
+                        loger_operationloging _operationloging = new loger_operationloging {
+                            ApplicationID = cacheApplication.ApplicationID,
+                            ApplicationName = cacheApplication.ApplicationName,
+                            Account = message.UserAccount,
+                            TableName = message.TableName,
+                            OperationTypeID = (int) message.OperationType,
+                            SqlQuery = message.SqlQuery,
+                            CreateDate = message.CreateDate,
+                            IDPath = cacheApplication.IDPath,
+                            ModuleTypeCode = message.LogModuleTypeCode,
+                            ApplicationHost = LogSectionHelper.Host,
+                            UserHostAddress = message.UserHostAddress,
+                            UrlReferrer = message.UrlReferrer,
+                            RawUrl = message.RawUrl
+                        };
+                        rule.CurrentEntities.AddTologer_operationloging(_operationloging);
+                        rule.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                try
+                {
+                    LogHelper<LogModuleType>.Write(LogModuleType.LogManager, "记录操作日志出现异常", exception, "");
+                }
+                catch (Exception exception2)
+                {
+                    EventLogWriter.WriterLog(exception2);
+                }
+            }
+        }
+
+        public void EnqueueLog(OperationLogInfo objLogInfo)
+        {
+            this._QueuePoolHelper.EnqueueInvokePool(objLogInfo);
+        }
+
+        public QueuePoolHelper<OperationLogInfo> QueuePool
+        {
+            get
+            {
+                return this._QueuePoolHelper;
+            }
+        }
+    }
+}
+

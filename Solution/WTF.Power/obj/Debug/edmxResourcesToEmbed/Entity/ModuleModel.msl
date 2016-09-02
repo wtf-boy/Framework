@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WTFPowerEntityStoreContainer" CdmEntityContainer="ModuleEntities">
+    <EntitySetMapping Name="sys_module">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_module">
+        <MappingFragment StoreEntitySet="sys_module">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ModuleFunID" ColumnName="ModuleFunID" />
+          <ScalarProperty Name="IsDispose" ColumnName="IsDispose" />
+          <ScalarProperty Name="LogCategoryID" ColumnName="LogCategoryID" />
+          <ScalarProperty Name="PlaceType" ColumnName="PlaceType" />
+          <ScalarProperty Name="OperateTypeID" ColumnName="OperateTypeID" />
+          <ScalarProperty Name="ModuleShow" ColumnName="ModuleShow" />
+          <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+          <ScalarProperty Name="CommandArgument" ColumnName="CommandArgument" />
+          <ScalarProperty Name="ClickScriptFun" ColumnName="ClickScriptFun" />
+          <ScalarProperty Name="ToolTip" ColumnName="ToolTip" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="ModuleLevel" ColumnName="ModuleLevel" />
+          <ScalarProperty Name="ModuleIDPath" ColumnName="ModuleIDPath" />
+          <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+          <ScalarProperty Name="ValGroupName" ColumnName="ValGroupName" />
+          <ScalarProperty Name="MenuField" ColumnName="MenuField" />
+          <ScalarProperty Name="MenuCal" ColumnName="MenuCal" />
+          <ScalarProperty Name="MenuValue" ColumnName="MenuValue" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsMvc" ColumnName="IsMvc" />
+          <ScalarProperty Name="IsController" ColumnName="IsController" />
+          <ScalarProperty Name="IsCheckPowerData" ColumnName="IsCheckPowerData" />
+          <ScalarProperty Name="ModuleCoteID" ColumnName="ModuleCoteID" />
+          <ScalarProperty Name="TargetUrl" ColumnName="TargetUrl" />
+          <ScalarProperty Name="ShareModuleID" ColumnName="ShareModuleID" />
+          <ScalarProperty Name="CoteKeyID" ColumnName="CoteKeyID" />
+          <ScalarProperty Name="IsPower" ColumnName="IsPower" />
+          <ScalarProperty Name="IsSupperPower" ColumnName="IsSupperPower" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_modulecheckdata">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_modulecheckdata">
+        <MappingFragment StoreEntitySet="sys_modulecheckdata">
+          <ScalarProperty Name="ModuleCheckDataID" ColumnName="ModuleCheckDataID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_modulecote">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_modulecote">
+        <MappingFragment StoreEntitySet="sys_modulecote">
+          <ScalarProperty Name="ModuleCoteID" ColumnName="ModuleCoteID" />
+          <ScalarProperty Name="CoteTitle" ColumnName="CoteTitle" />
+          <ScalarProperty Name="CoteTableName" ColumnName="CoteTableName" />
+          <ScalarProperty Name="IDName" ColumnName="IDName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentIDName" ColumnName="ParentIDName" />
+          <ScalarProperty Name="IDPathName" ColumnName="IDPathName" />
+          <ScalarProperty Name="ConnectionStringName" ColumnName="ConnectionStringName" />
+          <ScalarProperty Name="RootIDValue" ColumnName="RootIDValue" />
+          <ScalarProperty Name="IDDataType" ColumnName="IDDataType" />
+          <ScalarProperty Name="IsParentUrl" ColumnName="IsParentUrl" />
+          <ScalarProperty Name="SortExpression" ColumnName="SortExpression" />
+          <ScalarProperty Name="Condtion" ColumnName="Condtion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_moduledata">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_moduledata">
+        <MappingFragment StoreEntitySet="sys_moduledata">
+          <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ConnectionKey" ColumnName="ConnectionKey" />
+          <ScalarProperty Name="DataName" ColumnName="DataName" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="DataSelect" ColumnName="DataSelect" />
+          <ScalarProperty Name="PowerType" ColumnName="PowerType" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="FieldSourceType" ColumnName="FieldSourceType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_modulehelp">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_modulehelp">
+        <MappingFragment StoreEntitySet="sys_modulehelp">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="HelpTitle" ColumnName="HelpTitle" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="FileResourceID" ColumnName="FileResourceID" />
+          <ScalarProperty Name="FileTextResourceID" ColumnName="FileTextResourceID" />
+          <ScalarProperty Name="HelpContent" ColumnName="HelpContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_moduletype">
+      <EntityTypeMapping TypeName="WTF.Power.Entity.sys_moduletype">
+        <MappingFragment StoreEntitySet="sys_moduletype">
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+          <ScalarProperty Name="ModuleTypeName" ColumnName="ModuleTypeName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="LogCategoryID" ColumnName="LogCategoryID" />
+          <ScalarProperty Name="IsDispose" ColumnName="IsDispose" />
+          <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

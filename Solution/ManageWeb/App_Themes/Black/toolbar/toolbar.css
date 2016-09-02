@@ -1,0 +1,82 @@
+﻿
+.toolbar
+{
+    background: #d0def0 url(bg.gif) repeat-x top left;
+    border: solid 1px #8DB2E3;
+    height: 25px;
+    overflow: hidden;
+}
+
+    .toolbar:after
+    {
+        content: '\20';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .toolbar .operator-left-menu
+    {
+        float: left;
+        line-height: 26px;
+        height: 26px;
+        text-indent: 5px;
+        background: transparent;
+    }
+
+
+    .toolbar .operator-right-menu
+    {
+        float: right;
+        line-height: 26px;
+        padding-right: 5px;
+    }
+
+        .toolbar .operator-right-menu a
+        {
+            padding-left: 20px;
+            display: inline-block;
+            text-decoration: none;
+            height: 26px;
+            background: url(refresh.png) no-repeat left center;
+            line-height: 26px;
+            font: normal 11px tahoma, verdana, helvetica;
+        }
+
+
+    .toolbar .operator-left-menu .btn-text
+    {
+        text-decoration: none;
+        color: Black;
+        line-height: 26px;
+    }
+
+    .toolbar .operator-left-menu .btn-ico
+    {
+        padding-left: 15px;
+        display: inline-block;
+        text-decoration: none;
+        background-position: left center;
+        background-repeat: no-repeat;
+        color: Black;
+        line-height: 26px;
+    }
+
+    .toolbar .operator-left-menu a
+    {
+        display: inline-block;
+    }
+
+        .toolbar .operator-left-menu a:Link, .toolbar .operator-left-menu a:Visited
+        {
+        }
+
+        .toolbar .operator-left-menu a:Hover, .toolbar .operator-left-menu a:Active
+        {
+            color: red;
+        }
+
+    .toolbar .operator-left-menu span
+    {
+        margin: 0 10px;
+    }

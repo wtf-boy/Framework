@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="XheditorDialog.master.cs"
+    Inherits="App_Control_Xheditor_xheditor_Seven_resource_XheditorDialog" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="../../../../App_Control/Xheditor/xheditor_Seven/resource/Style.css" rel="stylesheet"
+        type="text/css" />
+    <script type="text/javascript" language="javascript" src="Script.js"></script>
+    <script type="text/javascript" language="javascript" src="../../../../Lib/JsBase/jquery.js"></script>
+    <script type="text/javascript">
+        function updateResourceClientValue(ResourceClientID, value) {
+            window.parent.updateResourceClientValue(ResourceClientID, value);
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="boxMain">
+            <asp:ContentPlaceHolder ID="cphMain" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="boxButton">
+            <asp:ContentPlaceHolder ID="cphButton" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="cphScript" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCCFFA2D-2D8C-43FE-98FE-F75771F58CF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Framework</RootNamespace>
+    <AssemblyName>WTF.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\Framework\MySql\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity">
+      <HintPath>..\..\Framework\MySql\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Framework\Newtonsoft\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionHelper.cs" />
+    <Compile Include="AESCryptographyHelper.cs" />
+    <Compile Include="Arguments.cs" />
+    <Compile Include="AssemblyHelper.cs" />
+    <Compile Include="AssemblyManager.cs" />
+    <Compile Include="AttributeValuePosition.cs" />
+    <Compile Include="BatchQueueProcess!1.cs" />
+    <Compile Include="BlowFishCrypToHelper.cs" />
+    <Compile Include="ByteHelper.cs" />
+    <Compile Include="CacheFactor.cs" />
+    <Compile Include="CacheHelper.cs" />
+    <Compile Include="CacheInfo.cs" />
+    <Compile Include="CacheType.cs" />
+    <Compile Include="CodeAttribute.cs" />
+    <Compile Include="CodeHelper.cs" />
+    <Compile Include="CodeParameter.cs" />
+    <Compile Include="CodeTimerHelper.cs" />
+    <Compile Include="ConditionItem.cs" />
+    <Compile Include="ConditionWhere.cs" />
+    <Compile Include="ConfigGroupHelper.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="ConnectionStringElement.cs" />
+    <Compile Include="ConsoleHelper.cs" />
+    <Compile Include="ControlHelper\ControlHelper.cs" />
+    <Compile Include="CookieHelper.cs" />
+    <Compile Include="CRC16.cs" />
+    <Compile Include="CRC32.cs" />
+    <Compile Include="CRC8.cs" />
+    <Compile Include="CRCHelper.cs" />
+    <Compile Include="CRCType.cs" />
+    <Compile Include="CryptogramHelper.cs" />
+    <Compile Include="CryptographyHelper.cs" />
+    <Compile Include="CryptoHelper.cs" />
+    <Compile Include="CutTextTailTye.cs" />
+    <Compile Include="DataBindHelper.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="DataSyncHelper.cs" />
+    <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="DebuggerWriter.cs" />
+    <Compile Include="DelegateAccessor.cs" />
+    <Compile Include="Des2Helper.cs" />
+    <Compile Include="DES3CryptographyHelper.cs" />
+    <Compile Include="DictionaryHelper.cs" />
+    <Compile Include="EncodeHelper.cs" />
+    <Compile Include="EncryptConnectionCollection.cs" />
+    <Compile Include="EncryptConnectionHelper.cs" />
+    <Compile Include="EncryptConnectionSection.cs" />
+    <Compile Include="EntitiesHelper.cs" />
+    <Compile Include="Entity\CommonDataSet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entity\CommonDataSetTableAdapters\CommonAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EnumAttribute.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="EnumHelperT.cs" />
+    <Compile Include="EnumParameter.cs" />
+    <Compile Include="EquipmentType.cs" />
+    <Compile Include="ErrorElement.cs" />
+    <Compile Include="ESearchIDAttribute.cs" />
+    <Compile Include="ESearchIDHelper.cs" />
+    <Compile Include="ESearchRoutingAttribute.cs" />
+    <Compile Include="EventLogHelper.cs" />
+    <Compile Include="ExportHelper.cs" />
+    <Compile Include="ExpressionVisitor.cs" />
+    <Compile Include="FastActivator.cs" />
+    <Compile Include="FileHelper.cs" />
+    <Compile Include="FileListStyle.cs" />
+    <Compile Include="FileStruct.cs" />
+    <Compile Include="FilterFlag.cs" />
+    <Compile Include="FtpHelper.cs" />
+    <Compile Include="GroupConfigCollection.cs" />
+    <Compile Include="GroupConfigElement.cs" />
+    <Compile Include="GroupConfigSection.cs" />
+    <Compile Include="GroupValueCollection.cs" />
+    <Compile Include="GroupValueElement.cs" />
+    <Compile Include="GZipHelper.cs" />
+    <Compile Include="HandlerCore.cs" />
+    <Compile Include="HandlerMethodAttribute.cs" />
+    <Compile Include="HashHelper.cs" />
+    <Compile Include="HashNodeHelper.cs" />
+    <Compile Include="HeaderType.cs" />
+    <Compile Include="HtmlToImage.cs" />
+    <Compile Include="HttpUtilityHelper.cs" />
+    <Compile Include="ICRC.cs" />
+    <Compile Include="ImageHelper.cs" />
+    <Compile Include="ImageValueHelper.cs" />
+    <Compile Include="InTransformProvider.cs" />
+    <Compile Include="InvokeResult!1.cs" />
+    <Compile Include="InvokeResult.cs" />
+    <Compile Include="ITransformProvider.cs" />
+    <Compile Include="JobHelper.cs" />
+    <Compile Include="JobTiming.cs" />
+    <Compile Include="JobWork.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="JsonSetType.cs" />
+    <Compile Include="ListHelper.cs" />
+    <Compile Include="LogCategoryCollection.cs" />
+    <Compile Include="LogCategoryElement.cs" />
+    <Compile Include="LoginInfo.cs" />
+    <Compile Include="LogModuleInfo.cs" />
+    <Compile Include="LogSection.cs" />
+    <Compile Include="LogSectionHelper.cs" />
+    <Compile Include="LongConverter.cs" />
+    <Compile Include="MachineKeyHelper.cs" />
+    <Compile Include="MailHelper.cs" />
+    <Compile Include="Md5Helper.cs" />
+    <Compile Include="MemberAdapter.cs" />
+    <Compile Include="MessageQueueHelper.cs" />
+    <Compile Include="ModuleCoteInfo.cs" />
+    <Compile Include="ModuleElement.cs" />
+    <Compile Include="ModuleElementCollection.cs" />
+    <Compile Include="ModuleMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleSection.cs" />
+    <Compile Include="ModuleSectionHelper.cs" />
+    <Compile Include="ModuleStyleElement.cs" />
+    <Compile Include="ModuleUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MoneyHelper.cs" />
+    <Compile Include="MyDataSyncHelper.cs" />
+    <Compile Include="MyExpressionVisitor!1.cs" />
+    <Compile Include="MyExpressionVisitor.cs" />
+    <Compile Include="MySqlConditionBuilder.cs" />
+    <Compile Include="MySqlHelper.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="ObjectHelper.cs" />
+    <Compile Include="OldHtmlToImage.cs" />
+    <Compile Include="OperateModuleInfo.cs" />
+    <Compile Include="OperatePlaceType.cs" />
+    <Compile Include="OperateStyle.cs" />
+    <Compile Include="PageCore.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageElement.cs" />
+    <Compile Include="PageInfo!1.cs" />
+    <Compile Include="ParameterRebinder.cs" />
+    <Compile Include="PartialEvaluator.cs" />
+    <Compile Include="PartTableHelper.cs" />
+    <Compile Include="PathHelper.cs" />
+    <Compile Include="PowerElement.cs" />
+    <Compile Include="PowerType.cs" />
+    <Compile Include="PrimaryKeyAttribute.cs" />
+    <Compile Include="PrimaryKeyHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="QueryDataType.cs" />
+    <Compile Include="QueryMethod.cs" />
+    <Compile Include="QueryModel.cs" />
+    <Compile Include="QueryStringHelper.cs" />
+    <Compile Include="QueryUnite.cs" />
+    <Compile Include="QueueHelper!1.cs" />
+    <Compile Include="QueuePoolEventArgs!1.cs" />
+    <Compile Include="QueuePoolExceptionEventArgs!1.cs" />
+    <Compile Include="QueuePoolHelper!1.cs" />
+    <Compile Include="RandomHelper.cs" />
+    <Compile Include="ReaderWriterLockSlimHelper.cs" />
+    <Compile Include="Reflector.cs" />
+    <Compile Include="ReflectorHelper.cs" />
+    <Compile Include="ReflectorVer.cs" />
+    <Compile Include="RegexHelper.cs" />
+    <Compile Include="RegisterType.cs" />
+    <Compile Include="RequestHelper.cs" />
+    <Compile Include="RequestMethod.cs" />
+    <Compile Include="ResponseHelper.cs" />
+    <Compile Include="ReturnInfoHelper.cs" />
+    <Compile Include="RolePowerKey.cs" />
+    <Compile Include="RSACryptographyHelper.cs" />
+    <Compile Include="ScriptHelper.cs" />
+    <Compile Include="SearchRow.cs" />
+    <Compile Include="SeedHelper.cs" />
+    <Compile Include="ShortCodeHelper.cs" />
+    <Compile Include="ShortTime.cs" />
+    <Compile Include="ShortUrlHelper.cs" />
+    <Compile Include="ShowEnumType.cs" />
+    <Compile Include="SolrSyncDataEvent.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="StreamHelper.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="SymmetricCryptographyHelper.cs" />
+    <Compile Include="SymmetricProvider.cs" />
+    <Compile Include="SysVariable.cs" />
+    <Compile Include="Telnet.cs" />
+    <Compile Include="TelnetException.cs" />
+    <Compile Include="TerminalException.cs" />
+    <Compile Include="ThreadDirectory!2.cs" />
+    <Compile Include="TimeHelper.cs" />
+    <Compile Include="TreeData.cs" />
+    <Compile Include="TypeAccessor.cs" />
+    <Compile Include="TypeHelper.cs" />
+    <Compile Include="TypeUtil.cs" />
+    <Compile Include="UniCodeHelper.cs" />
+    <Compile Include="UnsafeNativeMethods.cs" />
+    <Compile Include="UpdateFieldType.cs" />
+    <Compile Include="UriPathHelper.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserThemeInfo.cs" />
+    <Compile Include="ValidateHelper.cs" />
+    <Compile Include="VarnishxHelper.cs" />
+    <Compile Include="VarnishxUrl.cs" />
+    <Compile Include="ViewStateHelper.cs" />
+    <Compile Include="VirtualScreen.cs" />
+    <Compile Include="WatermarkType.cs" />
+    <Compile Include="WebHelper.cs" />
+    <Compile Include="WebRequestProcess.cs" />
+    <Compile Include="WordsFilterHelper.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <Compile Include="XxteaHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Seven.Framework.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

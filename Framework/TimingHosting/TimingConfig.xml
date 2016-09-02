@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Timings>
+  <Timing Name="wxntTest" AssemblyName="WorkTest" TypeName="WorkTest.SpiderTouTiaoList"   Hours="0"  Minutes="2" Seconds="1"  Milliseconds="0">
+  </Timing>
+</Timings>

@@ -1,0 +1,505 @@
+﻿using Gao7.Wiki.Business;
+using Gao7.Wiki.DataEntity;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using WTF.Framework;
+using System.Linq;
+/// <summary>
+/// WikiOperation 的摘要说明
+/// </summary>
+public class WikiOperations
+{
+    public BizWikiUnit _BizWikiUnit = new BizWikiUnit("Gao7.Wiki.ConnectionString", "");
+
+    public BizWikiUnit _BizWikiUnitView = new BizWikiUnit("attr_rel");
+
+    public BizWikiUnitTagRel _BizWikiUnitTagRel = new BizWikiUnitTagRel("Gao7.Wiki.ConnectionString", "");
+
+    public BizWikiUnitTag _BizWikiUnitTag = new BizWikiUnitTag("Gao7.Wiki.ConnectionString", "");
+
+
+    public WikiType objWikiType = new WikiType();
+
+    BizWikiType objBizWikiType = new BizWikiType();
+
+    public string GetWikiHtml(int id, MatchCollection amc, string currhtml)
+    {
+
+        List<List<AtlasUnit>> currunit = GetWikiNewDetail(id);
+        int arrayindex = 0;
+        for (int i = 0; i < amc.Count; i++)
+        {
+            string oldhtml = amc[i].Groups[0].ToString();
+            //获取该html中的所有占位符
+            Regex rgx = new Regex(@"Attr_(?<sz>\d*)", RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
+            int sz = rgx.Matches(oldhtml)[0].Groups["sz"].ConvertInt();
+            rgx = new Regex(@"ArrayIndex(?<arrayindex>[\d]*)", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            Regex rgx1 = new Regex(@"{ATTR_ArrayIndex(?<arrayindex>[\d]*)_Skip(?<skip>[\d]*)_Formatter_(?<html>[^{|^_]*)[^<]*}", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            if (rgx.Matches(oldhtml).Count > 0)
+            {
+                arrayindex = rgx.Matches(oldhtml)[0].Groups["arrayindex"].ConvertInt();
+            }
+            if (rgx1.Matches(oldhtml).Count > 0)
+            {
+                arrayindex = rgx1.Matches(oldhtml)[0].Groups["arrayindex"].ConvertInt();
+            }
+            if (rgx1.Matches(oldhtml).Count > 0)
+            {
+                arrayindex = rgx1.Matches(oldhtml)[0].Groups["arrayindex"].ConvertInt();
+
+                int skip = 0;
+                MatchCollection zwfmc = rgx1.Matches(oldhtml);
+                string zwhtml = "";
+                string currzwf = "";
+                if (zwfmc.Count > 0)
+                {
+                    arrayindex = zwfmc[0].Groups["arrayindex"].Value.ConvertInt();
+                    skip = zwfmc[0].Groups["skip"].Value.ConvertInt();
+                    zwhtml = zwfmc[0].Groups["html"].Value;
+                    currzwf = zwfmc[0].Groups[0].Value.ToString();
+                }
+                string zwsb = "";
+                if (currunit.Count >= arrayindex + 1)
+                {
+                    if (zwfmc.Count > 0 && currunit[arrayindex].Count > 0)
+                    {
+                        for (int kk = 0; kk < currunit[arrayindex].Count / skip; kk++)
+                        {
+                            if (zwhtml.ToLower().Contains("tr"))
+                            {
+                                zwsb += "<tr>";
+                            }
+                            Regex zwfrg = new Regex("Formatter_(?<formatter>[^_|^{]*){(?<forvalue>[^}]*)}", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+                            //获取占位符中的信息
+                            MatchCollection zwfinfo = zwfrg.Matches(currzwf);
+                            if (zwfinfo.Count > 0)
+                            {
+                                for (int k = 0; k < zwfinfo.Count; k++)
+                                {
+                                    string formatterhtml = zwfinfo[k].Groups["formatter"].Value;
+                                    string forvalue = zwfinfo[k].Groups["forvalue"].Value;
+                                    if (formatterhtml.ToLower().Contains("tr"))
+                                    {
+                                        string[] forvalues = forvalue.Split('_');
+
+                                        foreach (string fv in forvalues)
+                                        {
+                                            int fvindex = forvalues[forvalues.Length - 1].ConvertInt();
+                                            if (fv == "txt")
+                                            {
+
+                                                zwsb += currunit[arrayindex][fvindex + (kk * skip)].value;
+                                            }
+                                            else if (fv == "img")
+                                            {
+                                                zwsb += "<img src='" + currunit[arrayindex][fvindex + (kk * skip)].value + "' />";
+                                            }
+                                            else if (fv == "td")
+                                            {
+                                                zwsb += "<" + fv + ">";
+                                            }
+
+                                        }
+                                        foreach (string fv in forvalues)
+                                        {
+                                            if (fv == "td")
+                                            {
+                                                zwsb += "</" + fv + ">";
+                                            }
+                                        }
+                                    }
+                                    else if (formatterhtml.ToLower().Contains("li"))
+                                    {
+                                        zwsb += "<li>";
+                                      Regex rgxa=  new Regex(@"a\(href=(?<href>[\s\S]*)\)", RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
+                                      string ahref = "";
+                                      if (rgxa.Matches(forvalue).Count > 0)
+                                      {
+                                         ahref = rgxa.Matches(forvalue)[0].Groups["href"].ToString();
+                                         zwsb += "<a href='"+ahref+"'>";
+                                      }
+                                        string[] forvalues = forvalue.Split('_');
+                                        for (int c = 0; c < forvalues.Length; c++)
+                                        {
+                                            if (forvalues[c] == "txt")
+                                            {
+                                                zwsb += currunit[arrayindex][forvalues[c+1].ConvertInt() + (kk * skip)].value;
+                                            }
+                                            else if (forvalues[c] == "img")
+                                            {
+                                                zwsb += "<img src='" + currunit[arrayindex][forvalues[c + 1].ConvertInt() + (kk * skip)].value + "' />";
+                                            }
+                                            else if (forvalues[c] == "span")
+                                            {
+                                                zwsb += "<span>" + currunit[arrayindex][forvalues[c + 1].ConvertInt() + (kk * skip)].value + "</span>";
+                                            }
+                                        }
+                                        if (ahref!="")
+                                        {
+                                            zwsb += "</a>";
+                                        }
+                                        zwsb += "</li>";
+                                    }
+
+
+                                }
+                            }
+                            if (zwhtml.ToLower().Contains("tr"))
+                            {
+                                zwsb += "</tr>";
+                            }
+
+                        }
+                        currhtml = currhtml.Replace(currzwf, zwsb);
+                    }
+                    else
+                    {
+                        //删除该表格
+                        currhtml = RemoveZWF(currhtml, currzwf);
+                    }
+
+                }
+                else
+                {
+                    currhtml = RemoveZWF(currhtml, currzwf);
+
+                }
+            }
+            else
+            {
+                if (currunit.Count >= arrayindex + 1)
+                {
+  
+                    //如果是数组
+                    if (oldhtml.Contains("Array$"))
+                    {
+                        string sb = "";
+                        List<string> lists = currunit[arrayindex][sz].value as List<string>;
+
+                        if (oldhtml.Contains("Br"))
+                        {
+                            if (lists != null)
+                            {
+                                foreach (string ss in lists)
+                                {
+                                    sb += ss + "</br>";
+                                }
+                            }
+                            else 
+                            {
+                                sb += currunit[arrayindex][sz].value;
+                            }
+                        }
+                        else
+                        {
+                            //如果数组里面的值是冒号形式则分割开
+                            if (oldhtml.Contains("Colon") && lists != null)
+                            {
+                                for (int j = 0; j < lists.Count; j++)
+                                {
+                                    sb += "<tr><td class='highlight'>" + lists[j].Replace("：", ":").Split(':')[0] + "</td><td>" + lists[j].Replace("：", ":").Split(':')[1] + "</td></tr>";
+                                }
+                            }
+                            else
+                            {
+                                if (lists != null)
+                                {
+                                    int aindex = oldhtml.Substring(oldhtml.Length - 2, 1).ConvertInt();
+                                    sb = lists[aindex];
+                                }
+                            }
+                        }
+                        currhtml = currhtml.Replace(oldhtml, sb);
+                    }
+                    else
+                    {
+
+                        //如果占位符是包含冒号则先分割开 然后根据站位标识 获取对应的值
+                        if (oldhtml.Contains("Colon"))
+                        {
+                            if (currunit[arrayindex][sz].value.ToString().Replace("：", ":").Split(':').Length > 1)
+                            {
+                                if (currunit[arrayindex][sz].value.ToString().Replace("：", ":").Split(':')[1].ToString() != "-")
+                                {
+                                    //冒号数组的位置
+                                    int index = oldhtml.Substring(oldhtml.Length - 2, 1).ConvertInt() - 1;
+                                    currhtml = currhtml.Replace(oldhtml, currunit[arrayindex][sz].value.ToString().Replace("：", ":").Split(':')[index]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //直接替换
+                            currhtml = currhtml.Replace(oldhtml, currunit[arrayindex][sz].value.ToString());
+                        }
+                    }
+                }
+            }
+        }
+        return ClearTable(ClearSpace(ClearAttr(currhtml)));
+    }
+    /// <summary>
+    /// 删除无用的占位符
+    /// </summary>
+    /// <returns></returns>
+    public string RemoveZWF(string currhtml, string zwf)
+    {
+
+        Regex rgx = new Regex(@"<tr>(?:(?!<\/tr>).|\n)*?" + zwf + @"(?:(?!<\/tr>).|\n)*?<\/tr>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+        if (rgx.Matches(currhtml).Count > 0)
+        {
+            string currzwf = rgx.Matches(currhtml)[0].Groups[0].Value;
+            currhtml = currhtml.Replace(currzwf, "");
+        }
+        else { currhtml = currhtml.Replace(zwf, ""); }
+        return currhtml;
+    }
+    /// <summary>
+    /// 消除Attr
+    /// </summary>
+    /// <param name="sb"></param>
+    /// <returns></returns>
+    public string ClearAttr(string sb)
+    {
+        Regex rg = new Regex("<tr>[^<]*<td>{ATTR_[^}]*}[^<]*</td>[^<]*<td>{ATTR_[^}]*}[^<]*</td>[^<]*</tr>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+        MatchCollection mc = rg.Matches(sb);
+        for (int i = 0; i < mc.Count; i++)
+        {
+            string oldhtml = mc[i].Groups[0].Value;
+            sb = sb.Replace(oldhtml, "");
+        }
+        return sb;
+    }
+    /// <summary>
+    /// 消除无数据表格
+    /// </summary>
+    /// <param name="sb"></param>
+    /// <returns></returns>
+    public string ClearTable(string sb)
+    {
+        Regex rg = new Regex(@"<div[^>]*class=['""]ui-detail-title['""][^>]*>[^<]*<strong>[^<]*</strong>[^<]*</div>[^<]*<table>[\s]*</table>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+        MatchCollection mc = rg.Matches(sb);
+        if (mc.Count > 0)
+        {
+            string oldhtml = mc[0].Groups[0].Value;
+            sb = sb.Replace(oldhtml, "");
+
+            rg = new Regex(@"<div[^>]*class=['""""]ui-detail-title['""""][^>]*>[^<]*<strong>[^<]*</strong>[^<]*</div>[^<]*<table>(?:(?!<\/table>).|\n)*?</table>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            mc = rg.Matches(sb);
+            for (int i = 0; i < mc.Count; i++)
+            {
+                string currstr = mc[i].Groups[0].Value;
+                Regex currrex = new Regex(@"<tr>(?:(?!<\/tr>).|\n)*?</tr>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+                MatchCollection currmc = currrex.Matches(sb);
+                if (currmc.Count ==1)
+                {
+                    if (currmc[0].Groups[0].Value.Contains("highlight"))
+                    {
+                        sb = sb.Replace(currstr, "");
+                    }
+                }
+
+            }
+        }
+        return sb;
+    }
+
+    /// <summary>
+    /// 消除无数据
+    /// </summary>
+    /// <param name="sb"></param>
+    /// <returns></returns>
+    public string ClearSpace(string sb)
+    {
+        Regex rg = new Regex("<tr>[^<]*<td>-[^<]*</td>[^<]*<td>-[^<]*</td>[^<]*</tr>", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+        MatchCollection mc = rg.Matches(sb);
+        for (int i = 0; i < mc.Count; i++)
+        {
+            string oldhtml = mc[i].Groups[0].Value;
+            sb = sb.Replace(oldhtml, "");
+        }
+        return sb;
+    }
+
+    /// <summary>
+    /// APP图鉴
+    /// </summary>
+    /// <param name="wikiid"></param>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public List<List<AtlasUnit>> GetWikiNewDetail(int wikiid)
+    {
+        int currindex = 0;
+        //获取详细
+        WikiUnit wikiun = _BizWikiUnit.GetRecord(wikiid);
+
+        UnitModel attrlist = wikiun.WikiUnitAttrJson.JsonJsDeserialize<UnitModel>();
+
+        List<List<AtlasUnit>> atlasunitattr = new List<List<AtlasUnit>>();
+
+        IEnumerable<UnitModelDetail> query = null;
+        //获取单元基本属性
+
+        query = attrlist.attribute.OrderBy(p => p.phoneSort.ConvertInt());
+        List<UnitModelDetail> currlist = query.ToList();
+        List<AtlasUnit> unitAttr = new List<AtlasUnit>();
+        for (int i = 0; i < currlist.Count; i++)
+        {
+
+            AtlasUnit aunit = new AtlasUnit();
+            aunit.id = currlist[i].id;
+            aunit.name = currlist[i].name;
+            aunit.value = currlist[i].value;
+            if (aunit.value.ToString().Contains('$'))
+            {
+                aunit.type = 1;
+                aunit.value = aunit.value.ToString().Split('$').ToList();
+
+            }
+            if (aunit.value.ToString().Contains("file"))
+            {
+                aunit.type = 2;
+            }
+            aunit.placeholder = string.Format("ATTR_{0}", currindex);
+            aunit.sort = currindex;
+            aunit.BigImg = wikiun.WikiUnitIcon2;
+
+            if (currlist[i].display == 0)
+            { continue; }
+
+            unitAttr.Add(aunit);
+            currindex++;
+
+
+
+
+        }
+        atlasunitattr.Add(unitAttr);
+
+        //关联属性
+        IList<WikiUnitTag> wikiList = _BizWikiUnitTag.GetList("WikiUnitID=" + wikiid, "");
+        foreach (WikiUnitTag wiki in wikiList)
+        {
+            currindex = 0;
+            //关联单元属性
+            List<AtlasUnit> wikiAttr = new List<AtlasUnit>();
+            //获取属性单元
+            IList<WikiUnitTagRel> wutr = _BizWikiUnitTagRel.GetList("WikiUnitTagID=" + wiki.WikiUnitTagID);
+            //获取单元属性并加入数组
+            foreach (WikiUnitTagRel tagrel in wutr)
+            {
+                WikiUnit attrUnit = _BizWikiUnit.GetRecord("WikiUnitID=" + tagrel.WikiUnitID);
+                UnitModel audattrlist = attrUnit.WikiUnitAttrJson.JsonJsDeserialize<UnitModel>();
+                IEnumerable<UnitModelDetail> query1 = null;
+                query1 = audattrlist.attribute.OrderBy(p => p.phoneSort);
+                List<UnitModelDetail> currlist1 = query1.ToList();
+                //属性
+                if (audattrlist != null)
+                {
+                    for (int i = 0; i < currlist1.Count; i++)
+                    {
+                        AtlasUnit aunit = new AtlasUnit();
+                        aunit.wikiid = tagrel.WikiUnitID;
+                        aunit.id = currlist1[i].id;
+                        aunit.name = currlist1[i].name;
+                        aunit.value = currlist1[i].value;
+
+                        if (aunit.value.ToString().Contains('$'))
+                        {
+                            aunit.type = 1;
+                            aunit.value = aunit.value.ToString().Split('$').ToList();
+
+                        }
+                        if (aunit.value.ToString().Contains("file"))
+                        {
+                            aunit.type = 2;
+                        }
+                        aunit.placeholder = string.Format("ATTR_{0}", currindex);
+                        aunit.sort = currindex;
+                        aunit.BigImg = attrUnit.WikiUnitIcon2;
+                        if (currlist1[i].display == 0)
+                        { continue; }
+                        wikiAttr.Add(aunit);
+                        currindex++;
+
+
+                    }
+                }
+            }
+            atlasunitattr.Add(wikiAttr);
+        }
+        return atlasunitattr;
+    }
+}
+/// <summary>
+/// 图鉴单元
+/// </summary>
+[Serializable]
+public class AtlasUnit
+{
+    public AtlasUnit()
+    {
+        wikiid = 0;
+        id = 0;
+        name = "";
+        value = "";
+        placeholder = "";
+        type = 0;
+
+    }
+    /// <summary>
+    /// 图鉴ID
+    /// </summary>
+    public int wikiid { get; set; }
+
+    public int id { get; set; }
+    /// <summary>
+    /// 属性名
+    /// </summary>
+    public string name { get; set; }
+
+    /// <summary>
+    /// 属性值
+    /// </summary>
+    public object value { get; set; }
+
+
+    /// <summary>
+    /// 占位符
+    /// </summary>
+    public string placeholder { get; set; }
+    /// <summary>
+    /// 类型
+    /// </summary>
+    public int type { get; set; }
+    public int sort { get; set; }
+    public string BigImg { get; set; }
+
+}
+/// <summary>
+/// 图鉴json实体
+/// </summary>
+[Serializable]
+public class UnitModel
+{
+    public List<UnitModelDetail> attribute = new List<UnitModelDetail>();
+}
+
+/// <summary>
+/// 图鉴详细
+/// </summary>
+[Serializable]
+public class UnitModelDetail
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public string value { get; set; }
+    public int display { get; set; }
+
+    public int phoneSort { get; set; }
+
+    public int pcSort { get; set; }
+}

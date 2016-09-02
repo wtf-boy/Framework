@@ -1,0 +1,115 @@
+﻿body
+{
+	font-size: 12px;
+	vertical-align: middle;
+	background-image: none;
+	 
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, ul, ol, li, button, input, textarea, th, td, div, dl, dt, dd
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    list-style-type: none;
+   
+}
+Input
+{
+	border: solid 1px #88AAD6;
+	}
+body
+{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+a.lan:link
+{
+	text-decoration: none;
+	color: #003399;
+}
+a.lan:visited
+{
+	text-decoration: none;
+	color: #003399;
+}
+a.lan:active
+{
+	text-decoration: none;
+	color: #ff6600;
+}
+a.lan:hover
+{
+	text-decoration: none;
+	color: #ff6600;
+}
+h1
+{
+	font-size: 16px;
+	color: #215DC6;
+	margin: 10px;
+}
+#boxMain
+{
+	border-bottom: solid 1px #A4B6D7;
+	border-top: solid 1px #A4B6D7;
+	padding: 10px;
+}
+#boxFile
+{
+	height: 220px;
+	border: solid 1px #A1C3ED;
+	display: block;
+	overflow: auto;
+	margin-bottom: 5px;
+	padding: 3px;
+}
+#boxButton
+{
+	text-align: right;
+	margin: 10px;
+}
+ol
+{
+	border: solid 1px #D4D0C8;
+	list-style-type:none;
+	margin: 0;
+	display:block;
+	height: 80px;
+	padding: 0 5px;
+	overflow: auto;
+ 
+  
+}
+
+ol:after{
+    content:'\20';
+    display:block;
+    height:0;
+    clear:both;
+}
+.button
+{
+	width: 70px;
+	height: 19px;
+	border: none;
+	background: url(Image/btnDiadolg.gif) no-repeat;
+	color: #48494B;
+}
+#img
+{
+	cursor: pointer;
+	padding: 2px;
+	background-color: #D7D79F;
+	border: solid 1px #F1F1E3;
+}
+.img
+{
+	background-color: Transparent;
+	border: none;
+}
+.selected
+{
+	background-color: #F0F0EE;
+}

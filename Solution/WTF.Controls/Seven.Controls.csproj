@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{493E75D2-CF2F-48B8-AD5B-43C04C8F5EB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Controls</RootNamespace>
+    <AssemblyName>WTF.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastDFS.Client">
+      <HintPath>..\..\..\Project\Gao7CMS\SevenFramework\SevenDLL\FastDFS.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.DataConfig">
+      <HintPath>..\..\..\Project\Gao7CMS\SevenFramework\SevenDLL\WTF.DataConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoundField.cs" />
+    <Compile Include="ButtonField.cs" />
+    <Compile Include="CheckBoxField.cs" />
+    <Compile Include="CommandField.cs" />
+    <Compile Include="ControlVerHelper.cs" />
+    <Compile Include="FileVerInfo.cs" />
+    <Compile Include="FileVers.cs" />
+    <Compile Include="GridViewCommandEventArgsHelper.cs" />
+    <Compile Include="HttpPostedFileHelper.cs" />
+    <Compile Include="HyperLinkField.cs" />
+    <Compile Include="MenuImageButton.cs" />
+    <Compile Include="MenuItemCheckEventArgs.cs" />
+    <Compile Include="MenuLinkButton.cs" />
+    <Compile Include="MyButton.cs" />
+    <Compile Include="MyCheckBoxList.cs" />
+    <Compile Include="MyCommandEventArgs.cs" />
+    <Compile Include="MyDropDownList.cs" />
+    <Compile Include="MyEnumCheckBoxList.cs" />
+    <Compile Include="MyEnumDropDownList.cs" />
+    <Compile Include="MyEnumRadioButtonList.cs" />
+    <Compile Include="MyFileFlashUpload.cs" />
+    <Compile Include="MyFileResourceUpload.cs" />
+    <Compile Include="MyFileRestrictUpload.cs" />
+    <Compile Include="MyFileUpload.cs" />
+    <Compile Include="MyGridView.cs" />
+    <Compile Include="MyHyperLink.cs" />
+    <Compile Include="MyImagePreview.cs" />
+    <Compile Include="MyLinkButton.cs" />
+    <Compile Include="MyPager.cs" />
+    <Compile Include="MyRadioButtonList.cs" />
+    <Compile Include="MyRegexTypeEditor.cs" />
+    <Compile Include="MyTabBar.cs" />
+    <Compile Include="MyTextBox.cs" />
+    <Compile Include="MyToolbar.cs" />
+    <Compile Include="MyToolbarDesigner.cs" />
+    <Compile Include="MyTreeNode.cs" />
+    <Compile Include="MyTreeNodeBindingCollection.cs" />
+    <Compile Include="MyTreeNodeCollection.cs" />
+    <Compile Include="MyTreeView.cs" />
+    <Compile Include="MyUeditor.cs" />
+    <Compile Include="MyUlTreeView.cs" />
+    <Compile Include="MyUrlPager.cs" />
+    <Compile Include="MyXheditor.cs" />
+    <Compile Include="NumberField.cs" />
+    <Compile Include="Operate.cs" />
+    <Compile Include="OperateField.cs" />
+    <Compile Include="OperateType.cs" />
+    <Compile Include="PagerChangeEventHandler.cs" />
+    <Compile Include="PagerChangeType.cs" />
+    <Compile Include="PagerEventArgs.cs" />
+    <Compile Include="PagerTemplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryCheckBoxList.cs" />
+    <Compile Include="QueryDropDownList.cs" />
+    <Compile Include="QueryHiddenField.cs" />
+    <Compile Include="QueryRadioButtonList.cs" />
+    <Compile Include="QueryTextBox.cs" />
+    <Compile Include="RegexTypeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchModelHelper.cs" />
+    <Compile Include="SelectField.cs" />
+    <Compile Include="SelectRadioField.cs" />
+    <Compile Include="ShowType.cs" />
+    <Compile Include="StatPercentField.cs" />
+    <Compile Include="TemplateField.cs" />
+    <Compile Include="ToolbarLinkButton.cs" />
+    <Compile Include="ToolButton.cs" />
+    <Compile Include="ToolButtons.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WTF.Framework\WTF.Framework.csproj">
+      <Project>{48f78975-8708-426b-8265-691469db0dd1}</Project>
+      <Name>WTF.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WTF.Logging\WTF.Logging.csproj">
+      <Project>{ed91ce16-fbe6-4f53-b1f3-d9594d408fe5}</Project>
+      <Name>WTF.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WTF.Power\WTF.Power.csproj">
+      <Project>{46ff12fe-89f1-492f-b1b1-726aca6b1dd7}</Project>
+      <Name>WTF.Power</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WTF.Resource\WTF.Resource.csproj">
+      <Project>{dbda4af8-7a90-4389-adb9-be55c9ec40e0}</Project>
+      <Name>WTF.Resource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

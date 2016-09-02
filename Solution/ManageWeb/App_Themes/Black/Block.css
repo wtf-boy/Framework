@@ -1,0 +1,122 @@
+﻿
+#boxSearch
+{
+    border-left: solid 1px #8DB2E3;
+    border-right: solid 1px #8DB2E3;
+    padding:3px 5px 3px 5px;
+    line-height: 25px;
+}
+
+#boxSearch input
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.tblContent
+{
+    width: 100%;
+    border-collapse: collapse;
+    border: solid 1px #8DB2E3;
+    background-color: #FFFFFF;
+ 
+}
+.tblContent td
+{
+    border: solid 1px #D0D7E5;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.tblContent tr
+{
+    line-height: 25px;
+}
+.colTitle
+{
+    width: 200px;
+    text-align: right;
+    color: #3E6AAA;
+}
+.colContent
+{
+}
+
+
+.tblContent .trCaption
+{
+}
+.tblContent .trCaption td
+{
+    text-align: left;
+    text-indent: 10px;
+    font-weight: bold;
+    color: #3E6AAA;
+}
+
+.radFlowBase
+{
+}
+.radFlowBase input
+{
+}
+
+.radTableBase
+{
+    border-width: 0px;
+}
+.radTableBase td
+{
+    border-width: 0px;
+}
+
+.radTableBase td label
+{
+    text-indent: 5px;
+    display: inline-block;
+}
+
+
+.currentTreeNode
+{
+}
+
+
+.currentTreeNode:Link, .currentTreeNode:Visited
+{
+    color: red;
+}
+.currentTreeNode:Hover, .currentTreeNode:Active
+{
+    color: red;
+}
+.boxResourceType
+{
+    margin: 0px;
+    padding: 10px 5px 10px 5px;
+    width: 140px;
+}
+
+.boxResourceType li
+{
+    line-height: 30px;
+    text-align: center;
+    border-bottom: solid 1px #88AAD6;
+}
+
+.boxColor
+{
+    float: left;
+}
+.box-data-power
+{
+    background-color: #fff;
+    padding: 5px;
+}
+
+.box-data-power fieldset
+{
+    margin-top: 5px;
+}
+.box-data-power legend
+{
+    color: #3E6AAA;
+}

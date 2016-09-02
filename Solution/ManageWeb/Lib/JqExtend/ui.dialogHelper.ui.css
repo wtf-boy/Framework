@@ -1,0 +1,84 @@
+﻿/* 外框 */
+.dialog-wrapper
+{
+	position: absolute;
+	border: 1px solid #6B97C1;
+	padding: 2px;
+}
+.dialog-wrapper.fixed
+{
+	position: fixed;
+}
+/* 罩层*/
+.dialog-modal-blackout
+{
+	position: absolute;
+	background-color: #6B97C1;
+	left: 0;
+	top: 0;
+}
+/* 内容*/
+.dialog-inner
+{
+	padding: 0;
+}
+.dialog-content
+{
+}
+.dialog-loading
+{
+	background: url(../../App_Control/DialogHelper/Images/dialog--loading.gif) no-repeat center center;
+}
+
+/* 标题*/
+
+.dialog-wrapper .dialog-title-bar
+{
+	background: url(../../App_Control/DialogHelper/Images/dialog-title-bg.gif) repeat-x left center;
+	height: 21px;
+	  position: relative;
+}
+
+
+
+.dialog-wrapper .dialog-title-bar div
+{
+	height: 21px;
+	line-height: 21px;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	padding-left: 5px;
+	font-weight: bold;
+}
+.dialog-wrapper .dialog-title-bar .dialog-close
+{
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	font-size: 90%;
+	line-height: 1;
+	 
+}
+.dialog-wrapper .dialog-title-bar.dragging
+{
+	cursor: move;
+}
+/* 消息对话框*/
+.dialog-message-bar
+{
+	width: 300px;
+	min-height: 80px;
+	background-color: white;
+	font-size: 12px;
+	vertical-align: middle;
+	height: 80px;
+}
+.dialog-message-btn-bar
+{
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+

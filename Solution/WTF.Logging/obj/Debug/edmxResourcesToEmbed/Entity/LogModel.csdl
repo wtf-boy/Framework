@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="LogEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="loger_application" EntityType="LogModel.loger_application" />
+    <EntitySet Name="loger_category" EntityType="LogModel.loger_category" />
+    <EntitySet Name="loger_loging" EntityType="LogModel.loger_loging" />
+    <EntitySet Name="loger_moduletype" EntityType="LogModel.loger_moduletype" />
+    <EntitySet Name="loger_operationhistory" EntityType="LogModel.loger_operationhistory" />
+    <EntitySet Name="loger_operationloging" EntityType="LogModel.loger_operationloging" />
+    <AssociationSet Name="Fk_Application_Category" Association="LogModel.Fk_Application_Category">
+      <End Role="loger_application" EntitySet="loger_application" />
+      <End Role="loger_category" EntitySet="loger_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Loging" Association="LogModel.FK_Application_Loging">
+      <End Role="loger_application" EntitySet="loger_application" />
+      <End Role="loger_loging" EntitySet="loger_loging" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="loger_application">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationCode" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="IsDispose" Type="Boolean" Nullable="false" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="IDPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="SortIndex" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IsNotice" Type="Boolean" Nullable="false" />
+    <Property Name="LogerCount" Type="Int32" Nullable="false" />
+    <Property Name="NoticeEmail" Type="String" Nullable="false" MaxLength="5000" Unicode="false" FixedLength="false" />
+    <Property Name="NoticePhone" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="NoticeCategory" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="NoticeInterval" Type="Int32" Nullable="false" />
+    <Property Name="NoticeSleep" Type="Int32" Nullable="false" />
+    <Property Name="IntervalMinutes" Type="Int32" Nullable="false" />
+    <Property Name="MinutesMaxCount" Type="Int32" Nullable="false" />
+    <Property Name="HeaderKey" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="RequestKey" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="loger_category" Relationship="LogModel.Fk_Application_Category" FromRole="loger_application" ToRole="loger_category" />
+    <NavigationProperty Name="loger_loging" Relationship="LogModel.FK_Application_Loging" FromRole="loger_application" ToRole="loger_loging" />
+  </EntityType>
+  <EntityType Name="loger_category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryTypeCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LogWriteType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="loger_application" Relationship="LogModel.Fk_Application_Category" FromRole="loger_category" ToRole="loger_application" />
+  </EntityType>
+  <EntityType Name="loger_loging">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="MessageID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationHost" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UrlReferrer" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="RawUrl" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="UserHostAddress" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ResultMessage" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryTypeCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="IDPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="HeadersData" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="RequestData" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="UserAgent" Type="String" Nullable="false" MaxLength="3000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="loger_application" Relationship="LogModel.FK_Application_Loging" FromRole="loger_loging" ToRole="loger_application" />
+  </EntityType>
+  <EntityType Name="loger_moduletype">
+    <Key>
+      <PropertyRef Name="ModuleTypeID" />
+    </Key>
+    <Property Name="ModuleTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="ModuleTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loger_operationhistory">
+    <Key>
+      <PropertyRef Name="OperationHistoryID" />
+    </Key>
+    <Property Name="OperationHistoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuPowerID" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OperationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CommandName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="OperationData" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="UserHostAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="loger_operationloging">
+    <Key>
+      <PropertyRef Name="OperationID" />
+    </Key>
+    <Property Name="OperationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="TableName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="OperationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SqlQuery" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationHost" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UserHostAddress" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="UrlReferrer" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="RawUrl" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="Fk_Application_Category">
+    <End Role="loger_application" Type="LogModel.loger_application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="loger_category" Type="LogModel.loger_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loger_application">
+        <PropertyRef Name="ApplicationID" />
+      </Principal>
+      <Dependent Role="loger_category">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Loging">
+    <End Role="loger_application" Type="LogModel.loger_application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="loger_loging" Type="LogModel.loger_loging" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loger_application">
+        <PropertyRef Name="ApplicationID" />
+      </Principal>
+      <Dependent Role="loger_loging">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,97 @@
+﻿namespace Seven.Logging
+{
+    using Seven.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Runtime.CompilerServices;
+    using System.Text;
+
+    [Serializable]
+    public class LogMessage
+    {
+        private static string _Host = "";
+        private static string _ProcessName = "";
+
+        static LogMessage()
+        {
+            _Host = LogSectionHelper.Host;
+            _ProcessName = GetProcessName();
+        }
+
+        public LogMessage()
+        {
+            List<string> list = new List<string>();
+            this.ApplicationHost = _Host;
+            this.ProcessName = _ProcessName;
+        }
+
+        private static IPAddress GetLocalIp()
+        {
+            IPHostEntry entry = new IPHostEntry {
+                AddressList = new IPAddress[1]
+            };
+            int index = 0;
+            for (index = 0; index < Dns.GetHostEntry(Dns.GetHostName()).AddressList.Length; index++)
+            {
+                if (Dns.GetHostEntry(Dns.GetHostName()).AddressList[index].AddressFamily == AddressFamily.InterNetwork)
+                {
+                    entry.AddressList[0] = Dns.GetHostEntry(Dns.GetHostName()).AddressList[index];
+                    break;
+                }
+            }
+            return entry.AddressList[0];
+        }
+
+        private static string GetProcessName()
+        {
+            StringBuilder lpFilename = new StringBuilder(0x400);
+            int num = NativeMethods.GetModuleFileName(NativeMethods.GetModuleHandle(null), lpFilename, lpFilename.Capacity);
+            return lpFilename.ToString();
+        }
+
+        public string ApplicationCode { get; set; }
+
+        public string ApplicationHost { get; set; }
+
+        public int ApplicationID { get; set; }
+
+        public string ApplicationName { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public List<LogDataInfo> HeadersData { get; set; }
+
+        public string IDPath { get; set; }
+
+        public string LogCategory { get; set; }
+
+        public List<string> LogModuleTypeList { get; set; }
+
+        public string LogWriteMap { get; set; }
+
+        public string Message { get; set; }
+
+        public string MessageID { get; set; }
+
+        public string ProcessName { get; set; }
+
+        public string RawUrl { get; set; }
+
+        public List<LogDataInfo> RequestData { get; set; }
+
+        public string ResultMessage { get; set; }
+
+        public string Title { get; set; }
+
+        public string UrlReferrer { get; set; }
+
+        public string UserAccount { get; set; }
+
+        public string UserAgent { get; set; }
+
+        public string UserHostAddress { get; set; }
+    }
+}
+

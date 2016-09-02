@@ -1,0 +1,6 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\bin\Debug\WTF.Cache.Helper.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\bin\Debug\WTF.Cache.Helper.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\bin\Debug\BeITMemcached.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\obj\Debug\WTF.Cache.Helper.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Cache.Helper\obj\Debug\WTF.Cache.Helper.pdb

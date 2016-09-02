@@ -1,0 +1,225 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using WTF.Framework;
+using System.Xml;
+using Seven.CMS.Entity;
+using Gao7.CMS.Business;
+using Gao7.CMS.DataEntity;
+using Gao7.App.Solr;
+using Gao7.App.DataEntity;
+
+
+/// <summary>
+/// CMSPageBase 的摘要说明
+/// </summary>
+public class CMSPageBase : SupportPageBaseSql
+{
+
+    /// <summary>
+    /// 类别ID
+    /// </summary>
+    public int CategoryID
+    {
+        get
+        {
+            return GetInt("CoteID");
+        }
+    }
+
+
+    public CMSPageBase()
+    {
+        //
+        // TODO: 在此处添加构造函数逻辑
+        //
+    }
+
+
+    XmlDocument _NodeConfigXml = null;
+    /// <summary>
+    /// 读取资讯配置节点出错
+    /// </summary>
+    /// <param name="nodeName"></param>
+    /// <param name="AttributeName"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
+    public string GetCMSNodeAttribute(string nodeName, string AttributeName, string defaultValue)
+    {
+        if (_NodeConfigXml == null)
+        {
+
+            BizCategoryInfo objBizCategoryInfo = new BizCategoryInfo();
+            CategoryInfo objCategoryInfo = objBizCategoryInfo.GetRecord(CategoryID);
+            _NodeConfigXml = new XmlDocument();
+            try
+            {
+                _NodeConfigXml.LoadXml(objCategoryInfo.CategoryConfig);
+            }
+            catch (Exception objExp)
+            {
+                Log.WriteLog("读取资讯配置节点异常", objExp);
+                if (!LogSectionHelper.IsDispose)
+                {
+                    throw objExp;
+                }
+                _NodeConfigXml = new XmlDocument();
+            }
+        }
+        XmlNode objXmlNode = _NodeConfigXml.SelectSingleNode("//EditConfig/Node[@Name='" + nodeName + "']");
+        if (objXmlNode == null)
+        {
+            return defaultValue;
+        }
+        else
+        {
+            string AttributeValue = objXmlNode.ReadAttribute(AttributeName, false);
+            if (string.IsNullOrWhiteSpace(AttributeValue))
+            {
+                return defaultValue;
+            }
+            return AttributeValue;
+        }
+
+    }
+    public int GetCMSNodeConfigInt(string nodeName, string key, int defaultValue = 0)
+    {
+        string InnerTextConfig = GetCMSNodeInnerText(nodeName);
+        if (string.IsNullOrWhiteSpace(InnerTextConfig))
+        {
+            return defaultValue;
+        }
+        try
+        {
+            Dictionary<string, object> KeyValue = InnerTextConfig.JsonJsDeserialize<Dictionary<string, object>>();
+            if (KeyValue.ContainsKey(key))
+            {
+                return int.Parse(KeyValue[key].ToString());
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+        catch (Exception objExp)
+        {
+
+            return defaultValue;
+        }
+
+    }
+    public string GetCMSNodeConfigValue(string nodeName, string key, string defaultValue = "")
+    {
+        string InnerTextConfig = GetCMSNodeInnerText(nodeName);
+        if (string.IsNullOrWhiteSpace(InnerTextConfig))
+        {
+            return defaultValue;
+        }
+        try
+        {
+            Dictionary<string, object> KeyValue = InnerTextConfig.JsonJsDeserialize<Dictionary<string, object>>();
+            if (KeyValue.ContainsKey(key))
+            {
+                return KeyValue[key].ToString();
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+        catch (Exception objExp)
+        {
+
+            return defaultValue;
+        }
+
+    }
+
+    public string GetCMSNodeInnerText(string nodeName, string defaultValue = "")
+    {
+        if (_NodeConfigXml == null)
+        {
+
+            BizCategoryInfo objBizCategoryInfo = new BizCategoryInfo();
+            CategoryInfo objCategoryInfo = objBizCategoryInfo.GetRecord(CategoryID);
+            _NodeConfigXml = new XmlDocument();
+            try
+            {
+                _NodeConfigXml.LoadXml(objCategoryInfo.CategoryConfig);
+            }
+            catch (Exception objExp)
+            {
+                Log.WriteLog("读取资讯配置节点异常", objExp);
+                if (!LogSectionHelper.IsDispose)
+                {
+                    throw objExp;
+                }
+                _NodeConfigXml = new XmlDocument();
+            }
+        }
+        XmlNode objXmlNode = _NodeConfigXml.SelectSingleNode("//EditConfig/Node[@Name='" + nodeName + "']");
+        if (objXmlNode == null)
+        {
+            return defaultValue;
+        }
+        else
+        {
+            return objXmlNode.InnerText;
+        }
+
+    }
+    /// <summary>
+    /// 读取资讯配置节点出错
+    /// </summary>
+    /// <param name="nodeName"></param>
+    /// <param name="AttributeName"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
+    public bool GetCMSNodeAttributeBoolean(string nodeName, string AttributeName, bool defaultValue)
+    {
+        return GetCMSNodeAttribute(nodeName, AttributeName, defaultValue.ToString()).ToLower() == "true";
+
+    }
+    /// <summary>
+    /// 检查关联
+    /// </summary>
+    /// <param name="objArticleInfo"></param>
+    public bool CheckSoftWareRef(ArticleInfo objArticleInfo)
+    {
+        if (objArticleInfo.GameZoneID > 0 && objArticleInfo.ProductID <= 0)
+        {
+            BizGameZone objBizGameZone = new BizGameZone();
+            GameZone objGameZone = objBizGameZone.GetRecord(objArticleInfo.GameZoneID);
+            if (objGameZone == null)
+            {
+                MessageDialog("输入的游戏专区不存在");
+                return false;
+            }
+            else
+            {
+                objArticleInfo.AndroidID = objGameZone.AndroidID;
+                objArticleInfo.IosID = objGameZone.IosID;
+                objArticleInfo.ProductID = objGameZone.ProductID;
+                objArticleInfo.WinID = objGameZone.WinID;
+            }
+        }
+        else if (objArticleInfo.GameZoneID <= 0 && objArticleInfo.ProductID > 0 && objArticleInfo.IosID <= 0)
+        {
+            SolrSoftWare objSolrSoftWare = new SolrSoftWare();
+            var objSoftwareList = objSolrSoftWare.QueryListLimit("id,SoftName,BundleID,OfficialID", "PrssoductID:" + objArticleInfo.ProductID, "", 0, 10, "id asc");
+            if (objSoftwareList != null && objSoftwareList.Count() > 0)
+            {
+                objArticleInfo.IosID = objSoftwareList.FirstOrDefault().Id;
+
+            }
+        }
+        return true;
+
+
+    }
+
+
+
+
+}

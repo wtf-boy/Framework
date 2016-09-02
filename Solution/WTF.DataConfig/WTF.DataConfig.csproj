@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6FC84B3-4C2E-41BB-B982-62F95F1FB45E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.DataConfig</RootNamespace>
+    <AssemblyName>WTF.DataConfig</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WTF.Framework">
+      <HintPath>..\..\Framework\Assembly\WTF.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Logging">
+      <HintPath>..\..\Framework\Assembly\WTF.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheKeyRule.cs" />
+    <Compile Include="CacheRule.cs" />
+    <Compile Include="DataRule.cs" />
+    <Compile Include="DataTemplateRule.cs" />
+    <Compile Include="Entity\CacheEntities.cs" />
+    <Compile Include="Entity\cache_cachekey.cs" />
+    <Compile Include="Entity\cache_cachesite.cs" />
+    <Compile Include="Entity\DataEntities.cs" />
+    <Compile Include="Entity\DataTemplateEntities.cs" />
+    <Compile Include="Entity\HashEntities.cs" />
+    <Compile Include="Entity\ParameterEntities.cs" />
+    <Compile Include="Entity\Sys_CahceType.cs" />
+    <Compile Include="Entity\Sys_DataField.cs" />
+    <Compile Include="Entity\Sys_DataTemplate.cs" />
+    <Compile Include="Entity\Sys_DataTemplateType.cs" />
+    <Compile Include="Entity\Sys_DataType.cs" />
+    <Compile Include="Entity\Sys_Hash.cs" />
+    <Compile Include="Entity\Sys_HashType.cs" />
+    <Compile Include="Entity\Sys_Parameter.cs" />
+    <Compile Include="Entity\Sys_ParameterType.cs" />
+    <Compile Include="Entity\Sys_Theme.cs" />
+    <Compile Include="Entity\Sys_ThemeConfig.cs" />
+    <Compile Include="Entity\Sys_ThemeConfigInfo.cs" />
+    <Compile Include="Entity\Sys_ThemeType.cs" />
+    <Compile Include="Entity\Sys_ThemeTypeConfig.cs" />
+    <Compile Include="Entity\ThemeEntities.cs" />
+    <Compile Include="HashRule.cs" />
+    <Compile Include="ParameterRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThemeHelper.cs" />
+    <Compile Include="ThemeRule.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

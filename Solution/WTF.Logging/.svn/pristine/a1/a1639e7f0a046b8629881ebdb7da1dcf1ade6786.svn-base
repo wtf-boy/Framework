@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LogModelStoreContainer">
+    <EntitySet Name="loger_application" EntityType="LogModel.Store.loger_application" store:Type="Tables" Schema="customermange" />
+    <EntitySet Name="loger_category" EntityType="LogModel.Store.loger_category" store:Type="Tables" Schema="customermange" />
+    <EntitySet Name="loger_loging" EntityType="LogModel.Store.loger_loging" store:Type="Tables" Schema="customermange" />
+    <EntitySet Name="loger_moduletype" EntityType="LogModel.Store.loger_moduletype" store:Type="Tables" Schema="customermange" />
+    <EntitySet Name="loger_operationhistory" EntityType="LogModel.Store.loger_operationhistory" store:Type="Tables" Schema="customermange" />
+    <EntitySet Name="loger_operationloging" EntityType="LogModel.Store.loger_operationloging" store:Type="Tables" Schema="customermange" />
+    <AssociationSet Name="Fk_Application_Category" Association="LogModel.Store.Fk_Application_Category">
+      <End Role="loger_application" EntitySet="loger_application" />
+      <End Role="loger_category" EntitySet="loger_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Loging" Association="LogModel.Store.FK_Application_Loging">
+      <End Role="loger_application" EntitySet="loger_application" />
+      <End Role="loger_loging" EntitySet="loger_loging" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="loger_application">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="ApplicationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ApplicationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsDispose" Type="bit" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="IDPath" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="SortIndex" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="IsNotice" Type="bit" Nullable="false" />
+    <Property Name="LogerCount" Type="int" Nullable="false" />
+    <Property Name="NoticeEmail" Type="varchar" Nullable="false" MaxLength="5000" />
+    <Property Name="NoticePhone" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="NoticeCategory" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="NoticeInterval" Type="int" Nullable="false" />
+    <Property Name="NoticeSleep" Type="int" Nullable="false" />
+    <Property Name="IntervalMinutes" Type="int" Nullable="false" />
+    <Property Name="MinutesMaxCount" Type="int" Nullable="false" />
+    <Property Name="HeaderKey" Type="varchar" Nullable="false" />
+    <Property Name="RequestKey" Type="varchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loger_category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="CategoryTypeCode" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="CategoryName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LogWriteType" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="loger_loging">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="MessageID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ApplicationHost" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UrlReferrer" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="RawUrl" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserHostAddress" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="ProcessName" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="LogDate" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" />
+    <Property Name="Message" Type="longtext" Nullable="false" />
+    <Property Name="ResultMessage" Type="longtext" Nullable="false" />
+    <Property Name="ModuleTypeCode" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="CategoryTypeCode" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="ApplicationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IDPath" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="HeadersData" Type="longtext" Nullable="false" />
+    <Property Name="RequestData" Type="longtext" Nullable="false" />
+    <Property Name="UserAgent" Type="varchar" Nullable="false" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="loger_moduletype">
+    <Key>
+      <PropertyRef Name="ModuleTypeID" />
+    </Key>
+    <Property Name="ModuleTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleTypeCode" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="ModuleTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loger_operationhistory">
+    <Key>
+      <PropertyRef Name="OperationHistoryID" />
+    </Key>
+    <Property Name="OperationHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MenuPowerID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="MenuName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="OperationTypeID" Type="int" Nullable="false" />
+    <Property Name="CommandName" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="OperationData" Type="mediumtext" Nullable="false" />
+    <Property Name="UserHostAddress" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="loger_operationloging">
+    <Key>
+      <PropertyRef Name="OperationID" />
+    </Key>
+    <Property Name="OperationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ApplicationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="OperationTypeID" Type="int" Nullable="false" />
+    <Property Name="SqlQuery" Type="mediumtext" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="IDPath" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleTypeCode" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="ApplicationHost" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserHostAddress" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="UrlReferrer" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="RawUrl" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <Association Name="Fk_Application_Category">
+    <End Role="loger_application" Type="LogModel.Store.loger_application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="loger_category" Type="LogModel.Store.loger_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loger_application">
+        <PropertyRef Name="ApplicationID" />
+      </Principal>
+      <Dependent Role="loger_category">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Loging">
+    <End Role="loger_application" Type="LogModel.Store.loger_application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="loger_loging" Type="LogModel.Store.loger_loging" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loger_application">
+        <PropertyRef Name="ApplicationID" />
+      </Principal>
+      <Dependent Role="loger_loging">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

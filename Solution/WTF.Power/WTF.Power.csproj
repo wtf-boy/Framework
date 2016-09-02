@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B2D4F47-A624-4E73-8F21-3CD1589A1E39}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WTF.Power</RootNamespace>
+    <AssemblyName>WTF.Power</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Framework\MySql\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Framework\MySql\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WTF.Framework">
+      <HintPath>..\..\Framework\Assembly\WTF.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="WTF.Logging">
+      <HintPath>..\..\Framework\Assembly\WTF.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoteInfo.cs" />
+    <Compile Include="CoteInfoComparer.cs" />
+    <Compile Include="Entity\ModuleEntities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\sys_authorizegroup.cs" />
+    <Compile Include="Entity\sys_authorizegrouppower.cs" />
+    <Compile Include="Entity\Sys_DeleteRolePower_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetLogerModuleInfoByModuleCodeByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetLogModuleInfoByModuleCodeByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetLogModuleInfoByModuleTypeByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetPowerCoteOperateModuleByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetPowerFunctionModuleByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetPowerOperateModuleByID_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_GetUserPowerModule_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\Sys_Module.cs" />
+    <Compile Include="Entity\Sys_ModuleCheckData.cs" />
+    <Compile Include="Entity\Sys_ModuleCote.cs" />
+    <Compile Include="Entity\Sys_ModuleData.cs" />
+    <Compile Include="Entity\Sys_ModuleHelp.cs" />
+    <Compile Include="Entity\Sys_ModuleRole.cs" />
+    <Compile Include="Entity\Sys_ModuleType.cs" />
+    <Compile Include="Entity\Sys_Role.cs" />
+    <Compile Include="Entity\Sys_RoleCote.cs" />
+    <Compile Include="Entity\Sys_RoleCoteInfo.cs" />
+    <Compile Include="Entity\Sys_RoleCotePower.cs" />
+    <Compile Include="Entity\Sys_RoleData.cs" />
+    <Compile Include="Entity\Sys_RoleData_Info.cs" />
+    <Compile Include="Entity\Sys_RolePower.cs" />
+    <Compile Include="Entity\Sys_RoleUser.cs" />
+    <Compile Include="Entity\Sys_User.cs" />
+    <Compile Include="Entity\Sys_UserType.cs" />
+    <Compile Include="Entity\UserEntities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModuleRule.cs" />
+    <Compile Include="PowerCotePower.cs" />
+    <Compile Include="PowerCoteTreePower.cs" />
+    <Compile Include="PowerRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EmbeddedResource Include="Entity.ModuleModel.csdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entity.ModuleModel.msl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entity.ModuleModel.ssdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entity.UserModel.csdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entity.UserModel.msl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entity.UserModel.ssdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).dll "..\..\..\..\Framework\Assembly\"; 
+copy $(TargetDir)$(TargetName).dll "..\..\..\ManageWeb\Bin";</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

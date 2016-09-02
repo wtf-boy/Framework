@@ -1,0 +1,25 @@
+﻿
+.addButton {
+    background-image: url(add.png);
+}
+.backButton {
+    background-image: url(back.gif);
+}
+.deleteButton {
+    background-image: url(delete.png);
+}
+.moduleButton {
+    background-image: url(module.png);
+}
+.refreshButton {
+    background-image: url(Refresh.png);
+}
+.saveButton {
+    background-image: url(save.gif);
+}
+.searchButton {
+    background-image: url(search.png);
+}
+
+
+

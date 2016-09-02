@@ -1,0 +1,74 @@
+﻿/*-------------------------
+	基础样式
+-------------------------*/
+
+body, h1, h2, h3, h4, h5, h6, hr, p, ul, ol, li, button, textarea, th, td, div, dl, dt, dd
+{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    font-size: 12px;
+    font-family: 宋体,Arial;
+}
+p
+{
+    word-break: break-all;
+}
+
+a
+{
+    text-decoration: none;
+}
+ 
+
+.textInput
+{
+    border: solid 1px #88AAD6;
+}
+ 
+.chkNoBorder
+{
+    border-width: 0px;
+}
+
+.txtNoNull
+{
+    color: Red;
+    margin-right: 3px;
+}
+
+/*-------------------------
+	浮样式
+-------------------------*/
+.clear
+{
+    zoom: 1;
+}
+.clear:after
+{
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+
+/*-------------------------
+	模块树样式
+-------------------------*/
+.boxModuleTree
+{
+}
+.boxModuleTree a
+{
+    color: #15428B;
+}
+
+

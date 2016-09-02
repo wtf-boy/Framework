@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WTF.Power.Entity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="UserEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sys_authorizegroup" EntityType="WTF.Power.Entity.sys_authorizegroup" />
+    <EntitySet Name="sys_authorizegrouppower" EntityType="WTF.Power.Entity.sys_authorizegrouppower" />
+    <EntitySet Name="sys_role" EntityType="WTF.Power.Entity.sys_role" />
+    <EntitySet Name="sys_rolecote" EntityType="WTF.Power.Entity.sys_rolecote" />
+    <EntitySet Name="sys_rolecotepower" EntityType="WTF.Power.Entity.sys_rolecotepower" />
+    <EntitySet Name="sys_roledata" EntityType="WTF.Power.Entity.sys_roledata" />
+    <EntitySet Name="sys_rolepower" EntityType="WTF.Power.Entity.sys_rolepower" />
+    <EntitySet Name="sys_roleuser" EntityType="WTF.Power.Entity.sys_roleuser" />
+    <EntitySet Name="sys_user" EntityType="WTF.Power.Entity.sys_user" />
+    <EntitySet Name="sys_usertype" EntityType="WTF.Power.Entity.sys_usertype" />
+    <EntitySet Name="sys_modulerole" EntityType="WTF.Power.Entity.sys_modulerole" />
+    <EntitySet Name="sys_rolecoteinfo" EntityType="WTF.Power.Entity.sys_rolecoteinfo" />
+    <EntitySet Name="sys_roledata_info" EntityType="WTF.Power.Entity.sys_roledata_info" />
+    <AssociationSet Name="sys_authorizegrouppower_ibfk_1" Association="WTF.Power.Entity.sys_authorizegrouppower_ibfk_1">
+      <End Role="sys_authorizegroup" EntitySet="sys_authorizegroup" />
+      <End Role="sys_authorizegrouppower" EntitySet="sys_authorizegrouppower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Ref_RoleUser" Association="WTF.Power.Entity.FK_Role_Ref_RoleUser">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_roleuser" EntitySet="sys_roleuser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleCote_Ref_Role" Association="WTF.Power.Entity.FK_RoleCote_Ref_Role">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_rolecote" EntitySet="sys_rolecote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleData_Ref_Role" Association="WTF.Power.Entity.FK_RoleData_Ref_Role">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_roledata" EntitySet="sys_roledata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SYS_ROLE_ROLE_REF__SYS_ROLE" Association="WTF.Power.Entity.FK_SYS_ROLE_ROLE_REF__SYS_ROLE">
+      <End Role="sys_role" EntitySet="sys_role" />
+      <End Role="sys_rolepower" EntitySet="sys_rolepower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleCotePower_Ref_RoleCote" Association="WTF.Power.Entity.FK_RoleCotePower_Ref_RoleCote">
+      <End Role="sys_rolecote" EntitySet="sys_rolecote" />
+      <End Role="sys_rolecotepower" EntitySet="sys_rolecotepower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Ref_RoleUser" Association="WTF.Power.Entity.FK_User_Ref_RoleUser">
+      <End Role="sys_user" EntitySet="sys_user" />
+      <End Role="sys_roleuser" EntitySet="sys_roleuser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_User_Sys_UserType" Association="WTF.Power.Entity.FK_Sys_User_Sys_UserType">
+      <End Role="sys_usertype" EntitySet="sys_usertype" />
+      <End Role="sys_user" EntitySet="sys_user" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sys_authorizegroup">
+    <Key>
+      <PropertyRef Name="AuthorizeGroupID" />
+    </Key>
+    <Property Name="AuthorizeGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="AuthorizeGroupName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="IsSupertGroup" Type="Boolean" Nullable="false" />
+    <Property Name="IsAllowPowerSelf" Type="Boolean" Nullable="false" />
+    <Property Name="IsRevertPower" Type="Boolean" Nullable="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_authorizegrouppower" Relationship="WTF.Power.Entity.sys_authorizegrouppower_ibfk_1" FromRole="sys_authorizegroup" ToRole="sys_authorizegrouppower" />
+  </EntityType>
+  <EntityType Name="sys_authorizegrouppower">
+    <Key>
+      <PropertyRef Name="AuthorizeGroupPowerID" />
+    </Key>
+    <Property Name="AuthorizeGroupPowerID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="AuthorizeGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="IsShare" Type="Boolean" Nullable="false" />
+    <Property Name="IsCoteSupper" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="sys_authorizegroup" Relationship="WTF.Power.Entity.sys_authorizegrouppower_ibfk_1" FromRole="sys_authorizegrouppower" ToRole="sys_authorizegroup" />
+  </EntityType>
+  <EntityType Name="sys_role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="AccountTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="IsLockOut" Type="Boolean" Nullable="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="IsUserRole" Type="Boolean" Nullable="false" />
+    <Property Name="AuthorizeGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RefUserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="sys_roleuser" Relationship="WTF.Power.Entity.FK_Role_Ref_RoleUser" FromRole="sys_role" ToRole="sys_roleuser" />
+    <NavigationProperty Name="sys_rolecote" Relationship="WTF.Power.Entity.FK_RoleCote_Ref_Role" FromRole="sys_role" ToRole="sys_rolecote" />
+    <NavigationProperty Name="sys_roledata" Relationship="WTF.Power.Entity.FK_RoleData_Ref_Role" FromRole="sys_role" ToRole="sys_roledata" />
+    <NavigationProperty Name="sys_rolepower" Relationship="WTF.Power.Entity.FK_SYS_ROLE_ROLE_REF__SYS_ROLE" FromRole="sys_role" ToRole="sys_rolepower" />
+  </EntityType>
+  <EntityType Name="sys_rolecote">
+    <Key>
+      <PropertyRef Name="RoleCoteID" />
+    </Key>
+    <Property Name="RoleCoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_role" Relationship="WTF.Power.Entity.FK_RoleCote_Ref_Role" FromRole="sys_rolecote" ToRole="sys_role" />
+    <NavigationProperty Name="sys_rolecotepower" Relationship="WTF.Power.Entity.FK_RoleCotePower_Ref_RoleCote" FromRole="sys_rolecote" ToRole="sys_rolecotepower" />
+  </EntityType>
+  <EntityType Name="sys_rolecotepower">
+    <Key>
+      <PropertyRef Name="RoleCotePowerID" />
+    </Key>
+    <Property Name="RoleCotePowerID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleCoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_rolecote" Relationship="WTF.Power.Entity.FK_RoleCotePower_Ref_RoleCote" FromRole="sys_rolecotepower" ToRole="sys_rolecote" />
+  </EntityType>
+  <EntityType Name="sys_roledata">
+    <Key>
+      <PropertyRef Name="RoleDataID" />
+    </Key>
+    <Property Name="RoleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="DataSelect" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_role" Relationship="WTF.Power.Entity.FK_RoleData_Ref_Role" FromRole="sys_roledata" ToRole="sys_role" />
+  </EntityType>
+  <EntityType Name="sys_rolepower">
+    <Key>
+      <PropertyRef Name="RolePowerID" />
+    </Key>
+    <Property Name="RolePowerID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="IsShare" Type="Boolean" Nullable="false" />
+    <Property Name="IsCoteSupper" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="sys_role" Relationship="WTF.Power.Entity.FK_SYS_ROLE_ROLE_REF__SYS_ROLE" FromRole="sys_rolepower" ToRole="sys_role" />
+  </EntityType>
+  <EntityType Name="sys_roleuser">
+    <Key>
+      <PropertyRef Name="RoleUserID" />
+    </Key>
+    <Property Name="RoleUserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_role" Relationship="WTF.Power.Entity.FK_Role_Ref_RoleUser" FromRole="sys_roleuser" ToRole="sys_role" />
+    <NavigationProperty Name="sys_user" Relationship="WTF.Power.Entity.FK_User_Ref_RoleUser" FromRole="sys_roleuser" ToRole="sys_user" />
+  </EntityType>
+  <EntityType Name="sys_user">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="UserTypeCID" Type="Int32" Nullable="false" />
+    <Property Name="IsSuper" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="AccountTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LoginIP" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordQuestion" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordAnswer" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsActivation" Type="Boolean" Nullable="false" />
+    <Property Name="IsLockOut" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastPasswordChangeDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastLockOutDate" Type="DateTime" Nullable="false" />
+    <Property Name="FaildPasswordAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FaildPasswordAttemptStart" Type="DateTime" Nullable="false" />
+    <Property Name="FaildAnswerAttemptStart" Type="DateTime" />
+    <Property Name="FaildAnswerAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedDate" Type="DateTime" />
+    <Property Name="ActivationDate" Type="DateTime" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NickName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="JobNo" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_roleuser" Relationship="WTF.Power.Entity.FK_User_Ref_RoleUser" FromRole="sys_user" ToRole="sys_roleuser" />
+    <NavigationProperty Name="sys_usertype" Relationship="WTF.Power.Entity.FK_Sys_User_Sys_UserType" FromRole="sys_user" ToRole="sys_usertype" />
+  </EntityType>
+  <EntityType Name="sys_usertype">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="sys_user" Relationship="WTF.Power.Entity.FK_Sys_User_Sys_UserType" FromRole="sys_usertype" ToRole="sys_user" />
+  </EntityType>
+  <EntityType Name="sys_modulerole">
+    <Key>
+      <PropertyRef Name="ModuleTypeName" />
+      <PropertyRef Name="ModuleTypeCode" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="RoleGroupID" />
+      <PropertyRef Name="ModuleTypeID" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="RoleCode" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IsLockOut" />
+      <PropertyRef Name="Remark" />
+      <PropertyRef Name="AuthorizeGroupID" />
+      <PropertyRef Name="UserType" />
+      <PropertyRef Name="IsSystem" />
+      <PropertyRef Name="AccountTypeID" />
+    </Key>
+    <Property Name="ModuleTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="IsLockOut" Type="Boolean" Nullable="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="AuthorizeGroupID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+    <Property Name="AccountTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sys_rolecoteinfo">
+    <Key>
+      <PropertyRef Name="RoleCotePowerID" />
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="CoteID" />
+      <PropertyRef Name="CoteModuleID" />
+    </Key>
+    <Property Name="RoleCotePowerID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="CoteModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sys_roledata_info">
+    <Key>
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="RoleDataID" />
+      <PropertyRef Name="DataSelect" />
+      <PropertyRef Name="ModuleDataID" />
+      <PropertyRef Name="FieldName" />
+      <PropertyRef Name="FieldType" />
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="RoleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="DataSelect" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+    <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FieldType" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="sys_authorizegrouppower_ibfk_1">
+    <End Role="sys_authorizegroup" Type="WTF.Power.Entity.sys_authorizegroup" Multiplicity="1" />
+    <End Role="sys_authorizegrouppower" Type="WTF.Power.Entity.sys_authorizegrouppower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_authorizegroup">
+        <PropertyRef Name="AuthorizeGroupID" />
+      </Principal>
+      <Dependent Role="sys_authorizegrouppower">
+        <PropertyRef Name="AuthorizeGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Ref_RoleUser">
+    <End Role="sys_role" Type="WTF.Power.Entity.sys_role" Multiplicity="1" />
+    <End Role="sys_roleuser" Type="WTF.Power.Entity.sys_roleuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_roleuser">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleCote_Ref_Role">
+    <End Role="sys_role" Type="WTF.Power.Entity.sys_role" Multiplicity="1" />
+    <End Role="sys_rolecote" Type="WTF.Power.Entity.sys_rolecote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_rolecote">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleData_Ref_Role">
+    <End Role="sys_role" Type="WTF.Power.Entity.sys_role" Multiplicity="1" />
+    <End Role="sys_roledata" Type="WTF.Power.Entity.sys_roledata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_roledata">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SYS_ROLE_ROLE_REF__SYS_ROLE">
+    <End Role="sys_role" Type="WTF.Power.Entity.sys_role" Multiplicity="1" />
+    <End Role="sys_rolepower" Type="WTF.Power.Entity.sys_rolepower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="sys_rolepower">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleCotePower_Ref_RoleCote">
+    <End Role="sys_rolecote" Type="WTF.Power.Entity.sys_rolecote" Multiplicity="1" />
+    <End Role="sys_rolecotepower" Type="WTF.Power.Entity.sys_rolecotepower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_rolecote">
+        <PropertyRef Name="RoleCoteID" />
+      </Principal>
+      <Dependent Role="sys_rolecotepower">
+        <PropertyRef Name="RoleCoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Ref_RoleUser">
+    <End Role="sys_user" Type="WTF.Power.Entity.sys_user" Multiplicity="1" />
+    <End Role="sys_roleuser" Type="WTF.Power.Entity.sys_roleuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_user">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="sys_roleuser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_User_Sys_UserType">
+    <End Role="sys_usertype" Type="WTF.Power.Entity.sys_usertype" Multiplicity="1" />
+    <End Role="sys_user" Type="WTF.Power.Entity.sys_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_usertype">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="sys_user">
+        <PropertyRef Name="UserTypeCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

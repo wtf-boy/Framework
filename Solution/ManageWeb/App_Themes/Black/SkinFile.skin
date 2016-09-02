@@ -1,0 +1,63 @@
+﻿<%--
+默认的外观模板。以下外观仅作为示例提供。
+
+1. 命名的控件外观。SkinId 的定义应唯一，因为在同一主题中不允许一个控件类型有重复的 SkinId。
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. 默认外观。未定义 SkinId。在同一主题中每个控件类型只允许有一个默认的控件外观。
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:RadioButtonList runat="server" CssClass="radFlowBase"   SkinID=RadFlow
+RepeatLayout="Flow">
+</asp:RadioButtonList>
+<asp:CheckBoxList   runat="server" RepeatLayout="Flow" SkinID=RadFlow CssClass="radFlowBase" >
+</asp:CheckBoxList>
+
+<asp:RadioButtonList runat="server" CssClass="radTableBase"   
+RepeatLayout="Table">
+</asp:RadioButtonList>
+<asp:CheckBoxList   runat="server" RepeatLayout="Table" CssClass="radTableBase" >
+</asp:CheckBoxList>
+
+<WTF:MyEnumRadioButtonList   runat="server" SkinID=RadFlow  CssClass="radFlowBase"  
+RepeatLayout="Flow">
+</WTF:MyEnumRadioButtonList>
+<WTF:MyEnumCheckBoxList   runat="server" SkinID=RadFlow  CssClass="radFlowBase"  
+RepeatLayout="Flow">
+</WTF:MyEnumCheckBoxList>
+
+<WTF:MyCheckBoxList  runat="server" SkinID=RadFlow RepeatLayout="Flow" CssClass="radFlowBase" >
+</WTF:MyCheckBoxList>
+
+<WTF:MyCheckBoxList  runat="server"   RepeatLayout="Table" CssClass="radTableBase" >
+</WTF:MyCheckBoxList>
+
+
+<WTF:MyEnumCheckBoxList   runat="server"   CssClass="radTableBase"  
+RepeatLayout="Table">
+</WTF:MyEnumCheckBoxList>
+<WTF:MyEnumRadioButtonList   runat="server"    CssClass="radTableBase"  
+RepeatLayout="Table" >
+</WTF:MyEnumRadioButtonList>
+
+<WTF:QueryTextBox  runat="server"  CssClass="textInput"></WTF:QueryTextBox>
+<WTF:QueryTextBox runat="server" SkinID="Date" CssClass="textInput Wdate"></WTF:QueryTextBox>
+
+
+<asp:TextBox   runat="server"  CssClass="textInput" ></asp:TextBox>
+
+ <WTF:MyTextBox   runat="server"  SkinID=Date  CssClass="textInput Wdate"  ></WTF:MyTextBox>
+ <WTF:MyTextBox   runat="server"  CssClass="textInput"  ></WTF:MyTextBox>
+
+ <WTF:MyGridView runat="server"  AutoGenerateColumns="False"  EmptyDataText="抱歉！暂时没有您所需要的记录"  AllowSorting="True"  CellSpacing="0" CellPadding="0"  CssClass="gridList" AllowPaging="true" PageSize="20">
+    <RowStyle HorizontalAlign="Center" />
+    <PagerStyle CssClass="tbfList"  VerticalAlign=Bottom  />
+    <EmptyDataRowStyle CssClass=tbmpty />
+     <SortedAscendingHeaderStyle CssClass="AscendingHeaderStyle" />
+     <SortedDescendingHeaderStyle CssClass="DescendingHeaderStyle" />
+</WTF:MyGridView>

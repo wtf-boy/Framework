@@ -1,0 +1,14 @@
+﻿namespace WTF.Logging
+{
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Web;
+
+    public class Http500Exception : HttpException
+    {
+        public Http500Exception(string message = "") : base(500, message)
+        {
+        }
+    }
+}
+

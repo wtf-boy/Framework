@@ -1,0 +1,215 @@
+﻿using Gao7.CMS.Process;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
+using WTF.Framework;
+using Gao7.CMS.Business;
+using Gao7.CMS.DataEntity;
+/// <summary>
+/// CMSHelper 的摘要说明
+/// </summary>
+public static class CMSHelper
+{
+
+
+    /// <summary>
+    /// 清理Varnishx缓存
+    /// </summary>
+    /// <param name="ArticleID"></param>
+    public static void ClearPCVarnishx(int ArticleID)
+    {
+        ArticleInfoProcess objArticleInfoProcess = new ArticleInfoProcess(WebPlatType.PC);
+        ArticleResultInfo objArticlResultInfo = objArticleInfoProcess.GetArticlResultInfo(ArticleID, true, true);
+        if (objArticlResultInfo == null)
+        {
+            return;
+        }
+        objArticleInfoProcess.LoadArticleCollectData(objArticlResultInfo);
+        if (!string.IsNullOrWhiteSpace(objArticlResultInfo.TargetUrl))
+        {
+            GetVarnishxUrl(objArticlResultInfo.TargetUrl).ClearQueuePoolVarnishx();
+            ContentInfo objContentInfo = objArticlResultInfo.ContentInfo;
+            foreach (string TargetUrl in objContentInfo.PageInfoList.Select(s => s.TargetUrl))
+            {
+                if (!string.IsNullOrWhiteSpace(TargetUrl))
+                {
+                    GetVarnishxUrl(TargetUrl).ClearQueuePoolVarnishx();
+                }
+            }
+            if (objArticlResultInfo.RefData.ArticleCollectInfo != null)
+            {
+                foreach (string TargetUrl in objArticlResultInfo.RefData.ArticleCollectInfo.CollectArticleList.Select(s => s.TargetUrl))
+                {
+                    if (!string.IsNullOrWhiteSpace(TargetUrl))
+                    {
+                        GetVarnishxUrl(TargetUrl).ClearQueuePoolVarnishx();
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    /// <summary>
+    /// 更新专区扩展信息
+    /// </summary>
+    /// <param name="ArtcleID"></param>
+    /// <param name="GameZoneID"></param>
+    /// <param name="VouchDataContent"></param>
+    /// <param name="IsApplyZone"></param>
+    /// <param name="IsAddZone"></param>
+    public static void UpdateZoneVouchDataInfo(int ArticleID, int GameZoneID, string VouchDataContent, bool IsApplyZone, bool IsAddZone)
+    {
+        if (string.IsNullOrWhiteSpace(VouchDataContent))
+        {
+            return;
+        }
+
+        if (GameZoneID <= 0)
+        {
+            return;
+        }
+        if (!IsApplyZone && !IsAddZone)
+        {
+            return;
+
+        }
+        BizArticleInfo objBizArticleInfo = new BizArticleInfo();
+        BizArticleInfoData objBizArticleInfoData = new BizArticleInfoData();
+
+        List<int> ArticleIDList = objBizArticleInfo.GetIDList("GameZoneID=" + GameZoneID + " and ArticleID!=" + ArticleID, null);
+        if (ArticleIDList.Count == 0)
+        {
+            return;
+        }
+        if (IsApplyZone)
+        {
+            objBizArticleInfoData.Update("ArticleContent=?ArticleContent", objBizArticleInfo.GetKeyCondition(ArticleIDList) + " and DataTypeID=11", "ArticleContent".CreateSqlParameter(VouchDataContent));
+        }
+
+        if (IsAddZone)
+        {
+
+            List<int> objExistsArtcleIDList = objBizArticleInfoData.GetFieldList<int>("ArticleID", objBizArticleInfo.GetKeyCondition(ArticleIDList) + " and DataTypeID=11", null);
+            foreach (int addArticleID in ArticleIDList.Except(objExistsArtcleIDList))
+            {
+                ArticleInfoData objArticleInfoData = new ArticleInfoData();
+                objArticleInfoData.ArticleContent = VouchDataContent;
+                objArticleInfoData.DataTypeID = 11;
+                objArticleInfoData.ArticleID = addArticleID;
+                objBizArticleInfoData.Add(objArticleInfoData);
+            }
+        }
+
+        foreach (int ClearArticleID in ArticleIDList)
+        {
+            ArticleInfoDataProcess.DeleteArticleInfoData(ClearArticleID);
+            ClearVarnishx(ClearArticleID);
+        }
+    }
+    //更新产品标识扩展信息
+    public static void UpdateProductVouchDataInfo(int ArticleID, int ProductID, string VouchDataContent, bool IsApplyProduct, bool IsAddProduct)
+    {
+        if (string.IsNullOrWhiteSpace(VouchDataContent))
+        {
+            return;
+        }
+
+        if (ProductID <= 0)
+        {
+            return;
+        }
+        if (!IsApplyProduct && !IsAddProduct)
+        {
+            return;
+
+        }
+        BizArticleInfo objBizArticleInfo = new BizArticleInfo();
+        BizArticleInfoData objBizArticleInfoData = new BizArticleInfoData();
+
+        List<int> ArticleIDList = objBizArticleInfo.GetIDList("ProductID=" + ProductID + " and GameZoneID=0 and ArticleID!=" + ArticleID, null);
+        if (ArticleIDList.Count == 0)
+        {
+            return;
+        }
+        if (IsApplyProduct)
+        {
+            objBizArticleInfoData.Update("ArticleContent=?ArticleContent", objBizArticleInfo.GetKeyCondition(ArticleIDList) + " and DataTypeID=11", "ArticleContent".CreateSqlParameter(VouchDataContent));
+        }
+
+        if (IsAddProduct)
+        {
+
+            List<int> objExistsArtcleIDList = objBizArticleInfoData.GetFieldList<int>("ArticleID", objBizArticleInfo.GetKeyCondition(ArticleIDList) + " and DataTypeID=11", null);
+            foreach (int addArticleID in ArticleIDList.Except(objExistsArtcleIDList))
+            {
+                ArticleInfoData objArticleInfoData = new ArticleInfoData();
+                objArticleInfoData.ArticleContent = VouchDataContent;
+                objArticleInfoData.DataTypeID = 11;
+                objArticleInfoData.ArticleID = addArticleID;
+                objBizArticleInfoData.Add(objArticleInfoData);
+            }
+        }
+
+        foreach (int ClearArticleID in ArticleIDList)
+        {
+            ArticleInfoDataProcess.DeleteArticleInfoData(ClearArticleID);
+            ClearVarnishx(ClearArticleID);
+        }
+    }
+    /// <summary>
+    /// 清理Varnishx缓存
+    /// </summary>
+    /// <param name="ArticleID"></param>
+    public static void ClearVarnishx(int ArticleID)
+    {
+        ClearPCVarnishx(ArticleID);
+        ClearPhoneVarnishx(ArticleID);
+    }
+    /// <summary>
+    /// 清理Varnishx缓存
+    /// </summary>
+    /// <param name="ArticleID"></param>
+    public static void ClearPhoneVarnishx(int ArticleID)
+    {
+        ArticleInfoProcess objArticleInfoProcess = new ArticleInfoProcess(WebPlatType.Phone);
+        ArticleResultInfo objArticlResultInfo = objArticleInfoProcess.GetArticlResultInfo(ArticleID, true, true);
+        if (objArticlResultInfo == null)
+        {
+            return;
+        }
+        objArticleInfoProcess.LoadArticleCollectData(objArticlResultInfo);
+        if (!string.IsNullOrWhiteSpace(objArticlResultInfo.TargetUrl))
+        {
+            GetVarnishxUrl(objArticlResultInfo.TargetUrl).ClearQueuePoolVarnishx();
+            ContentInfo objContentInfo = objArticlResultInfo.ContentInfo;
+            foreach (string TargetUrl in objContentInfo.PageInfoList.Select(s => s.TargetUrl))
+            {
+                if (!string.IsNullOrWhiteSpace(TargetUrl))
+                {
+                    GetVarnishxUrl(TargetUrl).ClearQueuePoolVarnishx();
+                }
+            }
+            if (objArticlResultInfo.RefData.ArticleCollectInfo != null)
+            {
+                foreach (string TargetUrl in objArticlResultInfo.RefData.ArticleCollectInfo.CollectArticleList.Select(s => s.TargetUrl))
+                {
+                    if (!string.IsNullOrWhiteSpace(TargetUrl))
+                    {
+                        GetVarnishxUrl(TargetUrl).ClearQueuePoolVarnishx();
+                    }
+                }
+            }
+
+        }
+
+    }
+    public static string GetVarnishxUrl(string TargetUrl)
+    {
+        return TargetUrl.Replace(@"http://\w+[.]\w+[.]\w+", "", RegexOptions.IgnoreCase);
+    }
+
+}

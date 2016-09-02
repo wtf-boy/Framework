@@ -1,0 +1,10 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\WTF.Theme.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\WTF.Theme.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\EntityFramework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\EntityFramework.xml
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\obj\Debug\WTF.Theme.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\obj\Debug\WTF.Theme.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Theme\obj\Debug\WTF.Theme.csprojResolveAssemblyReference.cache

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="UTF-8">
+
+    <title>mydialog</title>
+
+    <script type="text/javascript" src="../internal.js"></script>
+
+    <style type="text/css">
+        #insertHtml {
+            margin: 10px 0px 0px 10px;
+            width: 370px;
+            height: 220px;
+        }
+    </style>
+
+</head>
+<body>
+    <textarea name="insertHtml" id="insertHtml"></textarea>
+
+    <script type="text/javascript">
+
+        dialog.onok = function () {
+
+            // 插入内容到编辑器
+
+            editor.execCommand('inserthtml', document.getElementById('insertHtml').value);
+
+        }
+
+    </script>
+
+</body>
+</html>

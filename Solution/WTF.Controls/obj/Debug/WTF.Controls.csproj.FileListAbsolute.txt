@@ -1,0 +1,11 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\obj\Debug\WTF.Controls.csprojResolveAssemblyReference.cache
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Controls.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Controls.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\FastDFS.Client.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.DataConfig.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Power.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\bin\Debug\WTF.Resource.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\obj\Debug\WTF.Controls.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Controls\obj\Debug\WTF.Controls.pdb

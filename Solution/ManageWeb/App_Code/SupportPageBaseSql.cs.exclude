@@ -1,0 +1,142 @@
+﻿using WTF.Pages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using WTF.Framework;
+using System.Web.UI.WebControls;
+using System.Web.UI;
+using Gao7.CMS.DataEntity;
+using Gao7.CMS.Process;
+using Gao7.NewGame.Business;
+
+
+/// <summary>
+/// SupportPageBaseSql 的摘要说明
+/// </summary>
+public class SupportPageBaseSql : PageBaseSql
+{
+
+    public override string ModuleTypeCode
+    {
+        get
+        {
+            return "SupportModule";
+        }
+    }
+
+    /// <summary>
+    /// 推荐设置
+    /// </summary>
+    /// <param name="sourceId">来源id</param>
+    /// <param name="sourceTypeId">来源类型id</param>
+    /// <param name="vouchTitle">推荐标题</param>
+    /// <param name="summary">推荐摘要</param>
+    /// <param name="androidId">android关联id</param>
+    /// <param name="iosId">ios关联id</param>
+    /// <param name="pictureUrl">推荐图片地址</param>
+    protected void VouchSet(int sourceId, int sourceTypeId, string vouchTitle, string summary, int productId, int androidId, int iosId, string pictureUrl)
+    {
+        Session["VouchInfo_SourceID"] = sourceId;
+        Session["VouchInfo_SourceTypeID"] = sourceTypeId;
+        Session["VouchInfo_VouchTitle"] = vouchTitle.IsNoNullOrWhiteSpace() ? vouchTitle : string.Empty;
+        Session["VouchInfo_VouchSubTitle"] = "";
+        Session["VouchInfo_VouchSimpleTitle"] = "";
+        Session["VouchInfo_VouchSimpleTitleUrl"] = "";
+        Session["VouchInfo_VouchMSimpleTitleUrl"] = "";
+        Session["VouchInfo_VouchSummary"] = summary.IsNoNullOrWhiteSpace() ? summary : string.Empty;
+        Session["VouchInfo_ISOID"] = iosId;
+        Session["VouchInfo_AndroidID"] = androidId;
+        Session["VouchInfo_ProductID"] = productId;
+        Session["VouchInfo_IsRelease"] = 1;
+        Session["VouchInfo_InfoPic"] = pictureUrl.IsNoNullOrWhiteSpace() ? pictureUrl : string.Empty;
+        Session["VouchInfo_UrlPath"] = "";
+        Session["VouchInfo_MUrlPath"] = "";
+        Session["VouchInfo_CurrentPageUrl"] = Request.Url.AbsoluteUri;
+        Server.Transfer("~/Manage/VouchInfo/VouchSet.aspx");
+    }
+
+    /// <summary>
+    /// 推荐资讯
+    /// </summary>
+    /// <param name="articleInfo">资讯实体</param>
+    /// <param name="sourceTypeID">来源类型ID</param>
+    protected void VouchArticle(ArticleInfo articleInfo, int sourceTypeID = 0)
+    {
+        var pair = GetArticleVouchUrl(articleInfo);
+        Session["VouchInfo_SourceID"] = articleInfo.ArticleID;
+        Session["VouchInfo_SourceTypeID"] = articleInfo.SysTag.Contains("新游频道") ? 1 : sourceTypeID;
+        Session["VouchInfo_VouchTitle"] = articleInfo.ArticleTitle.IsNoNullOrWhiteSpace() ? articleInfo.ArticleTitle : "";
+        Session["VouchInfo_VouchSubTitle"] = articleInfo.SubTitle.IsNoNullOrWhiteSpace() ? articleInfo.SubTitle : "";
+        Session["VouchInfo_VouchSimpleTitle"] = articleInfo.SimpleTitle.IsNoNullOrWhiteSpace() ? articleInfo.SimpleTitle : "";
+        Session["VouchInfo_VouchSimpleTitleUrl"] = articleInfo.SimpleTitleUrl.IsNoNullOrWhiteSpace() ? articleInfo.SimpleTitleUrl : "";
+        Session["VouchInfo_VouchMSimpleTitleUrl"] = articleInfo.PhoneSimpleUrl.IsNoNullOrWhiteSpace() ? articleInfo.PhoneSimpleUrl : "";
+        Session["VouchInfo_VouchSummary"] = articleInfo.ArticleSummary.IsNoNullOrWhiteSpace() ? articleInfo.ArticleSummary : "";
+        Session["VouchInfo_ISOID"] = articleInfo.IosID;
+        Session["VouchInfo_AndroidID"] = articleInfo.AndroidID;
+        Session["VouchInfo_ProductID"] = articleInfo.ProductID;
+        Session["VouchInfo_IsRelease"] = articleInfo.IsRelease;
+        Session["VouchInfo_InfoPic"] = articleInfo.MidPic.IsNoNullOrWhiteSpace() ? articleInfo.MidPic : "";
+        Session["VouchInfo_UrlPath"] = pair.First.ToString();
+        Session["VouchInfo_MUrlPath"] = pair.Second.ToString();
+        Session["VouchInfo_CurrentPageUrl"] = Request.Url.AbsoluteUri;
+        Server.Transfer("~/Manage/VouchInfo/VouchSet.aspx");
+    }
+
+    private Pair GetArticleVouchUrl(ArticleInfo articleInfo)
+    {
+        var pair = new Pair("", "");
+        string targetUrl = string.Empty;
+        ArticleInfoProcess objArticleInfoProcess = new ArticleInfoProcess(WebPlatType.PC);
+
+        targetUrl = objArticleInfoProcess.GetArticlResultInfo(articleInfo.ArticleID, false, true).TargetUrl;
+        if (targetUrl.IsNoNullOrWhiteSpace())
+        {
+            pair.First = targetUrl;
+        }
+
+        objArticleInfoProcess = new ArticleInfoProcess(WebPlatType.Phone);
+        targetUrl = objArticleInfoProcess.GetArticlResultInfo(articleInfo.ArticleID, false, true).TargetUrl;
+        if (targetUrl.IsNoNullOrWhiteSpace())
+        {
+            pair.Second = targetUrl;
+        }
+
+        return pair;
+
+    }
+
+    /// <summary>
+    /// 绑定标签库
+    /// </summary>
+    /// <param name="tagTypeID"></param>
+    /// <param name="objListControl"></param>
+    /// <param name="headerType"></param>
+    public void BindTagControl(int tagTypeID, ListControl objListControl, HeaderType headerType = HeaderType.None)
+    {
+        Seven.Tags.Business.BizTag objBizTag = new Seven.Tags.Business.BizTag();
+
+        objBizTag.BindControl(tagTypeID, objListControl, headerType);
+    }
+    /// <summary>
+    /// 绑定标签库
+    /// </summary>
+    /// <param name="tagTypeCode"></param>
+    /// <param name="objListControl"></param>
+    /// <param name="headerType"></param>
+    public void BindTagControl(string tagTypeCode, ListControl objListControl, HeaderType headerType = HeaderType.None)
+    {
+        Seven.Tags.Business.BizTag objBizTag = new Seven.Tags.Business.BizTag();
+        objBizTag.BindControl(tagTypeCode, objListControl, headerType);
+    }
+    /// <summary>
+    /// 检查输入的作者
+    /// </summary>
+    /// <param name="inputValue"></param>
+    /// <returns></returns>
+    public string CheckWriteAuthor(string inputValue)
+    {
+
+        return inputValue.IsNoNullOrWhiteSpace() ? inputValue : (CurrentUser.NickName.IsNoNull() ? CurrentUser.NickName : CurrentUser.Account);
+    }
+}

@@ -1,0 +1,212 @@
+﻿
+.tblList
+{
+    font-size: 9pt;
+    border-collapse: collapse;
+    border: solid 1px #8DB2E3;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.tblList th
+{
+    border: dotted 1px #CCCCCC;
+    color: #333333;
+    text-align: center;
+    font: normal 11px arial, tahoma, helvetica, sans-serif;
+    background: #f9f9f9 url(../../App_Control/MyGridView/Image/grid-hrow.gif) repeat-x 0 bottom;
+    line-height: 24px;
+}
+.tblList .trclist td
+{
+    height: 21px;
+}
+.tblList td
+{
+    border: dotted 1px #CCCCCC;
+    color: #333333;
+    text-align: center;
+    font: normal 11px arial, tahoma, helvetica, sans-serif;
+}
+.tblList .rowOver
+{
+    border: 1px solid #dddddd;
+    background: #efefef url(../../App_Control/MyGridView/Image/grid-row-over.gif) repeat-x left top;
+}
+.tblList .rowSelect
+{
+    background: #DFE8F6 !important;
+    border: 1px dotted #a3bae9;
+}
+.tblList .tbmpty
+{
+    height: 30px;
+    line-height: 30px;
+}
+.tblList .colSelect
+{
+    width: 40px;
+}
+
+.tbfList
+{
+}
+.tbfList td
+{
+    border: none;
+    color: #333333;
+    font-weight: bold;
+}
+
+/*-------------------------
+	分页控件样式
+-------------------------*/
+.MyPager
+{
+    width: 100%;
+    line-height: 28px;
+    height: 28px;
+    font-size: 12px;
+    color: #295897;
+    border-top: 1px solid #8DB2E3;
+    background: url(../../App_Control/MyGridView/Image/ico_PagerBg.gif) repeat-x top left;
+}
+.MyPagerPre
+{
+    height: 28px;
+    line-height: 28px;
+    background-color: Red;
+}
+
+.MyPager .MyPagerLeft
+{
+    float: left;
+    line-height: 28px;
+    height: 28px;
+    text-align: left;
+    padding-left: 3px;
+    color: #444444;
+}
+
+.MyPager .MyPagerRight
+{
+    float: right;
+    line-height: 28px;
+    height: 28px;
+    text-align: right;
+}
+
+.MyPager a
+{
+    font-weight: bold;
+    margin-right: 10px;
+}
+.MyPager a:Link, .MyPager a:Visited
+{
+    color: #295897;
+}
+
+.MyPager a:Hover, .MyPager a:Active
+{
+    color: #295897;
+}
+
+.MyPager .pager-current:Link, .MyPager .pager-current:Visited
+{
+    color: Red;
+}
+
+.MyPager .pager-current:Hover, .MyPager .pager-current:Active
+{
+    color: red;
+}
+/*-------------------------
+	菜单控件样式
+-------------------------*/
+
+.tbdOperateMenu ol
+{
+    background-image: url(../../App_Control/MyGridView/Image/ico_MyOperateBg.gif);
+    background-repeat: repeat-y;
+    background-color: #F1F9FC;
+    position: absolute;
+    width: 170px;
+    border: 1px ridge #ACACAC;
+    background-position: left 2px;
+    display: none;
+}
+.tbdOperateMenu ol li
+{
+    margin: 1px;
+    padding: 0;
+    vertical-align: middle;
+}
+.tbdOperateMenu ol a
+{
+    line-height: 180%;
+    padding-left: 25px;
+    display: block;
+    text-align: center;
+    background: no-repeat 3px center;
+    color: #003399;
+    height: 23px;
+    text-decoration: none;
+}
+.tbdOperateMenu ol a:Link, .tbdOperateMenu ol a:Visited, .tbdOperateMenu ol a:Active
+{
+    color: #00156E;
+    background: no-repeat 3px center;
+    padding-left: 25px;
+    height: 23px;
+}
+.tbdOperateMenu ol a:Hover
+{
+    color: #00156E;
+    background: #FFDB7E no-repeat 2px center;
+    padding-left: 25px;
+    border: solid 1px #88A5D4;
+    height: 21px;
+}
+
+.tbdOperate
+{
+}
+
+.tbdOperate a
+{
+     display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 21px;
+}
+.tbdOperate input
+{
+    padding-left: 3px;
+    padding-right: 3px;
+    display: inline-block;
+    line-height: 21px;
+}
+
+.tbdOperate a:Link, .tbdOperate a:Visited
+{
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 21px;
+}
+.tbdOperate a:Hover, .tbdOperate a:Active
+{
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 21px;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+

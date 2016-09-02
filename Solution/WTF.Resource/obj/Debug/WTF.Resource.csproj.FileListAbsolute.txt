@@ -1,0 +1,6 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\bin\Debug\WTF.Resource.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\bin\Debug\WTF.Resource.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\obj\Debug\WTF.Resource.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Resource\obj\Debug\WTF.Resource.pdb

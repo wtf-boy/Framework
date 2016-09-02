@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LogModelStoreContainer" CdmEntityContainer="LogEntities">
+    <EntitySetMapping Name="loger_application">
+      <EntityTypeMapping TypeName="LogModel.loger_application">
+        <MappingFragment StoreEntitySet="loger_application">
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ApplicationCode" ColumnName="ApplicationCode" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDispose" ColumnName="IsDispose" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="IDPath" ColumnName="IDPath" />
+          <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsNotice" ColumnName="IsNotice" />
+          <ScalarProperty Name="LogerCount" ColumnName="LogerCount" />
+          <ScalarProperty Name="NoticeEmail" ColumnName="NoticeEmail" />
+          <ScalarProperty Name="NoticePhone" ColumnName="NoticePhone" />
+          <ScalarProperty Name="NoticeCategory" ColumnName="NoticeCategory" />
+          <ScalarProperty Name="NoticeInterval" ColumnName="NoticeInterval" />
+          <ScalarProperty Name="NoticeSleep" ColumnName="NoticeSleep" />
+          <ScalarProperty Name="IntervalMinutes" ColumnName="IntervalMinutes" />
+          <ScalarProperty Name="MinutesMaxCount" ColumnName="MinutesMaxCount" />
+          <ScalarProperty Name="HeaderKey" ColumnName="HeaderKey" />
+          <ScalarProperty Name="RequestKey" ColumnName="RequestKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loger_category">
+      <EntityTypeMapping TypeName="LogModel.loger_category">
+        <MappingFragment StoreEntitySet="loger_category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="CategoryTypeCode" ColumnName="CategoryTypeCode" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="LogWriteType" ColumnName="LogWriteType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loger_loging">
+      <EntityTypeMapping TypeName="LogModel.loger_loging">
+        <MappingFragment StoreEntitySet="loger_loging">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="ApplicationHost" ColumnName="ApplicationHost" />
+          <ScalarProperty Name="UrlReferrer" ColumnName="UrlReferrer" />
+          <ScalarProperty Name="RawUrl" ColumnName="RawUrl" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="UserHostAddress" ColumnName="UserHostAddress" />
+          <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ResultMessage" ColumnName="ResultMessage" />
+          <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+          <ScalarProperty Name="CategoryTypeCode" ColumnName="CategoryTypeCode" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="IDPath" ColumnName="IDPath" />
+          <ScalarProperty Name="HeadersData" ColumnName="HeadersData" />
+          <ScalarProperty Name="RequestData" ColumnName="RequestData" />
+          <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loger_moduletype">
+      <EntityTypeMapping TypeName="LogModel.loger_moduletype">
+        <MappingFragment StoreEntitySet="loger_moduletype">
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+          <ScalarProperty Name="ModuleTypeName" ColumnName="ModuleTypeName" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loger_operationhistory">
+      <EntityTypeMapping TypeName="LogModel.loger_operationhistory">
+        <MappingFragment StoreEntitySet="loger_operationhistory">
+          <ScalarProperty Name="OperationHistoryID" ColumnName="OperationHistoryID" />
+          <ScalarProperty Name="MenuPowerID" ColumnName="MenuPowerID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="OperationTypeID" ColumnName="OperationTypeID" />
+          <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OperationData" ColumnName="OperationData" />
+          <ScalarProperty Name="UserHostAddress" ColumnName="UserHostAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loger_operationloging">
+      <EntityTypeMapping TypeName="LogModel.loger_operationloging">
+        <MappingFragment StoreEntitySet="loger_operationloging">
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="OperationTypeID" ColumnName="OperationTypeID" />
+          <ScalarProperty Name="SqlQuery" ColumnName="SqlQuery" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IDPath" ColumnName="IDPath" />
+          <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+          <ScalarProperty Name="ApplicationHost" ColumnName="ApplicationHost" />
+          <ScalarProperty Name="UserHostAddress" ColumnName="UserHostAddress" />
+          <ScalarProperty Name="UrlReferrer" ColumnName="UrlReferrer" />
+          <ScalarProperty Name="RawUrl" ColumnName="RawUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,7 @@
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\bin\Debug\WTF.DataConfig.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\bin\Debug\WTF.DataConfig.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\bin\Debug\WTF.Framework.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\bin\Debug\WTF.Logging.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\obj\Debug\WTF.DataConfig.dll
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\obj\Debug\WTF.DataConfig.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.DataConfig\obj\Debug\WTF.DataConfig.csprojResolveAssemblyReference.cache
