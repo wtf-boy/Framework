@@ -31,13 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,18 +53,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Theme_ModuleTheme.cs" />
-    <Compile Include="Entity\Theme_ModuleThemeInfo.cs" />
-    <Compile Include="Entity\Theme_ThemeConfig.cs" />
-    <Compile Include="Entity\Theme_UserTheme.cs" />
-    <Compile Include="Entity\Theme_UserThemeInfo.cs" />
-    <Compile Include="Entity\UserThemeModel.Context.cs" />
-    <Compile Include="Entity\UserThemeModel.cs" />
-    <Compile Include="Entity\UserThemeModel.designer.cs">
-      <DependentUpon>UserThemeModel.cs</DependentUpon>
+    <Compile Include="Entity\theme_moduletheme.cs">
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\theme_modulethemeinfo.cs">
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\theme_themeconfig.cs">
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\theme_usertheme.cs">
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\theme_userthemeinfo.cs">
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserThemeEntities.cs" />
+    <Compile Include="Entity\UserThemeModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserThemeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserThemeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserThemeModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserThemeRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entity\UserThemeModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserThemeModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Entity\UserThemeModel.edmx.diagram">
+      <DependentUpon>UserThemeModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\UserThemeModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserThemeModel.edmx</DependentUpon>
+      <LastGenOutput>UserThemeModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

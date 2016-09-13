@@ -65,12 +65,34 @@
     <Compile Include="ArgumentInputNullException.cs" />
     <Compile Include="DataLogWriter.cs" />
     <Compile Include="Entity\LogEntities.cs" />
-    <Compile Include="Entity\loger_application.cs" />
-    <Compile Include="Entity\loger_category.cs" />
-    <Compile Include="Entity\loger_loging.cs" />
-    <Compile Include="Entity\loger_moduletype.cs" />
-    <Compile Include="Entity\loger_operationhistory.cs" />
-    <Compile Include="Entity\loger_operationloging.cs" />
+    <Compile Include="Entity\loger_application.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\loger_category.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\loger_loging.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\loger_moduletype.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\loger_operationhistory.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\loger_operationloging.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\LogModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\LogModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="EventLogWriter.cs" />
     <Compile Include="FileLog.cs" />
     <Compile Include="FileTextLog.cs" />
@@ -104,6 +126,18 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Entity\LogModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LogModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\LogModel.edmx.diagram">
+      <DependentUpon>LogModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\LogModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LogModel.edmx</DependentUpon>
+      <LastGenOutput>LogModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -63,54 +63,116 @@
   <ItemGroup>
     <Compile Include="CoteInfo.cs" />
     <Compile Include="CoteInfoComparer.cs" />
-    <Compile Include="Entity\ModuleEntities.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Entity\ModuleEntities.cs" />
+    <Compile Include="Entity\ModuleModel.cs" />
+    <Compile Include="Entity\ModuleModel.Designer.cs">
+      <DependentUpon>ModuleModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entity\sys_authorizegroup.cs" />
-    <Compile Include="Entity\sys_authorizegrouppower.cs" />
+    <Compile Include="Entity\ModuleModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ModuleModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModuleModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sys_authorizegroup.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sys_authorizegrouppower.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Sys_DeleteRolePower_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetLogerModuleInfoByModuleCodeByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetLogModuleInfoByModuleCodeByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetLogModuleInfoByModuleTypeByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetPowerCoteOperateModuleByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetPowerFunctionModuleByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetPowerOperateModuleByID_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sys_GetUserPowerModule_Result.cs">
-      <SubType>Code</SubType>
+      <DependentUpon>ModuleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Sys_Module.cs" />
-    <Compile Include="Entity\Sys_ModuleCheckData.cs" />
-    <Compile Include="Entity\Sys_ModuleCote.cs" />
-    <Compile Include="Entity\Sys_ModuleData.cs" />
-    <Compile Include="Entity\Sys_ModuleHelp.cs" />
-    <Compile Include="Entity\Sys_ModuleRole.cs" />
-    <Compile Include="Entity\Sys_ModuleType.cs" />
-    <Compile Include="Entity\Sys_Role.cs" />
-    <Compile Include="Entity\Sys_RoleCote.cs" />
-    <Compile Include="Entity\Sys_RoleCoteInfo.cs" />
-    <Compile Include="Entity\Sys_RoleCotePower.cs" />
-    <Compile Include="Entity\Sys_RoleData.cs" />
-    <Compile Include="Entity\Sys_RoleData_Info.cs" />
-    <Compile Include="Entity\Sys_RolePower.cs" />
-    <Compile Include="Entity\Sys_RoleUser.cs" />
-    <Compile Include="Entity\Sys_User.cs" />
-    <Compile Include="Entity\Sys_UserType.cs" />
-    <Compile Include="Entity\UserEntities.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Entity\Sys_Module.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleCheckData.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleCote.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleData.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleHelp.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleRole.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_ModuleType.cs">
+      <DependentUpon>ModuleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_Role.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleCote.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleCoteInfo.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleCotePower.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleData.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleData_Info.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RolePower.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_RoleUser.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_User.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sys_UserType.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserEntities.cs" />
+    <Compile Include="Entity\UserModel.cs" />
+    <Compile Include="Entity\UserModel.Designer.cs">
+      <DependentUpon>UserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModuleRule.cs" />
     <Compile Include="PowerCotePower.cs" />
@@ -120,25 +182,31 @@
     <Compile Include="UserRule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EmbeddedResource Include="Entity.ModuleModel.csdl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entity.ModuleModel.msl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entity.ModuleModel.ssdl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entity.UserModel.csdl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entity.UserModel.msl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entity.UserModel.ssdl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Entity\ModuleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModuleModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\ModuleModel.edmx.diagram">
+      <DependentUpon>ModuleModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\ModuleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModuleModel1.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Entity\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\UserModel.edmx.diagram">
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\UserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UserModel1.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

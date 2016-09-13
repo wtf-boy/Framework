@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+  <EntityContainerMapping StorageEntityContainer="FileResourceModelStoreContainer" CdmEntityContainer="FileResourceEntities">
+    <EntitySetMapping Name="resource_fileresource">
+      <EntityTypeMapping TypeName="FileResourceModel.resource_fileresource">
+        <MappingFragment StoreEntitySet="resource_fileresource">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="FileResourceCode" ColumnName="FileResourceCode" />
+          <ScalarProperty Name="FileResourceName" ColumnName="FileResourceName" />
+          <ScalarProperty Name="FileResourceID" ColumnName="FileResourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resource_filerestrict">
+      <EntityTypeMapping TypeName="FileResourceModel.resource_filerestrict">
+        <MappingFragment StoreEntitySet="resource_filerestrict">
+          <ScalarProperty Name="IsMd5" ColumnName="IsMd5" />
+          <ScalarProperty Name="IsHistory" ColumnName="IsHistory" />
+          <ScalarProperty Name="IsReturnSize" ColumnName="IsReturnSize" />
+          <ScalarProperty Name="FileMaxSize" ColumnName="FileMaxSize" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="RestrictCode" ColumnName="RestrictCode" />
+          <ScalarProperty Name="RestrictName" ColumnName="RestrictName" />
+          <ScalarProperty Name="PathFormatCodeType" ColumnName="PathFormatCodeType" />
+          <ScalarProperty Name="AccessModeCodeType" ColumnName="AccessModeCodeType" />
+          <ScalarProperty Name="FileResourceID" ColumnName="FileResourceID" />
+          <ScalarProperty Name="FileStoragePathID" ColumnName="FileStoragePathID" />
+          <ScalarProperty Name="FileRestrictID" ColumnName="FileRestrictID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resource_filerestrictpic">
+      <EntityTypeMapping TypeName="FileResourceModel.resource_filerestrictpic">
+        <MappingFragment StoreEntitySet="resource_filerestrictpic">
+          <ScalarProperty Name="WaterImageID" ColumnName="WaterImageID" />
+          <ScalarProperty Name="WatermarkType" ColumnName="WatermarkType" />
+          <ScalarProperty Name="ImageHeight" ColumnName="ImageHeight" />
+          <ScalarProperty Name="ImageWidth" ColumnName="ImageWidth" />
+          <ScalarProperty Name="VerticalAlign" ColumnName="VerticalAlign" />
+          <ScalarProperty Name="HorizontalAlign" ColumnName="HorizontalAlign" />
+          <ScalarProperty Name="WatermarkText" ColumnName="WatermarkText" />
+          <ScalarProperty Name="IsCreateWaterMark" ColumnName="IsCreateWaterMark" />
+          <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+          <ScalarProperty Name="FileRestrictID" ColumnName="FileRestrictID" />
+          <ScalarProperty Name="SystemFilePicID" ColumnName="SystemFilePicID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resource_filestoragepath">
+      <EntityTypeMapping TypeName="FileResourceModel.resource_filestoragepath">
+        <MappingFragment StoreEntitySet="resource_filestoragepath">
+          <ScalarProperty Name="StorageConfig" ColumnName="StorageConfig" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="StoragePath" ColumnName="StoragePath" />
+          <ScalarProperty Name="VirtualName" ColumnName="VirtualName" />
+          <ScalarProperty Name="StorageTypeID" ColumnName="StorageTypeID" />
+          <ScalarProperty Name="StoragePathName" ColumnName="StoragePathName" />
+          <ScalarProperty Name="FileStoragePathID" ColumnName="FileStoragePathID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resource_filehistory">
+      <EntityTypeMapping TypeName="FileResourceModel.resource_filehistory">
+        <MappingFragment StoreEntitySet="resource_filehistory">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="FileStatus" ColumnName="FileStatus" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="PicTitle" ColumnName="PicTitle" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="FileResourceID" ColumnName="FileResourceID" />
+          <ScalarProperty Name="FileHistoryID" ColumnName="FileHistoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba2e4decffcb4b0398da8b9a684010e8" Name="关系图1" ZoomLevel="52">
+        <EntityTypeShape EntityType="ModuleModel.sys_module" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModuleModel.sys_modulecheckdata" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModuleModel.sys_modulecote" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModuleModel.sys_moduledata" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModuleModel.sys_modulehelp" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModuleModel.sys_moduletype" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="ModuleModel.FK_module_moduletype" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_Module" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_ModuleCheckData" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_ModuleCote" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_ModuleData" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_ModuleHelp" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ModuleModel.Sys_ModuleType" Width="1.5" PointX="0.75" PointY="9.25" />
+        <AssociationConnector Association="ModuleModel.FK_module_moduletype" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

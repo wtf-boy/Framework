@@ -25,7 +25,7 @@
 
         private static EncryptConnectionSection GetEncryptConnectionSection()
         {
-            return (EncryptConnectionSection) ConfigHelper.GetSection("EncryptConnectionStrings", "SevenConfig");
+            return (EncryptConnectionSection) ConfigHelper.GetSection("EncryptConnectionStrings", "WTFConfig");
         }
     }
 }

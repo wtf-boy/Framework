@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FileResourceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="FileResourceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="resource_fileresource" EntityType="FileResourceModel.resource_fileresource" />
+    <EntitySet Name="resource_filerestrict" EntityType="FileResourceModel.resource_filerestrict" />
+    <EntitySet Name="resource_filerestrictpic" EntityType="FileResourceModel.resource_filerestrictpic" />
+    <EntitySet Name="resource_filestoragepath" EntityType="FileResourceModel.resource_filestoragepath" />
+    <AssociationSet Name="FK_FileRestrict_Ref_FileResource" Association="FileResourceModel.FK_FileRestrict_Ref_FileResource">
+      <End Role="resource_fileresource" EntitySet="resource_fileresource" />
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileRestrict_Ref_StoragePath" Association="FileResourceModel.FK_FileRestrict_Ref_StoragePath">
+      <End Role="resource_filestoragepath" EntitySet="resource_filestoragepath" />
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileRestrictPic_Ref_FileRestrict" Association="FileResourceModel.FK_FileRestrictPic_Ref_FileRestrict">
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+      <End Role="resource_filerestrictpic" EntitySet="resource_filerestrictpic" />
+    </AssociationSet>
+    <EntitySet Name="resource_filehistory" EntityType="FileResourceModel.resource_filehistory" />
+  </EntityContainer>
+  <EntityType Name="resource_fileresource">
+    <Key>
+      <PropertyRef Name="FileResourceID" />
+    </Key>
+    <Property Type="String" Name="FileResourceID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileResourceName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileResourceCode" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <NavigationProperty Name="resource_filerestrict" Relationship="FileResourceModel.FK_FileRestrict_Ref_FileResource" FromRole="resource_fileresource" ToRole="resource_filerestrict" />
+  </EntityType>
+  <EntityType Name="resource_filerestrict">
+    <Key>
+      <PropertyRef Name="FileRestrictID" />
+    </Key>
+    <Property Type="String" Name="FileRestrictID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileStoragePathID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileResourceID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="AccessModeCodeType" Nullable="false" />
+    <Property Type="Int32" Name="PathFormatCodeType" Nullable="false" />
+    <Property Type="String" Name="RestrictName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RestrictCode" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FileType" Nullable="false" />
+    <Property Type="String" Name="FileExtension" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FileMaxSize" Nullable="false" />
+    <NavigationProperty Name="resource_fileresource" Relationship="FileResourceModel.FK_FileRestrict_Ref_FileResource" FromRole="resource_filerestrict" ToRole="resource_fileresource" />
+    <NavigationProperty Name="resource_filestoragepath" Relationship="FileResourceModel.FK_FileRestrict_Ref_StoragePath" FromRole="resource_filerestrict" ToRole="resource_filestoragepath" />
+    <NavigationProperty Name="resource_filerestrictpic" Relationship="FileResourceModel.FK_FileRestrictPic_Ref_FileRestrict" FromRole="resource_filerestrict" ToRole="resource_filerestrictpic" />
+    <Property Type="Int32" Name="IsReturnSize" Nullable="false" />
+    <Property Type="Int32" Name="IsHistory" />
+    <Property Type="Int32" Name="IsMd5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resource_filerestrictpic">
+    <Key>
+      <PropertyRef Name="SystemFilePicID" />
+    </Key>
+    <Property Type="String" Name="SystemFilePicID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileRestrictID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SortIndex" Nullable="false" />
+    <Property Type="Boolean" Name="IsCreateWaterMark" Nullable="false" />
+    <Property Type="String" Name="WatermarkText" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="HorizontalAlign" Nullable="false" />
+    <Property Type="Int32" Name="VerticalAlign" Nullable="false" />
+    <Property Type="Int32" Name="ImageWidth" Nullable="false" />
+    <Property Type="Int32" Name="ImageHeight" Nullable="false" />
+    <Property Type="Int32" Name="WatermarkType" Nullable="false" />
+    <Property Type="String" Name="WaterImageID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="resource_filerestrict" Relationship="FileResourceModel.FK_FileRestrictPic_Ref_FileRestrict" FromRole="resource_filerestrictpic" ToRole="resource_filerestrict" />
+  </EntityType>
+  <EntityType Name="resource_filestoragepath">
+    <Key>
+      <PropertyRef Name="FileStoragePathID" />
+    </Key>
+    <Property Type="String" Name="FileStoragePathID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StoragePathName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="StorageTypeID" Nullable="false" />
+    <Property Type="String" Name="VirtualName" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StoragePath" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IPAddress" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Account" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Port" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="resource_filerestrict" Relationship="FileResourceModel.FK_FileRestrict_Ref_StoragePath" FromRole="resource_filestoragepath" ToRole="resource_filerestrict" />
+    <Property Type="String" Name="StorageConfig" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_FileRestrict_Ref_FileResource">
+    <End Type="FileResourceModel.resource_fileresource" Role="resource_fileresource" Multiplicity="1" />
+    <End Type="FileResourceModel.resource_filerestrict" Role="resource_filerestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_fileresource">
+        <PropertyRef Name="FileResourceID" />
+      </Principal>
+      <Dependent Role="resource_filerestrict">
+        <PropertyRef Name="FileResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileRestrict_Ref_StoragePath">
+    <End Type="FileResourceModel.resource_filestoragepath" Role="resource_filestoragepath" Multiplicity="1" />
+    <End Type="FileResourceModel.resource_filerestrict" Role="resource_filerestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_filestoragepath">
+        <PropertyRef Name="FileStoragePathID" />
+      </Principal>
+      <Dependent Role="resource_filerestrict">
+        <PropertyRef Name="FileStoragePathID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileRestrictPic_Ref_FileRestrict">
+    <End Type="FileResourceModel.resource_filerestrict" Role="resource_filerestrict" Multiplicity="1" />
+    <End Type="FileResourceModel.resource_filerestrictpic" Role="resource_filerestrictpic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_filerestrict">
+        <PropertyRef Name="FileRestrictID" />
+      </Principal>
+      <Dependent Role="resource_filerestrictpic">
+        <PropertyRef Name="FileRestrictID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resource_filehistory">
+    <Key>
+      <PropertyRef Name="FileHistoryID" />
+    </Key>
+    <Property Type="Int32" Name="FileHistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FileResourceID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FileType" Nullable="false" />
+    <Property Type="String" Name="PicTitle" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PicUrl" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FileStatus" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="Int32" Name="CreateUserID" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

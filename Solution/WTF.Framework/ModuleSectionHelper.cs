@@ -13,7 +13,7 @@
         {
             try
             {
-                return (ModuleSection) ConfigHelper.GetSection("Modules", "SevenConfig");
+                return (ModuleSection) ConfigHelper.GetSection("Modules", "WTFConfig");
             }
             catch
             {

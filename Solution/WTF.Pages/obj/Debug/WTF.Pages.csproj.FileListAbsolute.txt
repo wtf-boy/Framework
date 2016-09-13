@@ -10,3 +10,4 @@ C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\FastDFS.Cl
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\bin\Debug\WTF.DataConfig.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\obj\Debug\WTF.Pages.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\obj\Debug\WTF.Pages.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Pages\obj\Debug\WTF.Pages.csprojResolveAssemblyReference.cache

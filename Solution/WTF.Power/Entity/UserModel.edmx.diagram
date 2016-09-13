@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fcbf0e209fe14502a702c0528e6c7ef4" Name="关系图1" ZoomLevel="61">
+        <EntityTypeShape EntityType="UserModel.sys_authorizegroup" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_authorizegrouppower" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_role" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_rolecote" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_rolecotepower" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_roledata" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_rolepower" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_roleuser" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_user" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_usertype" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_modulerole" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_rolecoteinfo" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.sys_roledata_info" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="UserModel.sys_authorizegrouppower_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_Role_Ref_RoleUser" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_RoleCote_Ref_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_RoleData_Ref_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_SYS_ROLE_ROLE_REF__SYS_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_RoleCotePower_Ref_RoleCote" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_User_Ref_RoleUser" ManuallyRouted="false" />
+        <AssociationConnector Association="UserModel.FK_Sys_User_Sys_UserType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UserModel.Sys_UserType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_User" Width="1.5" PointX="3" PointY="8.75" />
+        <AssociationConnector Association="UserModel.FK_Sys_User_Sys_UserType" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleUser" Width="1.5" PointX="5.25" PointY="11" />
+        <AssociationConnector Association="UserModel.FK_User_Ref_RoleUser" />
+        <EntityTypeShape EntityType="UserModel.Sys_RolePower" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleData_Info" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleData" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleCotePower" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleCoteInfo" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UserModel.Sys_RoleCote" Width="1.5" PointX="3.125" PointY="16.625" />
+        <AssociationConnector Association="UserModel.FK_RoleCotePower_Ref_RoleCote" />
+        <EntityTypeShape EntityType="UserModel.Sys_Role" Width="1.5" PointX="0.75" PointY="7.625" />
+        <AssociationConnector Association="UserModel.FK_Role_Ref_RoleUser" />
+        <AssociationConnector Association="UserModel.FK_RoleCote_Ref_Role" />
+        <AssociationConnector Association="UserModel.FK_RoleData_Ref_Role" />
+        <AssociationConnector Association="UserModel.FK_SYS_ROLE_ROLE_REF__SYS_ROLE" />
+        <EntityTypeShape EntityType="UserModel.Sys_ModuleRole" Width="1.5" PointX="7.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

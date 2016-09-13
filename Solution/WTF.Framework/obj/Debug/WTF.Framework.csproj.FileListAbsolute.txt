@@ -5,3 +5,4 @@ C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Framework\bin\Debug\MySql.
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Framework\bin\Debug\Newtonsoft.Json.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Framework\obj\Debug\WTF.Framework.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Framework\obj\Debug\WTF.Framework.pdb
+C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Framework\obj\Debug\WTF.Framework.csprojResolveAssemblyReference.cache

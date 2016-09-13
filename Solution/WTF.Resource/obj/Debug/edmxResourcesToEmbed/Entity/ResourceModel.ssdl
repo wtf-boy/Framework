@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ResourceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ResourceModelStoreContainer">
+    <EntitySet Name="sys_resource" EntityType="ResourceModel.Store.sys_resource" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcedata" EntityType="ResourceModel.Store.sys_resourcedata" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcepath" EntityType="ResourceModel.Store.sys_resourcepath" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcerestrict" EntityType="ResourceModel.Store.sys_resourcerestrict" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcerestrictpic" EntityType="ResourceModel.Store.sys_resourcerestrictpic" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcetype" EntityType="ResourceModel.Store.sys_resourcetype" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcever" EntityType="ResourceModel.Store.sys_resourcever" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_waterimage" EntityType="ResourceModel.Store.sys_waterimage" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="sys_resourcefileinfo" EntityType="ResourceModel.Store.sys_resourcefileinfo" store:Type="Views" store:Schema="opendata" store:Name="sys_resourcefileinfo">
+      <DefiningQuery>
+              SELECT
+              `sys_resourcefileinfo`.`ResourceVerID`,
+              `sys_resourcefileinfo`.`ResourcePath`
+              FROM `sys_resourcefileinfo` AS `sys_resourcefileinfo`
+            </DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_sys_resource" Association="ResourceModel.Store.FK_sys_resource">
+      <End Role="sys_resourcetype" EntitySet="sys_resourcetype" />
+      <End Role="sys_resource" EntitySet="sys_resource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcedata" Association="ResourceModel.Store.FK_sys_resourcedata">
+      <End Role="sys_resourcever" EntitySet="sys_resourcever" />
+      <End Role="sys_resourcedata" EntitySet="sys_resourcedata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcerestrict" Association="ResourceModel.Store.FK_sys_resourcerestrict">
+      <End Role="sys_resourcetype" EntitySet="sys_resourcetype" />
+      <End Role="sys_resourcerestrict" EntitySet="sys_resourcerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcerestrictpic" Association="ResourceModel.Store.FK_sys_resourcerestrictpic">
+      <End Role="sys_resourcerestrict" EntitySet="sys_resourcerestrict" />
+      <End Role="sys_resourcerestrictpic" EntitySet="sys_resourcerestrictpic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcever" Association="ResourceModel.Store.FK_sys_resourcever">
+      <End Role="sys_resource" EntitySet="sys_resource" />
+      <End Role="sys_resourcever" EntitySet="sys_resourcever" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sys_resource">
+    <Key>
+      <PropertyRef Name="ResourceID" />
+    </Key>
+    <Property Name="ResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourceName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ResourceTypeID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="VerCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_resourcedata">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+    </Key>
+    <Property Name="ResourceVerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourceData" Type="longblob" Nullable="false" />
+    <Property Name="FileExtension" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sys_resourcepath">
+    <Key>
+      <PropertyRef Name="ResourcePathID" />
+    </Key>
+    <Property Name="ResourcePathID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourcePathName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="VirtualName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StoragePath" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="sys_resourcerestrict">
+    <Key>
+      <PropertyRef Name="ResourceRestrictID" />
+    </Key>
+    <Property Name="ResourceRestrictID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeID" Type="int" Nullable="false" />
+    <Property Name="RestrictCode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="RestrictName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="RestrictType" Type="int" Nullable="false" />
+    <Property Name="FileExtension" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="FileMaxSize" Type="int" Nullable="false" />
+    <Property Name="VerNo" Type="int" Nullable="false" />
+    <Property Name="BeginVerNo" Type="int" Nullable="false" />
+    <Property Name="EndVerNo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_resourcerestrictpic">
+    <Key>
+      <PropertyRef Name="ResourceRestrictPicID" />
+    </Key>
+    <Property Name="ResourceRestrictPicID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceRestrictID" Type="int" Nullable="false" />
+    <Property Name="VerNo" Type="int" Nullable="false" />
+    <Property Name="CreateWaterMark" Type="bit" Nullable="false" />
+    <Property Name="WatermarkText" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WaterImageID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="HorizontalAlign" Type="int" Nullable="false" />
+    <Property Name="VerticalAlign" Type="int" Nullable="false" />
+    <Property Name="ImageWidth" Type="int" Nullable="false" />
+    <Property Name="ImageHeight" Type="int" Nullable="false" />
+    <Property Name="WatermarkType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_resourcetype">
+    <Key>
+      <PropertyRef Name="ResourceTypeID" />
+    </Key>
+    <Property Name="ResourceTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ResourceTypeCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AccessModeCodeType" Type="int" Nullable="false" />
+    <Property Name="PathFormatCodeType" Type="int" Nullable="false" />
+    <Property Name="ResourcePathID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="StorageType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_resourcever">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+    </Key>
+    <Property Name="ResourceVerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourceGUIDFileName" Type="varchar" MaxLength="255" />
+    <Property Name="ResourceFileName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ResourceSize" Type="int" Nullable="false" />
+    <Property Name="ContentType" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DictionaryPath" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="ResourcePath" Type="varchar" Nullable="false" />
+    <Property Name="VerNo" Type="int" Nullable="false" />
+    <Property Name="RefCount" Type="int" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sys_waterimage">
+    <Key>
+      <PropertyRef Name="WaterImageID" />
+    </Key>
+    <Property Name="WaterImageID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="WaterImagePath" Type="varchar" Nullable="false" />
+    <Property Name="WaterName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.sys_resourcefileinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="sys_resourcefileinfo">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+      <PropertyRef Name="ResourcePath" />
+    </Key>
+    <Property Name="ResourceVerID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="ResourcePath" Type="varchar" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_sys_resource">
+    <End Role="sys_resourcetype" Type="ResourceModel.Store.sys_resourcetype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resource" Type="ResourceModel.Store.sys_resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcetype">
+        <PropertyRef Name="ResourceTypeID" />
+      </Principal>
+      <Dependent Role="sys_resource">
+        <PropertyRef Name="ResourceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcedata">
+    <End Role="sys_resourcever" Type="ResourceModel.Store.sys_resourcever" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcedata" Type="ResourceModel.Store.sys_resourcedata" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcever">
+        <PropertyRef Name="ResourceVerID" />
+      </Principal>
+      <Dependent Role="sys_resourcedata">
+        <PropertyRef Name="ResourceVerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcerestrict">
+    <End Role="sys_resourcetype" Type="ResourceModel.Store.sys_resourcetype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcerestrict" Type="ResourceModel.Store.sys_resourcerestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcetype">
+        <PropertyRef Name="ResourceTypeID" />
+      </Principal>
+      <Dependent Role="sys_resourcerestrict">
+        <PropertyRef Name="ResourceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcerestrictpic">
+    <End Role="sys_resourcerestrict" Type="ResourceModel.Store.sys_resourcerestrict" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcerestrictpic" Type="ResourceModel.Store.sys_resourcerestrictpic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcerestrict">
+        <PropertyRef Name="ResourceRestrictID" />
+      </Principal>
+      <Dependent Role="sys_resourcerestrictpic">
+        <PropertyRef Name="ResourceRestrictID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcever">
+    <End Role="sys_resource" Type="ResourceModel.Store.sys_resource" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcever" Type="ResourceModel.Store.sys_resourcever" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resource">
+        <PropertyRef Name="ResourceID" />
+      </Principal>
+      <Dependent Role="sys_resourcever">
+        <PropertyRef Name="ResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Sys_GetResourceFilePathByResourceTypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_ResourceTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sys_GetResourceVerByResourceTypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+    <Parameter Name="p_ResourceTypeID" Type="int" Mode="In" />
+  </Function>
+</Schema>

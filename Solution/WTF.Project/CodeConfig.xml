@@ -1,0 +1,5 @@
+<CodeConfig>
+  <ConnectionStrings>
+    <ConnectionString Name="WTF.Project.ConnectionString" ServerIP="mysql.sql142.cdncenter.net" Uid="sq_wtfwyy" Pwd="wtfwyy" Port="3306" Database="sq_wtfwyy" />
+  </ConnectionStrings>
+</CodeConfig>

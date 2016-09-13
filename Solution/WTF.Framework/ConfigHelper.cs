@@ -88,7 +88,7 @@
             return str;
         }
 
-        public static string AppSettings(string name, string configCode = "SevenConfig")
+        public static string AppSettings(string name, string configCode = "WTFConfig")
         {
             string str = string.Empty;
             foreach (string str2 in name.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -116,7 +116,7 @@
             return str;
         }
 
-        public static bool AppSettingsBool(string key, bool defaultValue, string configCode = "SevenConfig")
+        public static bool AppSettingsBool(string key, bool defaultValue, string configCode = "WTFConfig")
         {
             string str = AppSettings(key, configCode);
             if (str.IsNull())
@@ -126,17 +126,17 @@
             return Convert.ToBoolean(str);
         }
 
-        public static bool AppSettingsBoolFalse(string key, string configCode = "SevenConfig")
+        public static bool AppSettingsBoolFalse(string key, string configCode = "WTFConfig")
         {
             return AppSettingsBool(key, false, configCode);
         }
 
-        public static bool AppSettingsBoolTrue(string key, string configCode = "SevenConfig")
+        public static bool AppSettingsBoolTrue(string key, string configCode = "WTFConfig")
         {
             return AppSettingsBool(key, true, configCode);
         }
 
-        public static int AppSettingsInt(string key, int defaultValue, string configCode = "SevenConfig")
+        public static int AppSettingsInt(string key, int defaultValue, string configCode = "WTFConfig")
         {
             string str = AppSettings(key, configCode);
             if (str.IsNull())
@@ -146,7 +146,7 @@
             return Convert.ToInt32(str);
         }
 
-        public static long AppSettingsInt64(string key, long defaultValue, string configCode = "SevenConfig")
+        public static long AppSettingsInt64(string key, long defaultValue, string configCode = "WTFConfig")
         {
             string str = AppSettings(key, configCode);
             if (str.IsNull())
@@ -156,7 +156,7 @@
             return Convert.ToInt64(str);
         }
 
-        public static string AppSettingsValue(string key, string defaultValue = "", string configCode = "SevenConfig")
+        public static string AppSettingsValue(string key, string defaultValue = "", string configCode = "WTFConfig")
         {
             string str = AppSettings(key, configCode);
             if (str.IsNull())
@@ -166,7 +166,7 @@
             return str;
         }
 
-        public static string ConnectionString(string name, string configCode = "SevenConfig")
+        public static string ConnectionString(string name, string configCode = "WTFConfig")
         {
             ConnectionStringSettings settings = null;
             settings = ConfigurationManager.ConnectionStrings[name];
@@ -197,7 +197,7 @@
 
         public static bool GetBoolValue(string key, bool defaultValue)
         {
-            string str = AppSettings(key, "SevenConfig");
+            string str = AppSettings(key, "WTFConfig");
             if (str == string.Empty)
             {
                 return defaultValue;
@@ -263,7 +263,7 @@
 
         public static long GetInt64Value(string key, long defaultValue)
         {
-            string str = AppSettings(key, "SevenConfig");
+            string str = AppSettings(key, "WTFConfig");
             if (str == string.Empty)
             {
                 return defaultValue;
@@ -273,7 +273,7 @@
 
         public static int GetIntValue(string key, int defaultValue)
         {
-            string str = AppSettings(key, "SevenConfig");
+            string str = AppSettings(key, "WTFConfig");
             if (str == string.Empty)
             {
                 return defaultValue;
@@ -281,7 +281,7 @@
             return Convert.ToInt32(str);
         }
 
-        public static object GetSection(string sectionName, string configCode = "SevenConfig")
+        public static object GetSection(string sectionName, string configCode = "WTFConfig")
         {
             object section = null;
             section = ConfigurationManager.GetSection(sectionName);
@@ -307,7 +307,7 @@
 
         public static string GetValue(string key, string defaultVale)
         {
-            string str = AppSettings(key, "SevenConfig");
+            string str = AppSettings(key, "WTFConfig");
             if (str.IsNull())
             {
                 return defaultVale;

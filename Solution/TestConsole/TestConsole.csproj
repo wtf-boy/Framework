@@ -78,9 +78,13 @@
       <Project>{bccffa2d-2d8c-43fe-98fe-f75771f58cf3}</Project>
       <Name>WTF.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WTF.Power\WTF.Power.csproj">
-      <Project>{3b2d4f47-a624-4e73-8f21-3cd1589a1e39}</Project>
-      <Name>WTF.Power</Name>
+    <ProjectReference Include="..\WTF.Logging\WTF.Logging.csproj">
+      <Project>{ed91ce16-fbe6-4f53-b1f3-d9594d408fe5}</Project>
+      <Name>WTF.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WTF.Theme\WTF.Theme.csproj">
+      <Project>{ced0f6a1-4f58-4d61-86df-17b8c6b6cbb0}</Project>
+      <Name>WTF.Theme</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +94,12 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LogConfig.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Test.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

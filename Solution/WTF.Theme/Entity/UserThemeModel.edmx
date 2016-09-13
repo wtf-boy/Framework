@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UserThemeModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="MySQL, 5.6.22" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="UserThemeModelStoreContainer">
+          <EntitySet Name="theme_moduletheme" EntityType="UserThemeModel.Store.theme_moduletheme" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="theme_themeconfig" EntityType="UserThemeModel.Store.theme_themeconfig" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="theme_usertheme" EntityType="UserThemeModel.Store.theme_usertheme" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="theme_modulethemeinfo" EntityType="UserThemeModel.Store.theme_modulethemeinfo" store:Type="Views" store:Schema="opendata" store:Name="theme_modulethemeinfo">
+            <DefiningQuery>
+              SELECT
+              `theme_modulethemeinfo`.`PreviewIco`,
+              `theme_modulethemeinfo`.`ThemeConfigID`,
+              `theme_modulethemeinfo`.`ModuleTypeID`,
+              `theme_modulethemeinfo`.`ModuleThemeID`,
+              `theme_modulethemeinfo`.`ThemeConfigName`,
+              `theme_modulethemeinfo`.`Theme`,
+              `theme_modulethemeinfo`.`LayoutPath`
+              FROM `theme_modulethemeinfo` AS `theme_modulethemeinfo`
+            </DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="theme_userthemeinfo" EntityType="UserThemeModel.Store.theme_userthemeinfo" store:Type="Views" store:Schema="opendata" store:Name="theme_userthemeinfo">
+            <DefiningQuery>
+              SELECT
+              `theme_userthemeinfo`.`OperateStyle`,
+              `theme_userthemeinfo`.`UserID`,
+              `theme_userthemeinfo`.`UserThemeID`,
+              `theme_userthemeinfo`.`ModuleTypeID`,
+              `theme_userthemeinfo`.`LayoutPath`,
+              `theme_userthemeinfo`.`Theme`,
+              `theme_userthemeinfo`.`ThemeConfigName`,
+              `theme_userthemeinfo`.`ModuleThemeID`,
+              `theme_userthemeinfo`.`ThemeConfigID`
+              FROM `theme_userthemeinfo` AS `theme_userthemeinfo`
+            </DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="theme_moduletheme">
+          <Key>
+            <PropertyRef Name="ModuleThemeID" />
+          </Key>
+          <Property Name="ModuleThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ThemeConfigID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="PreviewIco" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="theme_themeconfig">
+          <Key>
+            <PropertyRef Name="ThemeConfigID" />
+          </Key>
+          <Property Name="ThemeConfigID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ThemeConfigName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Theme" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LayoutPath" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PreviewIco" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="theme_usertheme">
+          <Key>
+            <PropertyRef Name="UserThemeID" />
+          </Key>
+          <Property Name="UserThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="OperateStyle" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.theme_modulethemeinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="theme_modulethemeinfo">
+          <Key>
+            <PropertyRef Name="PreviewIco" />
+            <PropertyRef Name="ThemeConfigID" />
+            <PropertyRef Name="ModuleTypeID" />
+            <PropertyRef Name="ModuleThemeID" />
+            <PropertyRef Name="ThemeConfigName" />
+            <PropertyRef Name="Theme" />
+            <PropertyRef Name="LayoutPath" />
+          </Key>
+          <Property Name="PreviewIco" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ThemeConfigID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ThemeConfigName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Theme" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LayoutPath" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“def.opendata.theme_userthemeinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="theme_userthemeinfo">
+          <Key>
+            <PropertyRef Name="OperateStyle" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserThemeID" />
+            <PropertyRef Name="ModuleTypeID" />
+            <PropertyRef Name="LayoutPath" />
+            <PropertyRef Name="Theme" />
+            <PropertyRef Name="ThemeConfigName" />
+            <PropertyRef Name="ModuleThemeID" />
+            <PropertyRef Name="ThemeConfigID" />
+          </Key>
+          <Property Name="OperateStyle" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="UserThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="LayoutPath" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Theme" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ThemeConfigName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModuleThemeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ThemeConfigID" Type="varchar" Nullable="false" MaxLength="36" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserThemeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="UserThemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="theme_moduletheme" EntityType="UserThemeModel.Theme_ModuleTheme" />
+          <EntitySet Name="theme_themeconfig" EntityType="UserThemeModel.Theme_ThemeConfig" />
+          <EntitySet Name="theme_usertheme" EntityType="UserThemeModel.Theme_UserTheme" />
+          <EntitySet Name="theme_modulethemeinfo" EntityType="UserThemeModel.Theme_ModuleThemeInfo" />
+          <EntitySet Name="theme_userthemeinfo" EntityType="UserThemeModel.Theme_UserThemeInfo" />
+        </EntityContainer>
+        <EntityType Name="Theme_ModuleTheme">
+          <Key>
+            <PropertyRef Name="ModuleThemeID" />
+          </Key>
+          <Property Name="ModuleThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="PreviewIco" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theme_ThemeConfig">
+          <Key>
+            <PropertyRef Name="ThemeConfigID" />
+          </Key>
+          <Property Name="ThemeConfigID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Theme" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LayoutPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PreviewIco" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theme_UserTheme">
+          <Key>
+            <PropertyRef Name="UserThemeID" />
+          </Key>
+          <Property Name="UserThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="OperateStyle" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Theme_ModuleThemeInfo">
+          <Key>
+            <PropertyRef Name="PreviewIco" />
+            <PropertyRef Name="ThemeConfigID" />
+            <PropertyRef Name="ModuleTypeID" />
+            <PropertyRef Name="ModuleThemeID" />
+            <PropertyRef Name="ThemeConfigName" />
+            <PropertyRef Name="Theme" />
+            <PropertyRef Name="LayoutPath" />
+          </Key>
+          <Property Name="PreviewIco" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Theme" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LayoutPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theme_UserThemeInfo">
+          <Key>
+            <PropertyRef Name="OperateStyle" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserThemeID" />
+            <PropertyRef Name="ModuleTypeID" />
+            <PropertyRef Name="LayoutPath" />
+            <PropertyRef Name="Theme" />
+            <PropertyRef Name="ThemeConfigName" />
+            <PropertyRef Name="ModuleThemeID" />
+            <PropertyRef Name="ThemeConfigID" />
+          </Key>
+          <Property Name="OperateStyle" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="UserThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="LayoutPath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Theme" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleThemeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ThemeConfigID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UserThemeModelStoreContainer" CdmEntityContainer="UserThemeEntities">
+          <EntitySetMapping Name="theme_moduletheme">
+            <EntityTypeMapping TypeName="UserThemeModel.Theme_ModuleTheme">
+              <MappingFragment StoreEntitySet="theme_moduletheme">
+                <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+                <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theme_themeconfig">
+            <EntityTypeMapping TypeName="UserThemeModel.Theme_ThemeConfig">
+              <MappingFragment StoreEntitySet="theme_themeconfig">
+                <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+                <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+                <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theme_usertheme">
+            <EntityTypeMapping TypeName="UserThemeModel.Theme_UserTheme">
+              <MappingFragment StoreEntitySet="theme_usertheme">
+                <ScalarProperty Name="UserThemeID" ColumnName="UserThemeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+                <ScalarProperty Name="OperateStyle" ColumnName="OperateStyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theme_modulethemeinfo">
+            <EntityTypeMapping TypeName="UserThemeModel.Theme_ModuleThemeInfo">
+              <MappingFragment StoreEntitySet="theme_modulethemeinfo">
+                <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+                <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+                <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theme_userthemeinfo">
+            <EntityTypeMapping TypeName="UserThemeModel.Theme_UserThemeInfo">
+              <MappingFragment StoreEntitySet="theme_userthemeinfo">
+                <ScalarProperty Name="OperateStyle" ColumnName="OperateStyle" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserThemeID" ColumnName="UserThemeID" />
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+                <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+                <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

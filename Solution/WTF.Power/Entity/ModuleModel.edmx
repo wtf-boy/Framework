@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModuleModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="MySQL, 5.6.22" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModuleModelStoreContainer">
+          <EntitySet Name="sys_module" EntityType="ModuleModel.Store.sys_module" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="sys_modulecheckdata" EntityType="ModuleModel.Store.sys_modulecheckdata" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="sys_modulecote" EntityType="ModuleModel.Store.sys_modulecote" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="sys_moduledata" EntityType="ModuleModel.Store.sys_moduledata" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="sys_modulehelp" EntityType="ModuleModel.Store.sys_modulehelp" store:Type="Tables" Schema="opendata" />
+          <EntitySet Name="sys_moduletype" EntityType="ModuleModel.Store.sys_moduletype" store:Type="Tables" Schema="opendata" />
+          <AssociationSet Name="FK_module_moduletype" Association="ModuleModel.Store.FK_module_moduletype">
+            <End Role="sys_moduletype" EntitySet="sys_moduletype" />
+            <End Role="sys_module" EntitySet="sys_module" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sys_module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleFunID" Type="int" Nullable="false" />
+          <Property Name="IsDispose" Type="bit" Nullable="false" />
+          <Property Name="LogCategoryID" Type="int" Nullable="false" />
+          <Property Name="PlaceType" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OperateTypeID" Type="int" Nullable="false" />
+          <Property Name="ModuleShow" Type="bit" Nullable="false" />
+          <Property Name="IsEdit" Type="bit" Nullable="false" />
+          <Property Name="ImageUrl" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="CommandName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CommandArgument" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ClickScriptFun" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ToolTip" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleLevel" Type="int" Nullable="false" />
+          <Property Name="ModuleIDPath" Type="varchar" Nullable="false" MaxLength="3000" />
+          <Property Name="SortIndex" Type="int" Nullable="false" />
+          <Property Name="ValGroupName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="MenuField" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MenuCal" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="MenuValue" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsMvc" Type="bit" Nullable="false" />
+          <Property Name="IsController" Type="bit" Nullable="false" />
+          <Property Name="IsCheckPowerData" Type="bit" Nullable="false" />
+          <Property Name="ModuleCoteID" Type="int" Nullable="false" />
+          <Property Name="TargetUrl" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ShareModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="CoteKeyID" Type="int" Nullable="false" />
+          <Property Name="IsPower" Type="bit" Nullable="false" />
+          <Property Name="IsSupperPower" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_modulecheckdata">
+          <Key>
+            <PropertyRef Name="ModuleCheckDataID" />
+          </Key>
+          <Property Name="ModuleCheckDataID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+        </EntityType>
+        <EntityType Name="sys_modulecote">
+          <Key>
+            <PropertyRef Name="ModuleCoteID" />
+          </Key>
+          <Property Name="ModuleCoteID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CoteTitle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CoteTableName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IDName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ParentIDName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IDPathName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ConnectionStringName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="RootIDValue" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="IDDataType" Type="int" Nullable="false" />
+          <Property Name="IsParentUrl" Type="bit" Nullable="false" />
+          <Property Name="SortExpression" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Condtion" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sys_moduledata">
+          <Key>
+            <PropertyRef Name="ModuleDataID" />
+          </Key>
+          <Property Name="ModuleDataID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ConnectionKey" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DataName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FieldName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DataSelect" Type="varchar" Nullable="false" />
+          <Property Name="PowerType" Type="int" Nullable="false" />
+          <Property Name="FieldType" Type="int" Nullable="false" />
+          <Property Name="FieldSourceType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_modulehelp">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="HelpTitle" Type="text" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="FileResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="FileTextResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="HelpContent" Type="longtext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_moduletype">
+          <Key>
+            <PropertyRef Name="ModuleTypeID" />
+          </Key>
+          <Property Name="ModuleTypeID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="ModuleTypeCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModuleTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LogCategoryID" Type="int" Nullable="false" />
+          <Property Name="IsDispose" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_module_moduletype">
+          <End Role="sys_moduletype" Type="ModuleModel.Store.sys_moduletype" Multiplicity="1" />
+          <End Role="sys_module" Type="ModuleModel.Store.sys_module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_moduletype">
+              <PropertyRef Name="ModuleTypeID" />
+            </Principal>
+            <Dependent Role="sys_module">
+              <PropertyRef Name="ModuleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Sys_DeleteModule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetAuthorizeGroupPowerModule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_AuthorizeGroupID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetPowerCoteOperateCommandByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+          <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+          <Parameter Name="p_CoteModuleID" Type="varchar" Mode="In" />
+          <Parameter Name="p_CoteID" Type="varchar" Mode="In" />
+          <Parameter Name="p_CommandName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetPowerCoteOperateModuleByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+          <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+          <Parameter Name="p_PlaceType" Type="varchar" Mode="In" />
+          <Parameter Name="p_CoteModuleID" Type="varchar" Mode="In" />
+          <Parameter Name="p_CoteID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetPowerFunctionModuleByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+          <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ContainChild" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetPowerOperateCommandByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+          <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+          <Parameter Name="p_CommandName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sys_GetPowerOperateModuleByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="opendata">
+          <Parameter Name="p_ModuleTypeID" Type="varchar" Mode="In" />
+          <Parameter Name="p_ModuleCode" Type="varchar" Mode="In" />
+          <Parameter Name="p_UserID" Type="varchar" Mode="In" />
+          <Parameter Name="p_PlaceType" Type="varchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModuleModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ModuleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sys_modulecheckdata" EntityType="ModuleModel.Sys_ModuleCheckData" />
+          <EntitySet Name="sys_moduledata" EntityType="ModuleModel.Sys_ModuleData" />
+          <EntitySet Name="sys_modulehelp" EntityType="ModuleModel.Sys_ModuleHelp" />
+          <EntitySet Name="sys_moduletype" EntityType="ModuleModel.Sys_ModuleType" />
+          <FunctionImport Name="GetPowerCoteOperateModuleByID" EntitySet="sys_module" ReturnType="Collection(ModuleModel.Sys_Module)">
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleCode" Mode="In" Type="String" />
+            <Parameter Name="p_UserID" Mode="In" Type="String" />
+            <Parameter Name="p_PlaceType" Mode="In" Type="String" />
+            <Parameter Name="p_CoteModuleID" Mode="In" Type="String" />
+            <Parameter Name="p_CoteID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPowerOperateModuleByID" EntitySet="sys_module" ReturnType="Collection(ModuleModel.Sys_Module)">
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleCode" Mode="In" Type="String" />
+            <Parameter Name="p_UserID" Mode="In" Type="String" />
+            <Parameter Name="p_PlaceType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPowerFunctionModuleByID" EntitySet="sys_module" ReturnType="Collection(ModuleModel.Sys_Module)">
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleCode" Mode="In" Type="String" />
+            <Parameter Name="p_UserID" Mode="In" Type="String" />
+            <Parameter Name="p_ContainChild" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteModule">
+            <Parameter Name="p_ModuleID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPowerOperateCommandByID" ReturnType="Collection(Int32)">
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleCode" Mode="In" Type="String" />
+            <Parameter Name="p_UserID" Mode="In" Type="String" />
+            <Parameter Name="p_CommandName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="sys_modulecote" EntityType="ModuleModel.Sys_ModuleCote" />
+          <EntitySet Name="sys_module" EntityType="ModuleModel.Sys_Module" />
+          <AssociationSet Name="FK_module_moduletype" Association="ModuleModel.FK_module_moduletype">
+            <End Role="Sys_ModuleType" EntitySet="sys_moduletype" />
+            <End Role="sys_module" EntitySet="sys_module" />
+          </AssociationSet>
+          <FunctionImport Name="GetAuthorizeGroupPowerModule" EntitySet="sys_module" ReturnType="Collection(ModuleModel.Sys_Module)">
+            <Parameter Name="p_AuthorizeGroupID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPowerCoteOperateCommandByID" ReturnType="Collection(Int32)">
+            <Parameter Name="p_ModuleTypeID" Mode="In" Type="String" />
+            <Parameter Name="p_ModuleCode" Mode="In" Type="String" />
+            <Parameter Name="p_UserID" Mode="In" Type="String" />
+            <Parameter Name="p_CoteModuleID" Mode="In" Type="String" />
+            <Parameter Name="p_CoteID" Mode="In" Type="String" />
+            <Parameter Name="p_CommandName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Sys_ModuleCheckData">
+          <Key>
+            <PropertyRef Name="ModuleCheckDataID" />
+          </Key>
+          <Property Name="ModuleCheckDataID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Sys_ModuleData">
+          <Key>
+            <PropertyRef Name="ModuleDataID" />
+          </Key>
+          <Property Name="ModuleDataID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ConnectionKey" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DataName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DataSelect" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PowerType" Type="Int32" Nullable="false" />
+          <Property Name="FieldType" Type="Int32" Nullable="false" />
+          <Property Name="FieldSourceType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_ModuleHelp">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="HelpTitle" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="FileResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="FileTextResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="HelpContent" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Sys_ModuleType">
+          <Key>
+            <PropertyRef Name="ModuleTypeID" />
+          </Key>
+          <Property Name="ModuleTypeID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LogCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="IsDispose" Type="Boolean" Nullable="false" />
+          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sys_Module" Relationship="ModuleModel.FK_module_moduletype" FromRole="Sys_ModuleType" ToRole="sys_module" />
+        </EntityType>
+        <ComplexType Name="Sys_GetLogModuleInfoByModuleCodeByID_Result" />
+        <ComplexType Name="Sys_GetLogModuleInfoByModuleTypeByID_Result" />
+        <ComplexType Name="Sys_GetPowerCoteOperateModuleByID_Result" />
+        <ComplexType Name="Sys_GetPowerOperateModuleByID_Result" />
+        <ComplexType Name="Sys_GetPowerFunctionModuleByID_Result" />
+        <ComplexType Name="Sys_GetUserPowerModule_Result" />
+        <EntityType Name="Sys_ModuleCote">
+          <Key>
+            <PropertyRef Name="ModuleCoteID" />
+          </Key>
+          <Property Type="Int32" Name="ModuleCoteID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CoteTitle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoteTableName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IDName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ParentIDName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IDPathName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConnectionStringName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RootIDValue" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IDDataType" Nullable="false" />
+          <Property Type="Boolean" Name="IsParentUrl" Nullable="false" />
+          <Property Type="String" Name="SortExpression" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Condtion" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="Sys_GetLogerModuleInfoByModuleCodeByID_Result" />
+        <EntityType Name="Sys_Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Type="String" Name="ModuleID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModuleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModuleCode" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModuleTypeID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ModuleFunID" Nullable="false" />
+          <Property Type="Boolean" Name="IsDispose" Nullable="false" />
+          <Property Type="Int32" Name="LogCategoryID" Nullable="false" />
+          <Property Type="String" Name="PlaceType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OperateTypeID" Nullable="false" />
+          <Property Type="Boolean" Name="ModuleShow" Nullable="false" />
+          <Property Type="Boolean" Name="IsEdit" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CommandName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CommandArgument" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ClickScriptFun" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToolTip" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ParentModuleID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ModuleLevel" Nullable="false" />
+          <Property Type="String" Name="ModuleIDPath" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SortIndex" Nullable="false" />
+          <Property Type="String" Name="ValGroupName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MenuField" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MenuCal" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MenuValue" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsMvc" Nullable="false" />
+          <Property Type="Boolean" Name="IsController" Nullable="false" />
+          <Property Type="Boolean" Name="IsCheckPowerData" Nullable="false" />
+          <Property Type="Int32" Name="ModuleCoteID" Nullable="false" />
+          <Property Type="String" Name="TargetUrl" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShareModuleID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CoteKeyID" Nullable="false" />
+          <Property Type="Boolean" Name="IsPower" Nullable="false" />
+          <NavigationProperty Name="Sys_ModuleType" Relationship="ModuleModel.FK_module_moduletype" FromRole="sys_module" ToRole="Sys_ModuleType" />
+          <Property Type="Boolean" Name="IsSupperPower" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_module_moduletype">
+          <End Type="ModuleModel.Sys_ModuleType" Role="Sys_ModuleType" Multiplicity="1" />
+          <End Type="ModuleModel.Sys_Module" Role="sys_module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sys_ModuleType">
+              <PropertyRef Name="ModuleTypeID" />
+            </Principal>
+            <Dependent Role="sys_module">
+              <PropertyRef Name="ModuleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModuleModelStoreContainer" CdmEntityContainer="ModuleEntities">
+          <EntitySetMapping Name="sys_modulecheckdata">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_ModuleCheckData">
+              <MappingFragment StoreEntitySet="sys_modulecheckdata">
+                <ScalarProperty Name="ModuleCheckDataID" ColumnName="ModuleCheckDataID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_moduledata">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_ModuleData">
+              <MappingFragment StoreEntitySet="sys_moduledata">
+                <ScalarProperty Name="ModuleDataID" ColumnName="ModuleDataID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ConnectionKey" ColumnName="ConnectionKey" />
+                <ScalarProperty Name="DataName" ColumnName="DataName" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="DataSelect" ColumnName="DataSelect" />
+                <ScalarProperty Name="PowerType" ColumnName="PowerType" />
+                <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+                <ScalarProperty Name="FieldSourceType" ColumnName="FieldSourceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_modulehelp">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_ModuleHelp">
+              <MappingFragment StoreEntitySet="sys_modulehelp">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="HelpTitle" ColumnName="HelpTitle" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="FileResourceID" ColumnName="FileResourceID" />
+                <ScalarProperty Name="FileTextResourceID" ColumnName="FileTextResourceID" />
+                <ScalarProperty Name="HelpContent" ColumnName="HelpContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_moduletype">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_ModuleType">
+              <MappingFragment StoreEntitySet="sys_moduletype">
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="ModuleTypeCode" ColumnName="ModuleTypeCode" />
+                <ScalarProperty Name="ModuleTypeName" ColumnName="ModuleTypeName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="LogCategoryID" ColumnName="LogCategoryID" />
+                <ScalarProperty Name="IsDispose" ColumnName="IsDispose" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetPowerCoteOperateModuleByID" FunctionName="ModuleModel.Store.Sys_GetPowerCoteOperateModuleByID" />
+          <FunctionImportMapping FunctionImportName="GetPowerOperateModuleByID" FunctionName="ModuleModel.Store.Sys_GetPowerOperateModuleByID" />
+          <FunctionImportMapping FunctionImportName="GetPowerFunctionModuleByID" FunctionName="ModuleModel.Store.Sys_GetPowerFunctionModuleByID" />
+          <FunctionImportMapping FunctionImportName="DeleteModule" FunctionName="ModuleModel.Store.Sys_DeleteModule" />
+          <FunctionImportMapping FunctionImportName="GetPowerOperateCommandByID" FunctionName="ModuleModel.Store.Sys_GetPowerOperateCommandByID" />
+          <EntitySetMapping Name="sys_modulecote">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_ModuleCote">
+              <MappingFragment StoreEntitySet="sys_modulecote">
+                <ScalarProperty Name="Condtion" ColumnName="Condtion" />
+                <ScalarProperty Name="SortExpression" ColumnName="SortExpression" />
+                <ScalarProperty Name="IsParentUrl" ColumnName="IsParentUrl" />
+                <ScalarProperty Name="IDDataType" ColumnName="IDDataType" />
+                <ScalarProperty Name="RootIDValue" ColumnName="RootIDValue" />
+                <ScalarProperty Name="ConnectionStringName" ColumnName="ConnectionStringName" />
+                <ScalarProperty Name="IDPathName" ColumnName="IDPathName" />
+                <ScalarProperty Name="ParentIDName" ColumnName="ParentIDName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDName" ColumnName="IDName" />
+                <ScalarProperty Name="CoteTableName" ColumnName="CoteTableName" />
+                <ScalarProperty Name="CoteTitle" ColumnName="CoteTitle" />
+                <ScalarProperty Name="ModuleCoteID" ColumnName="ModuleCoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_module">
+            <EntityTypeMapping TypeName="ModuleModel.Sys_Module">
+              <MappingFragment StoreEntitySet="sys_module">
+                <ScalarProperty Name="IsSupperPower" ColumnName="IsSupperPower" />
+                <ScalarProperty Name="IsPower" ColumnName="IsPower" />
+                <ScalarProperty Name="CoteKeyID" ColumnName="CoteKeyID" />
+                <ScalarProperty Name="ShareModuleID" ColumnName="ShareModuleID" />
+                <ScalarProperty Name="TargetUrl" ColumnName="TargetUrl" />
+                <ScalarProperty Name="ModuleCoteID" ColumnName="ModuleCoteID" />
+                <ScalarProperty Name="IsCheckPowerData" ColumnName="IsCheckPowerData" />
+                <ScalarProperty Name="IsController" ColumnName="IsController" />
+                <ScalarProperty Name="IsMvc" ColumnName="IsMvc" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="MenuValue" ColumnName="MenuValue" />
+                <ScalarProperty Name="MenuCal" ColumnName="MenuCal" />
+                <ScalarProperty Name="MenuField" ColumnName="MenuField" />
+                <ScalarProperty Name="ValGroupName" ColumnName="ValGroupName" />
+                <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+                <ScalarProperty Name="ModuleIDPath" ColumnName="ModuleIDPath" />
+                <ScalarProperty Name="ModuleLevel" ColumnName="ModuleLevel" />
+                <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+                <ScalarProperty Name="ToolTip" ColumnName="ToolTip" />
+                <ScalarProperty Name="ClickScriptFun" ColumnName="ClickScriptFun" />
+                <ScalarProperty Name="CommandArgument" ColumnName="CommandArgument" />
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+                <ScalarProperty Name="ModuleShow" ColumnName="ModuleShow" />
+                <ScalarProperty Name="OperateTypeID" ColumnName="OperateTypeID" />
+                <ScalarProperty Name="PlaceType" ColumnName="PlaceType" />
+                <ScalarProperty Name="LogCategoryID" ColumnName="LogCategoryID" />
+                <ScalarProperty Name="IsDispose" ColumnName="IsDispose" />
+                <ScalarProperty Name="ModuleFunID" ColumnName="ModuleFunID" />
+                <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+                <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAuthorizeGroupPowerModule" FunctionName="ModuleModel.Store.Sys_GetAuthorizeGroupPowerModule" />
+          <FunctionImportMapping FunctionImportName="GetPowerCoteOperateCommandByID" FunctionName="ModuleModel.Store.Sys_GetPowerCoteOperateCommandByID" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

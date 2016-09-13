@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FileResourceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FileResourceModelStoreContainer">
+    <EntitySet Name="resource_filehistory" EntityType="FileResourceModel.Store.resource_filehistory" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="resource_fileresource" EntityType="FileResourceModel.Store.resource_fileresource" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="resource_filerestrict" EntityType="FileResourceModel.Store.resource_filerestrict" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="resource_filerestrictpic" EntityType="FileResourceModel.Store.resource_filerestrictpic" store:Type="Tables" Schema="opendata" />
+    <EntitySet Name="resource_filestoragepath" EntityType="FileResourceModel.Store.resource_filestoragepath" store:Type="Tables" Schema="opendata" />
+    <AssociationSet Name="FK_FileRestrict_Ref_FileResource" Association="FileResourceModel.Store.FK_FileRestrict_Ref_FileResource">
+      <End Role="resource_fileresource" EntitySet="resource_fileresource" />
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileRestrict_Ref_StoragePath" Association="FileResourceModel.Store.FK_FileRestrict_Ref_StoragePath">
+      <End Role="resource_filestoragepath" EntitySet="resource_filestoragepath" />
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileRestrictPic_Ref_FileRestrict" Association="FileResourceModel.Store.FK_FileRestrictPic_Ref_FileRestrict">
+      <End Role="resource_filerestrict" EntitySet="resource_filerestrict" />
+      <End Role="resource_filerestrictpic" EntitySet="resource_filerestrictpic" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="resource_filehistory">
+    <Key>
+      <PropertyRef Name="FileHistoryID" />
+    </Key>
+    <Property Name="FileHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FileResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FileType" Type="int" Nullable="false" />
+    <Property Name="PicTitle" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="PicUrl" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="FileStatus" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="resource_fileresource">
+    <Key>
+      <PropertyRef Name="FileResourceID" />
+    </Key>
+    <Property Name="FileResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FileResourceName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="FileResourceCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resource_filerestrict">
+    <Key>
+      <PropertyRef Name="FileRestrictID" />
+    </Key>
+    <Property Name="FileRestrictID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FileStoragePathID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FileResourceID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="AccessModeCodeType" Type="int" Nullable="false" />
+    <Property Name="PathFormatCodeType" Type="int" Nullable="false" />
+    <Property Name="RestrictName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="RestrictCode" Type="varchar" Nullable="false" />
+    <Property Name="FileType" Type="int" Nullable="false" />
+    <Property Name="FileExtension" Type="varchar" Nullable="false" MaxLength="256" />
+    <Property Name="FileMaxSize" Type="int" Nullable="false" />
+    <Property Name="IsReturnSize" Type="int" Nullable="false" />
+    <Property Name="IsMd5" Type="int" Nullable="false" />
+    <Property Name="IsHistory" Type="int" />
+  </EntityType>
+  <EntityType Name="resource_filerestrictpic">
+    <Key>
+      <PropertyRef Name="SystemFilePicID" />
+    </Key>
+    <Property Name="SystemFilePicID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="FileRestrictID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="SortIndex" Type="int" Nullable="false" />
+    <Property Name="IsCreateWaterMark" Type="bit" Nullable="false" />
+    <Property Name="WatermarkText" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="HorizontalAlign" Type="int" Nullable="false" />
+    <Property Name="VerticalAlign" Type="int" Nullable="false" />
+    <Property Name="ImageWidth" Type="int" Nullable="false" />
+    <Property Name="ImageHeight" Type="int" Nullable="false" />
+    <Property Name="WatermarkType" Type="int" Nullable="false" />
+    <Property Name="WaterImageID" Type="varchar" Nullable="false" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="resource_filestoragepath">
+    <Key>
+      <PropertyRef Name="FileStoragePathID" />
+    </Key>
+    <Property Name="FileStoragePathID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="StoragePathName" Type="varchar" Nullable="false" MaxLength="256" />
+    <Property Name="StorageTypeID" Type="int" Nullable="false" />
+    <Property Name="VirtualName" Type="varchar" Nullable="false" />
+    <Property Name="StoragePath" Type="varchar" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Port" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StorageConfig" Type="text" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FileRestrict_Ref_FileResource">
+    <End Role="resource_fileresource" Type="FileResourceModel.Store.resource_fileresource" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="resource_filerestrict" Type="FileResourceModel.Store.resource_filerestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_fileresource">
+        <PropertyRef Name="FileResourceID" />
+      </Principal>
+      <Dependent Role="resource_filerestrict">
+        <PropertyRef Name="FileResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileRestrict_Ref_StoragePath">
+    <End Role="resource_filestoragepath" Type="FileResourceModel.Store.resource_filestoragepath" Multiplicity="1" />
+    <End Role="resource_filerestrict" Type="FileResourceModel.Store.resource_filerestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_filestoragepath">
+        <PropertyRef Name="FileStoragePathID" />
+      </Principal>
+      <Dependent Role="resource_filerestrict">
+        <PropertyRef Name="FileStoragePathID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileRestrictPic_Ref_FileRestrict">
+    <End Role="resource_filerestrict" Type="FileResourceModel.Store.resource_filerestrict" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="resource_filerestrictpic" Type="FileResourceModel.Store.resource_filerestrictpic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resource_filerestrict">
+        <PropertyRef Name="FileRestrictID" />
+      </Principal>
+      <Dependent Role="resource_filerestrictpic">
+        <PropertyRef Name="FileRestrictID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

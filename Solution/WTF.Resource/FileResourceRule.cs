@@ -171,7 +171,7 @@
             {
                 if (this.objCurrentEntities == null)
                 {
-                    this.objCurrentEntities = new FileResourceEntities(EntitiesHelper.GetConnectionString<FileResourceEntities>("Seven.File.ConnectionString"));
+                    this.objCurrentEntities = new FileResourceEntities(EntitiesHelper.GetConnectionString<FileResourceEntities>("WTF.File.ConnectionString"));
                 }
                 return this.objCurrentEntities;
             }

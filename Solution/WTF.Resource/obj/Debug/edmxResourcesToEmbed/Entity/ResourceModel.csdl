@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ResourceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ResourceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sys_resource" EntityType="ResourceModel.Sys_Resource" />
+    <EntitySet Name="sys_resourcedata" EntityType="ResourceModel.Sys_ResourceData" />
+    <EntitySet Name="sys_resourcepath" EntityType="ResourceModel.Sys_ResourcePath" />
+    <EntitySet Name="sys_resourcerestrict" EntityType="ResourceModel.Sys_ResourceRestrict" />
+    <EntitySet Name="sys_resourcerestrictpic" EntityType="ResourceModel.Sys_ResourceRestrictPic" />
+    <EntitySet Name="sys_resourcetype" EntityType="ResourceModel.Sys_ResourceType" />
+    <EntitySet Name="sys_resourcever" EntityType="ResourceModel.Sys_ResourceVer" />
+    <EntitySet Name="sys_resourcefileinfo" EntityType="ResourceModel.Sys_ResourceFileInfo" />
+    <AssociationSet Name="FK_sys_resource" Association="ResourceModel.FK_sys_resource">
+      <End Role="sys_resourcetype" EntitySet="sys_resourcetype" />
+      <End Role="sys_resource" EntitySet="sys_resource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcever" Association="ResourceModel.FK_sys_resourcever">
+      <End Role="sys_resource" EntitySet="sys_resource" />
+      <End Role="sys_resourcever" EntitySet="sys_resourcever" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcedata" Association="ResourceModel.FK_sys_resourcedata">
+      <End Role="sys_resourcever" EntitySet="sys_resourcever" />
+      <End Role="sys_resourcedata" EntitySet="sys_resourcedata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcerestrict" Association="ResourceModel.FK_sys_resourcerestrict">
+      <End Role="sys_resourcetype" EntitySet="sys_resourcetype" />
+      <End Role="sys_resourcerestrict" EntitySet="sys_resourcerestrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sys_resourcerestrictpic" Association="ResourceModel.FK_sys_resourcerestrictpic">
+      <End Role="sys_resourcerestrict" EntitySet="sys_resourcerestrict" />
+      <End Role="sys_resourcerestrictpic" EntitySet="sys_resourcerestrictpic" />
+    </AssociationSet>
+    <EntitySet Name="sys_waterimage" EntityType="ResourceModel.Sys_WaterImage" />
+    <FunctionImport Name="GetResourceFilePathByResourceTypeID" EntitySet="sys_resourcefileinfo" ReturnType="Collection(ResourceModel.Sys_ResourceFileInfo)">
+      <Parameter Name="p_ResourceTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetResourceVerByResourceTypeID" EntitySet="sys_resourcever" ReturnType="Collection(ResourceModel.Sys_ResourceVer)">
+      <Parameter Name="p_ResourceTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Sys_Resource">
+    <Key>
+      <PropertyRef Name="ResourceID" />
+    </Key>
+    <Property Name="ResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="VerCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sys_ResourceType" Relationship="ResourceModel.FK_sys_resource" FromRole="sys_resource" ToRole="sys_resourcetype" />
+    <NavigationProperty Name="Sys_ResourceVer" Relationship="ResourceModel.FK_sys_resourcever" FromRole="sys_resource" ToRole="sys_resourcever" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceData">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+    </Key>
+    <Property Name="ResourceVerID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileExtension" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Sys_ResourceVer" Relationship="ResourceModel.FK_sys_resourcedata" FromRole="sys_resourcedata" ToRole="sys_resourcever" />
+  </EntityType>
+  <EntityType Name="Sys_ResourcePath">
+    <Key>
+      <PropertyRef Name="ResourcePathID" />
+    </Key>
+    <Property Name="ResourcePathID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourcePathName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VirtualName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StoragePath" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceRestrict">
+    <Key>
+      <PropertyRef Name="ResourceRestrictID" />
+    </Key>
+    <Property Name="ResourceRestrictID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="RestrictCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="RestrictName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RestrictType" Type="Int32" Nullable="false" />
+    <Property Name="FileExtension" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="FileMaxSize" Type="Int32" Nullable="false" />
+    <Property Name="VerNo" Type="Int32" Nullable="false" />
+    <Property Name="BeginVerNo" Type="Int32" Nullable="false" />
+    <Property Name="EndVerNo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sys_ResourceType" Relationship="ResourceModel.FK_sys_resourcerestrict" FromRole="sys_resourcerestrict" ToRole="sys_resourcetype" />
+    <NavigationProperty Name="Sys_ResourceRestrictPic" Relationship="ResourceModel.FK_sys_resourcerestrictpic" FromRole="sys_resourcerestrict" ToRole="sys_resourcerestrictpic" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceRestrictPic">
+    <Key>
+      <PropertyRef Name="ResourceRestrictPicID" />
+    </Key>
+    <Property Name="ResourceRestrictPicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceRestrictID" Type="Int32" Nullable="false" />
+    <Property Name="VerNo" Type="Int32" Nullable="false" />
+    <Property Name="CreateWaterMark" Type="Boolean" Nullable="false" />
+    <Property Name="WatermarkText" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="WaterImageID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="HorizontalAlign" Type="Int32" Nullable="false" />
+    <Property Name="VerticalAlign" Type="Int32" Nullable="false" />
+    <Property Name="ImageWidth" Type="Int32" Nullable="false" />
+    <Property Name="ImageHeight" Type="Int32" Nullable="false" />
+    <Property Name="WatermarkType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sys_ResourceRestrict" Relationship="ResourceModel.FK_sys_resourcerestrictpic" FromRole="sys_resourcerestrictpic" ToRole="sys_resourcerestrict" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceType">
+    <Key>
+      <PropertyRef Name="ResourceTypeID" />
+    </Key>
+    <Property Name="ResourceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceTypeCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AccessModeCodeType" Type="Int32" Nullable="false" />
+    <Property Name="PathFormatCodeType" Type="Int32" Nullable="false" />
+    <Property Name="ResourcePathID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="StorageType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sys_Resource" Relationship="ResourceModel.FK_sys_resource" FromRole="sys_resourcetype" ToRole="sys_resource" />
+    <NavigationProperty Name="Sys_ResourceRestrict" Relationship="ResourceModel.FK_sys_resourcerestrict" FromRole="sys_resourcetype" ToRole="sys_resourcerestrict" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceVer">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+    </Key>
+    <Property Name="ResourceVerID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceGUIDFileName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceFileName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResourceSize" Type="Int32" Nullable="false" />
+    <Property Name="ContentType" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DictionaryPath" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="ResourcePath" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="VerNo" Type="Int32" Nullable="false" />
+    <Property Name="RefCount" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Sys_Resource" Relationship="ResourceModel.FK_sys_resourcever" FromRole="sys_resourcever" ToRole="sys_resource" />
+    <NavigationProperty Name="Sys_ResourceData" Relationship="ResourceModel.FK_sys_resourcedata" FromRole="sys_resourcever" ToRole="sys_resourcedata" />
+  </EntityType>
+  <EntityType Name="Sys_ResourceFileInfo">
+    <Key>
+      <PropertyRef Name="ResourceVerID" />
+      <PropertyRef Name="ResourcePath" />
+    </Key>
+    <Property Name="ResourceVerID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+    <Property Name="ResourcePath" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_sys_resource">
+    <End Role="sys_resourcetype" Type="ResourceModel.Sys_ResourceType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resource" Type="ResourceModel.Sys_Resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcetype">
+        <PropertyRef Name="ResourceTypeID" />
+      </Principal>
+      <Dependent Role="sys_resource">
+        <PropertyRef Name="ResourceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcever">
+    <End Role="sys_resource" Type="ResourceModel.Sys_Resource" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcever" Type="ResourceModel.Sys_ResourceVer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resource">
+        <PropertyRef Name="ResourceID" />
+      </Principal>
+      <Dependent Role="sys_resourcever">
+        <PropertyRef Name="ResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcedata">
+    <End Role="sys_resourcever" Type="ResourceModel.Sys_ResourceVer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcedata" Type="ResourceModel.Sys_ResourceData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcever">
+        <PropertyRef Name="ResourceVerID" />
+      </Principal>
+      <Dependent Role="sys_resourcedata">
+        <PropertyRef Name="ResourceVerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcerestrict">
+    <End Role="sys_resourcetype" Type="ResourceModel.Sys_ResourceType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcerestrict" Type="ResourceModel.Sys_ResourceRestrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcetype">
+        <PropertyRef Name="ResourceTypeID" />
+      </Principal>
+      <Dependent Role="sys_resourcerestrict">
+        <PropertyRef Name="ResourceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sys_resourcerestrictpic">
+    <End Role="sys_resourcerestrict" Type="ResourceModel.Sys_ResourceRestrict" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sys_resourcerestrictpic" Type="ResourceModel.Sys_ResourceRestrictPic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sys_resourcerestrict">
+        <PropertyRef Name="ResourceRestrictID" />
+      </Principal>
+      <Dependent Role="sys_resourcerestrictpic">
+        <PropertyRef Name="ResourceRestrictID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sys_WaterImage">
+    <Key>
+      <PropertyRef Name="WaterImageID" />
+    </Key>
+    <Property Type="String" Name="WaterImageID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="WaterImagePath" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="WaterName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Sys_GetResourceFilePathByResourceTypeID_Result" />
+  <ComplexType Name="Sys_GetResourceVerByResourceTypeID_Result" />
+  <ComplexType Name="Sys_GetResourceFilePathByResourceTypeID_Result1" />
+</Schema>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+  <EntityContainerMapping StorageEntityContainer="ResourceModelStoreContainer" CdmEntityContainer="ResourceEntities">
+    <EntitySetMapping Name="sys_resource">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_Resource">
+        <MappingFragment StoreEntitySet="sys_resource">
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+          <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="VerCount" ColumnName="VerCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcedata">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceData">
+        <MappingFragment StoreEntitySet="sys_resourcedata">
+          <ScalarProperty Name="ResourceVerID" ColumnName="ResourceVerID" />
+          <ScalarProperty Name="ResourceData" ColumnName="ResourceData" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcepath">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourcePath">
+        <MappingFragment StoreEntitySet="sys_resourcepath">
+          <ScalarProperty Name="ResourcePathID" ColumnName="ResourcePathID" />
+          <ScalarProperty Name="ResourcePathName" ColumnName="ResourcePathName" />
+          <ScalarProperty Name="VirtualName" ColumnName="VirtualName" />
+          <ScalarProperty Name="StoragePath" ColumnName="StoragePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcerestrict">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceRestrict">
+        <MappingFragment StoreEntitySet="sys_resourcerestrict">
+          <ScalarProperty Name="ResourceRestrictID" ColumnName="ResourceRestrictID" />
+          <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+          <ScalarProperty Name="RestrictCode" ColumnName="RestrictCode" />
+          <ScalarProperty Name="RestrictName" ColumnName="RestrictName" />
+          <ScalarProperty Name="RestrictType" ColumnName="RestrictType" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="FileMaxSize" ColumnName="FileMaxSize" />
+          <ScalarProperty Name="VerNo" ColumnName="VerNo" />
+          <ScalarProperty Name="BeginVerNo" ColumnName="BeginVerNo" />
+          <ScalarProperty Name="EndVerNo" ColumnName="EndVerNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcerestrictpic">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceRestrictPic">
+        <MappingFragment StoreEntitySet="sys_resourcerestrictpic">
+          <ScalarProperty Name="ResourceRestrictPicID" ColumnName="ResourceRestrictPicID" />
+          <ScalarProperty Name="ResourceRestrictID" ColumnName="ResourceRestrictID" />
+          <ScalarProperty Name="VerNo" ColumnName="VerNo" />
+          <ScalarProperty Name="CreateWaterMark" ColumnName="CreateWaterMark" />
+          <ScalarProperty Name="WatermarkText" ColumnName="WatermarkText" />
+          <ScalarProperty Name="WaterImageID" ColumnName="WaterImageID" />
+          <ScalarProperty Name="HorizontalAlign" ColumnName="HorizontalAlign" />
+          <ScalarProperty Name="VerticalAlign" ColumnName="VerticalAlign" />
+          <ScalarProperty Name="ImageWidth" ColumnName="ImageWidth" />
+          <ScalarProperty Name="ImageHeight" ColumnName="ImageHeight" />
+          <ScalarProperty Name="WatermarkType" ColumnName="WatermarkType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcetype">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceType">
+        <MappingFragment StoreEntitySet="sys_resourcetype">
+          <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+          <ScalarProperty Name="ResourceTypeName" ColumnName="ResourceTypeName" />
+          <ScalarProperty Name="ResourceTypeCode" ColumnName="ResourceTypeCode" />
+          <ScalarProperty Name="AccessModeCodeType" ColumnName="AccessModeCodeType" />
+          <ScalarProperty Name="PathFormatCodeType" ColumnName="PathFormatCodeType" />
+          <ScalarProperty Name="ResourcePathID" ColumnName="ResourcePathID" />
+          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcever">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceVer">
+        <MappingFragment StoreEntitySet="sys_resourcever">
+          <ScalarProperty Name="ResourceVerID" ColumnName="ResourceVerID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ResourceGUIDFileName" ColumnName="ResourceGUIDFileName" />
+          <ScalarProperty Name="ResourceFileName" ColumnName="ResourceFileName" />
+          <ScalarProperty Name="ResourceSize" ColumnName="ResourceSize" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="DictionaryPath" ColumnName="DictionaryPath" />
+          <ScalarProperty Name="ResourcePath" ColumnName="ResourcePath" />
+          <ScalarProperty Name="VerNo" ColumnName="VerNo" />
+          <ScalarProperty Name="RefCount" ColumnName="RefCount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_resourcefileinfo">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_ResourceFileInfo">
+        <MappingFragment StoreEntitySet="sys_resourcefileinfo">
+          <ScalarProperty Name="ResourceVerID" ColumnName="ResourceVerID" />
+          <ScalarProperty Name="ResourcePath" ColumnName="ResourcePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_waterimage">
+      <EntityTypeMapping TypeName="ResourceModel.Sys_WaterImage">
+        <MappingFragment StoreEntitySet="sys_waterimage">
+          <ScalarProperty Name="WaterName" ColumnName="WaterName" />
+          <ScalarProperty Name="WaterImagePath" ColumnName="WaterImagePath" />
+          <ScalarProperty Name="WaterImageID" ColumnName="WaterImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetResourceVerByResourceTypeID" FunctionName="ResourceModel.Store.Sys_GetResourceVerByResourceTypeID" />
+    <FunctionImportMapping FunctionImportName="GetResourceFilePathByResourceTypeID" FunctionName="ResourceModel.Store.Sys_GetResourceFilePathByResourceTypeID" />
+  </EntityContainerMapping>
+</Mapping>

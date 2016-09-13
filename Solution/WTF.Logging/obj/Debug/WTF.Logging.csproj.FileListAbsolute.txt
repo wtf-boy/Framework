@@ -12,4 +12,3 @@ C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\zh-Hans\
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.dll
 C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.pdb
-C:\ProgramWorkSpace\GitProject\Framework\Solution\WTF.Logging\obj\Debug\WTF.Logging.csprojResolveAssemblyReference.cache

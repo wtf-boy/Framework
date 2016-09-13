@@ -512,21 +512,21 @@
                 {
                     SysAssert.InfoHintAssert("对不起，你未登录无法设置");
                 }
-                objRule = new WTF.Power.Entity.Sys_Role {
-                    RoleID = Guid.NewGuid().ToString(),
-                    AuthorizeGroupID = AuthorizeGroupID,
-                    RefUserID = UserID,
-                    IsUserRole = true,
-                    UserID = this.CurrentUser.UserID,
-                    RoleName = (user.Account + "|角色私有").CutWord(20),
-                    RoleCode = objRule.RoleName.ConvertChineseSpell(false, ' '),
-                    Remark = (user.Account + "|" + authorizeGroupName).CutWord(90),
-                    IsLockOut = false,
-                    ModuleTypeID = ModuleTypeID,
-                    RoleGroupID = "",
-                    IsSystem = flag,
-                    AccountTypeID = this.CurrentUser.AccountTypeID
-                };
+                objRule = new Sys_Role();
+                objRule.RoleID = Guid.NewGuid().ToString();
+                objRule.AuthorizeGroupID = AuthorizeGroupID;
+                objRule.RefUserID = UserID;
+                objRule.IsUserRole = true;
+                objRule.UserID = this.CurrentUser.UserID;
+                objRule.RoleName = (user.Account + "|角色私有").CutWord(20);
+                objRule.RoleCode = objRule.RoleName.ConvertChineseSpell(false, ' ');
+                objRule.Remark = (user.Account + "|" + authorizeGroupName).CutWord(90);
+                objRule.IsLockOut = false;
+                objRule.ModuleTypeID = ModuleTypeID;
+                objRule.RoleGroupID = "";
+                objRule.IsSystem = flag;
+                objRule.AccountTypeID = this.CurrentUser.AccountTypeID;
+
                 this.InsertRole(objRule);
                 this.AddRoleUser(objRule.RoleID, UserID);
             }

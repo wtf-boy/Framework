@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserThemeModelStoreContainer" CdmEntityContainer="UserThemeEntities">
+    <EntitySetMapping Name="theme_moduletheme">
+      <EntityTypeMapping TypeName="UserThemeModel.Theme_ModuleTheme">
+        <MappingFragment StoreEntitySet="theme_moduletheme">
+          <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+          <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="theme_themeconfig">
+      <EntityTypeMapping TypeName="UserThemeModel.Theme_ThemeConfig">
+        <MappingFragment StoreEntitySet="theme_themeconfig">
+          <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+          <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+          <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="theme_usertheme">
+      <EntityTypeMapping TypeName="UserThemeModel.Theme_UserTheme">
+        <MappingFragment StoreEntitySet="theme_usertheme">
+          <ScalarProperty Name="UserThemeID" ColumnName="UserThemeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+          <ScalarProperty Name="OperateStyle" ColumnName="OperateStyle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="theme_modulethemeinfo">
+      <EntityTypeMapping TypeName="UserThemeModel.Theme_ModuleThemeInfo">
+        <MappingFragment StoreEntitySet="theme_modulethemeinfo">
+          <ScalarProperty Name="PreviewIco" ColumnName="PreviewIco" />
+          <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+          <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="theme_userthemeinfo">
+      <EntityTypeMapping TypeName="UserThemeModel.Theme_UserThemeInfo">
+        <MappingFragment StoreEntitySet="theme_userthemeinfo">
+          <ScalarProperty Name="OperateStyle" ColumnName="OperateStyle" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserThemeID" ColumnName="UserThemeID" />
+          <ScalarProperty Name="ModuleTypeID" ColumnName="ModuleTypeID" />
+          <ScalarProperty Name="LayoutPath" ColumnName="LayoutPath" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="ThemeConfigName" ColumnName="ThemeConfigName" />
+          <ScalarProperty Name="ModuleThemeID" ColumnName="ModuleThemeID" />
+          <ScalarProperty Name="ThemeConfigID" ColumnName="ThemeConfigID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
